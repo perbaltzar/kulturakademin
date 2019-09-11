@@ -1,5 +1,7 @@
 import React, { useState, useEffect }  from 'react';
-import logo from './logo.svg';
+import GlobalStyle from './styles/GlobalStyle';
+import { ThemeProvider } from 'styled-components';
+import Theme  from './styles/Theme';
 import './App.css';
 
 import playlists from './data/playlists.json';
@@ -9,16 +11,14 @@ import tracks from './data/tracks.json';
 const data = [playlists, youtube, tracks].flat();
 
 const App = () => {
-  const [searchIsOpen, setSearchIsOpen] = useState(false);
-  const [page, setPage] = useState('single-video');
-  console.log(data);
-
   return (
     <div className="App">
-      {/* {searchIsOpen && <Search />}
-      {menuIsOpen && <Menu />}
-      {page === 'single-video' && <VideoPage id={} description={} />}
-      <Nav /> */}
+      <GlobalStyle />
+        <ThemeProvider theme={Theme} >
+        <>
+        
+        </>
+        </ThemeProvider>
     </div>
   );
 }
