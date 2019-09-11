@@ -1,15 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
+import styled from "styled-components";
 
-const VideoSingle = ({ match }) => {
-  useEffect(() => {
-    console.log(match);
-  }, [match]);
+const StyledVideoSingle = styled.div``;
 
-  return (
-    <div>
-      <h1>Single</h1>
-    </div>
-  );
+const VideoSingle = props => {
+  return <StyledVideoSingle></StyledVideoSingle>;
 };
 
 export default VideoSingle;

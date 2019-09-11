@@ -1,11 +1,10 @@
 import React from "react";
+import styled from "styled-components";
 
-const Home = () => {
-  return (
-    <div>
-      <h1>HOME</h1>
-    </div>
-  );
+const StyledHome = styled.div``;
+
+const Home = props => {
+  return <StyledHome></StyledHome>;
 };
 
 export default Home;
