@@ -57,7 +57,7 @@ const Menu = props => {
         <h2>English</h2>
         <h4>Kategorier</h4>
         <span></span>
-        <CategoryGrid gridState="1fr 1fr"></CategoryGrid>
+        <CategoryGrid gridTemplate="1fr 1fr"></CategoryGrid>
       </div>
       <h2>Tillbaka till</h2>
       <h4>kulturakademin.com</h4>

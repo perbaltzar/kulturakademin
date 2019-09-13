@@ -3,7 +3,7 @@ import styled from "styled-components";
 import CategoryBox from "./CategoryBox";
 const StyledCategoryGrid = styled.div`
   display: grid;
-  grid-template-columns: ${props => props.gridState};
+  grid-template-columns: ${props => props.gridTemplate};
   grid-gap: 10px;
   margin-bottom: 57px;
 `;
@@ -24,7 +24,6 @@ const categories = [
 ];
 
 const CategoryGrid = props => {
-  console.log(props.gridState);
   const colors = ["#66B759", "#5F8EC6", "#5AB69A", "#4EA8A8", "#5CA1BE"];
   return (
     <StyledCategoryGrid {...props}>
