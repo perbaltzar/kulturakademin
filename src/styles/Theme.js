@@ -1,7 +1,7 @@
 const Theme = {
-    colorDark: "#000",
-    colorLight: "#FFF",
-    colorPrimary: "tomato",
-    colorSecondary: "papyawhip"
-}
+  colorDark: "#323232",
+  colorLight: "#FFF",
+  colorPrimary: "tomato",
+  colorSecondary: "papyawhip"
+};
 export default Theme;
