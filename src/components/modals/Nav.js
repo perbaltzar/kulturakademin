@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-// import { Link } from "react-router-dom";
+import { MenuContext } from "../MenuContext";
 import BurgerMenu from "../BurgerMenu";
-import NavIcon from "../NavIcon";
+import Icon from "../Icon";
+
 const StyledNav = styled.div`
   display: grid;
   background-color: whitesmoke;
@@ -17,12 +18,13 @@ const StyledNav = styled.div`
 `;
 
 const Nav = props => {
+  const { setDisplayMenu } = useContext(MenuContext);
   return (
     <StyledNav>
-      <BurgerMenu />
-      <NavIcon imgsrc="/assets/icons/search-solid.svg" />
-      <NavIcon imgsrc="/assets/icons/home-solid.svg" />
-      <NavIcon imgsrc="/assets/icons/star-regular.svg" />
+      <BurgerMenu onClick={() => setDisplayMenu("block")} />
+      <Icon imgsrc="/assets/icons/search-solid.svg" />
+      <Icon imgsrc="/assets/icons/home-solid.svg" />
+      <Icon imgsrc="/assets/icons/star-regular.svg" />
     </StyledNav>
   );
 };

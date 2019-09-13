@@ -14,7 +14,7 @@ const StyledBurgerMenu = styled.div`
 
 const BurgerMenu = props => {
   return (
-    <StyledBurgerMenu>
+    <StyledBurgerMenu onClick={props.onClick}>
       <span></span>
       <span></span>
       <span></span>
