@@ -14,7 +14,6 @@ h1 { font: ${({ theme }) => theme.fontMobileH1}; }
 h2 { font: ${({ theme }) => theme.fontMobileH2}; }
 h3 { font: ${({ theme }) => theme.fontMobileH3}; }
 h4 { font: ${({ theme }) => theme.fontMobileH4}; }
-p { font: ${({ theme }) => theme.fontMobileP}; }
 `;
 
 export default GlobalStyles;
