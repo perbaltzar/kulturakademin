@@ -2,6 +2,22 @@ import React, { useContext } from "react";
 import { MenuContext } from "../MenuContext";
 import styled from "styled-components";
 import CrossIcon from "../CrossIcon";
+import CategoryBox from "../CategoryBox";
+
+const categories = [
+  "Konst",
+  "Musik",
+  "Hantverk",
+  "Dans",
+  "Sång",
+  "Scenkonst",
+  "Smink",
+  "Film",
+  "Teater",
+  "Poesi",
+  "Event",
+  "Mode"
+];
 
 const StyledMenu = styled.div`
   display: ${props => props.display};
@@ -9,14 +25,67 @@ const StyledMenu = styled.div`
   height: 100vh;
   width: 100%;
   overflow: auto;
+  padding: 0 70px;
   background-color: ${props => props.theme.colorDark};
+  color: ${props => props.theme.colorLight};
+  h2 {
+    margin-bottom: 8px;
+  }
+  h4 {
+    margin-bottom: 65px;
+  }
+  .menu-items {
+    margin-top: 100px;
+    h2 {
+      margin-bottom: 25px;
+    }
+    h4 {
+      margin-top: 50px;
+    }
+    span {
+      display: block;
+      background-color: ${props => props.theme.colorLight};
+      margin: 5px 0px 25px 0px;
+      height: 2px;
+      width: 70px;
+    }
+  }
+  .category-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+    margin-bottom: 57px;
+  }
 `;
 
 const Menu = props => {
+  const colors = ["#66B759", "#5F8EC6", "#5AB69A", "#4EA8A8", "#5CA1BE"];
   const { displayMenu, setDisplayMenu } = useContext(MenuContext);
   return (
     <StyledMenu display={displayMenu.toString()}>
       <CrossIcon onClick={() => setDisplayMenu("none")} />
+      <div className="menu-items">
+        <h2>Hem</h2>
+        <h2>Om Kulturplay</h2>
+        <h2>Kurser</h2>
+        <h2>Inställningar</h2>
+        <h2>English</h2>
+        <h4>Kategorier</h4>
+        <span></span>
+        <div className="category-grid">
+          {categories.map((category, i) => {
+            return (
+              <CategoryBox
+                name={category}
+                key={i}
+                backgroundColor={colors[i % colors.length]}
+              />
+            );
+          })}
+        </div>
+      </div>
+      <h2>Tillbaka till</h2>
+      <h4>kulturakademin.com</h4>
     </StyledMenu>
   );
 };
