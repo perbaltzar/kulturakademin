@@ -3,21 +3,7 @@ import { MenuContext } from "../MenuContext";
 import styled from "styled-components";
 import CrossIcon from "../CrossIcon";
 import CategoryBox from "../CategoryBox";
-
-const categories = [
-  "Konst",
-  "Musik",
-  "Hantverk",
-  "Dans",
-  "Sång",
-  "Scenkonst",
-  "Smink",
-  "Film",
-  "Teater",
-  "Poesi",
-  "Event",
-  "Mode"
-];
+import CategoryGrid from "../CategoryGrid";
 
 const StyledMenu = styled.div`
   display: ${props => props.display};
@@ -59,7 +45,6 @@ const StyledMenu = styled.div`
 `;
 
 const Menu = props => {
-  const colors = ["#66B759", "#5F8EC6", "#5AB69A", "#4EA8A8", "#5CA1BE"];
   const { displayMenu, setDisplayMenu } = useContext(MenuContext);
   return (
     <StyledMenu display={displayMenu.toString()}>
@@ -72,17 +57,7 @@ const Menu = props => {
         <h2>English</h2>
         <h4>Kategorier</h4>
         <span></span>
-        <div className="category-grid">
-          {categories.map((category, i) => {
-            return (
-              <CategoryBox
-                name={category}
-                key={i}
-                backgroundColor={colors[i % colors.length]}
-              />
-            );
-          })}
-        </div>
+        <CategoryGrid gridState="1fr 1fr"></CategoryGrid>
       </div>
       <h2>Tillbaka till</h2>
       <h4>kulturakademin.com</h4>
