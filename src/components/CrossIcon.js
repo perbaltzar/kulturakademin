@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const StyledCrossIcon = styled.div`
   position: absolute;
+  z-index: 2;
   right: 24px;
   top: 24px;
   width: 24px;
