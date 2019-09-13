@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { MenuContext } from "../MenuContext";
 import BurgerMenu from "../BurgerMenu";
-import NavIcon from "../NavIcon";
+import Icon from "../Icon";
 
 const StyledNav = styled.div`
   display: grid;
@@ -22,9 +22,9 @@ const Nav = props => {
   return (
     <StyledNav>
       <BurgerMenu onClick={() => setDisplayMenu("block")} />
-      <NavIcon imgsrc="/assets/icons/search-solid.svg" />
-      <NavIcon imgsrc="/assets/icons/home-solid.svg" />
-      <NavIcon imgsrc="/assets/icons/star-regular.svg" />
+      <Icon imgsrc="/assets/icons/search-solid.svg" />
+      <Icon imgsrc="/assets/icons/home-solid.svg" />
+      <Icon imgsrc="/assets/icons/star-regular.svg" />
     </StyledNav>
   );
 };

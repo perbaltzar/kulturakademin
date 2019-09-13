@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import { MenuContext } from "../MenuContext";
 import styled from "styled-components";
 import CrossIcon from "../CrossIcon";
-import CategoryBox from "../CategoryBox";
 import CategoryGrid from "../CategoryGrid";
 
 const StyledMenu = styled.div`
+  position: absolute;
+  top: 0;
   display: ${props => props.display};
   z-index: 1;
   height: 100vh;

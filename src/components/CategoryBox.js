@@ -8,6 +8,9 @@ const StyledCategoryBox = styled.div`
   width: 100%;
   height: 57px;
   background-color: ${props => props.backgroundColor};
+  p {
+    font: ${props => props.theme.fontMobileP};
+  }
 `;
 
 const CategoryBox = props => {
