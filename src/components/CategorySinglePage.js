@@ -37,8 +37,8 @@ const CategorySingle = ({match}) => {
           return (
             <Video 
               key={i}
-              title={media.title}
-              description={media.description && `${media.description.substr(0, 100)}...`}
+              title={media.title.substr(0, 40)}
+              description={media.description && `${media.description.substr(0, 70)}...`}
               thumbnail={media.thumbnail}
               saved={false}
             />
@@ -48,7 +48,7 @@ const CategorySingle = ({match}) => {
             <Pod 
               key={i}
               title={media.title}
-              description={media.description && `${media.description.substr(0, 100)}...`}
+              description={media.description && `${media.description.substr(0, 70)}...`}
               thumbnail={media.thumbnail}
               saved={false}
             />
@@ -58,7 +58,7 @@ const CategorySingle = ({match}) => {
             <Pod 
               key={i}
               title={media.title}
-              description={media.description && `${media.description.substr(0, 100)}...`}
+              description={media.description && `${media.description.substr(0, 70)}...`}
               thumbnail={media.thumbnail}
               saved={false}
             />)
