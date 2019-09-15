@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import capitalize from '../lib/capitalize';
 import findMediaByCategory from '../lib/search/findMediaByCategory';
+
 import CategoryBanner from './CategoryBanner';
 import Video from './Video';
 import Pod from './Pod';
@@ -23,51 +24,46 @@ const CategorySingle = ({match}) => {
   const [category, setCategory] = useState('');
   const [media] = useState(data);
   
-
   useEffect(() => {
       setCategory(match.params.id);
-
-
   }, [match])
   
   return (
     <StyledCategorySinglePage>
-    
-    <CategoryBanner text={capitalize(category)} />
-    {media.map((media, i) => {
-      if (media.type === 'video'){
-        return (
-          <Video 
-            key={i}
-            title={media.title}
-            description={media.description && `${media.description.substr(0, 100)}...`}
-            thumbnail={media.thumbnail}
-            saved={false}
-          />
-        )
-      }else if(media.type === 'podcast'){
-        return (
-          <Pod 
-            key={i}
-            title={media.title}
-            description={media.description && `${media.description.substr(0, 100)}...`}
-            thumbnail={media.thumbnail}
-            saved={false}
-          />
-          )
-        }else if (media.type === 'playlist'){
+      <CategoryBanner text={capitalize(category)} />
+      {media.map((media, i) => {
+        if (media.type === 'video'){
           return (
-          <Pod 
-            key={i}
-            title={media.title}
-            description={media.description && `${media.description.substr(0, 100)}...`}
-            thumbnail={media.thumbnail}
-            saved={false}
-          />)
-        }
-      })
-    }
-
+            <Video 
+              key={i}
+              title={media.title}
+              description={media.description && `${media.description.substr(0, 100)}...`}
+              thumbnail={media.thumbnail}
+              saved={false}
+            />
+          )
+        }else if(media.type === 'podcast'){
+          return (
+            <Pod 
+              key={i}
+              title={media.title}
+              description={media.description && `${media.description.substr(0, 100)}...`}
+              thumbnail={media.thumbnail}
+              saved={false}
+            />
+            )
+          }else if (media.type === 'playlist'){
+            return (
+            <Pod 
+              key={i}
+              title={media.title}
+              description={media.description && `${media.description.substr(0, 100)}...`}
+              thumbnail={media.thumbnail}
+              saved={false}
+            />)
+          }
+        })
+      }
     </StyledCategorySinglePage>
   );
 };
