@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Listen from './Listen';
+import Watch from './Watch';
 import Save from './Save';
 
 const StyledVideo = styled.div`
@@ -24,9 +24,13 @@ const StyledVideo = styled.div`
             /* background-color: blue; */
             position: absolute;
             z-index: 2;
-            margin: 78px 0 0 128px ; 
+            margin: 103px 0 0 128px ; 
             /* opacity: 0.5;      */
             padding: 1px;
+        }
+        img{
+            width: auto;
+            height: 122px;
         }
     }
     section:nth-child(2){
@@ -42,14 +46,14 @@ const StyledVideo = styled.div`
 
 `;
 
-const Video = ({ title, description }) => {
+const Video = ({ title, description, thumbnail, saved }) => {
     return (
         <StyledVideo>
             <section>
                 <div>
                     <p>10:02</p>
                 </div>
-                <img src="https://dummyimage.com/163x100/000/fff" alt="video thumbnail" />
+                <img src={thumbnail} alt="video thumbnail" />
             </section>
             <section>
                 <div>
@@ -57,8 +61,8 @@ const Video = ({ title, description }) => {
                     <p>{description}</p>
                 </div>
                 <div>
-                    <Listen />
-                    <Save saved={} />
+                    <Watch />
+                    <Save saved={saved} />
                 </div>
             </section>
         </StyledVideo>
