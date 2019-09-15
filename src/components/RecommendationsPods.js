@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import PodThumbnail from './PodThumbnail';
 
-const StyledContinueListen = styled.div`
+const StyledRecommendationsPods = styled.div`
   margin-top: 34px;
   margin-left: 20px;
   h2 {
@@ -19,10 +19,10 @@ const StyledContinueListen = styled.div`
   }
 `;
 
-const ContinueListen = props => {
+const RecommendationsPods = props => {
   return (
-    <StyledContinueListen>
-      <h2>Fortsätt Lyssna</h2>
+    <StyledRecommendationsPods>
+      <h2>Rekommenderade Poddar</h2>
       <section>
         <div>
           <PodThumbnail />
@@ -32,8 +32,8 @@ const ContinueListen = props => {
           <PodThumbnail />
         </div>
       </section>
-    </StyledContinueListen>
+    </StyledRecommendationsPods>
   );
 };
 
-export default ContinueListen;
+export default RecommendationsPods;
