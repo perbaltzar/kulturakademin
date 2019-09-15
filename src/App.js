@@ -17,7 +17,7 @@ const StyledApp = styled.div`
   height: 100vh;
 `;
 const App = () => {
-  const [displayMenu, setDisplayMenu] = useState("block");
+  const [displayMenu, setDisplayMenu] = useState("none");
   return (
     <div className="App">
       <StyledApp>
