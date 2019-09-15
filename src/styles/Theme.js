@@ -14,6 +14,9 @@ const Theme = {
   fontMobileH3: "20px/100% 'Roboto', sans-serif",
   fontMobileH4: "16px/100% 'Roboto', sans-serif",
   fontMobileP: "14px/100% 'Roboto', sans-serif",
-  fontMobilePsmall: "12px/100% 'Roboto', sans-serif"
+  fontMobilePsmall: "12px/100% 'Roboto', sans-serif",
+
+  // Margins
+  viewsBottomMargin: '80px'  // Height of navbar + margin
 };
 export default Theme;
