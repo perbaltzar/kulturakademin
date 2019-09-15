@@ -13,7 +13,7 @@ import tracks from '../data/tracks.json';
 import playlists from '../data/playlists.json';
 
 let data = [youtube, tracks, playlists].flat();
-data = findMediaByCategory('musik', data);
+// data = findMediaByCategory('musik', data);
 
 const StyledCategorySinglePage = styled.div`
   background-color: ${props => props.theme.colorDark};
@@ -22,10 +22,11 @@ const StyledCategorySinglePage = styled.div`
 
 const CategorySingle = ({match}) => {
   const [category, setCategory] = useState('');
-  const [media] = useState(data);
+  const [media, setMedia] = useState(data);
   
   useEffect(() => {
       setCategory(match.params.id);
+      setMedia(findMediaByCategory(match.params.id, data));
   }, [match])
   
   return (
@@ -62,6 +63,7 @@ const CategorySingle = ({match}) => {
               saved={false}
             />)
           }
+          return (<></>)
         })
       }
     </StyledCategorySinglePage>
