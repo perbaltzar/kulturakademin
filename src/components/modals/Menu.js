@@ -8,7 +8,7 @@ const StyledMenu = styled.div`
   position: absolute;
   top: 0;
   display: ${props => props.display};
-  z-index: 1;
+  z-index: 1000;
   height: 100vh;
   width: 100%;
   overflow: auto;
