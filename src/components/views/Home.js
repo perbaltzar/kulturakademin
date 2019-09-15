@@ -1,19 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import HomeBanner from '../HomeBanner';
 import ContinueWatch from '../ContinueWatch';
-const StyledHome = styled.div``;
+import ContinueListen from '../ContinueListen';
+import RecommendationsVideos from '../RecommendationsVideos';
+import News from '../News';
+import RecommendationVideo from '../RecommendationVideo';
+import RecommendationsPods from '../RecommendationsPods';
+
+const StyledHome = styled.div`
+  overflow: scroll;
+`;
 
 const Home = props => {
   return (
     <StyledHome>
       <HomeBanner />
       <ContinueWatch />
-      {/* <News />
-      <Recommendations />
+      <News />
+      <RecommendationsVideos />
       <ContinueListen />
       <RecommendationVideo />
-      <RecommendationsPods /> */}
+      <RecommendationsPods />
+      {/* Put Categories here */}
     </StyledHome>
   );
 };
