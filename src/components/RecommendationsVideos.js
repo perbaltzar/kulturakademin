@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import VideoThumbnail from './VideoThumbnail';
 
-const StyledRecommendations = styled.div`
+const StyledRecommendationsVideos = styled.div`
   margin-top: 34px;
   margin-left: 20px;
   h2 {
@@ -19,9 +19,9 @@ const StyledRecommendations = styled.div`
   }
 `;
 
-const Recommendations = props => {
+const RecommendationsVideos = props => {
   return (
-    <StyledRecommendations>
+    <StyledRecommendationsVideos>
       <h2>Rekommenderat</h2>
       <section>
         <div>
@@ -32,8 +32,8 @@ const Recommendations = props => {
           <VideoThumbnail />
         </div>
       </section>
-    </StyledRecommendations>
+    </StyledRecommendationsVideos>
   );
 };
 
-export default Recommendations;
+export default RecommendationsVideos;
