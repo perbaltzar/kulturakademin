@@ -2,15 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledVideoThumbnail = styled.div`
-  background-color: black;
   margin-right: 10px;
-  color: white;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  p {
+    margin-top: 5px;
+  }
+
 `;
 
 const VideoThumbnail = props => {
   return (
     <StyledVideoThumbnail>
-      <img src="https://dummyimage.com/163x119/000/fff" alt="video" />
+      <img src="https://dummyimage.com/119x73/000/fff" alt="video" />
+      <p>Beskrivningen lägger vi här... </p>
     </StyledVideoThumbnail>
   );
 };
