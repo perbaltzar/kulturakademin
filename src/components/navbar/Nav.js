@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
-import { MenuContext } from "../MenuContext";
-import BurgerMenu from "../BurgerMenu";
-import Icon from "../Icon";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { MenuContext } from '../Context';
+import BurgerMenu from './BurgerMenu';
+import Icon from './Icon';
 
 const StyledNav = styled.div`
   height: 60px;
@@ -22,7 +22,7 @@ const Nav = props => {
   const { setDisplayMenu } = useContext(MenuContext);
   return (
     <StyledNav>
-      <BurgerMenu onClick={() => setDisplayMenu("block")} />
+      <BurgerMenu onClick={() => setDisplayMenu('block')} />
       <Icon imgsrc="/assets/icons/search-solid.svg" />
       <Icon imgsrc="/assets/icons/home-solid.svg" />
       <Icon imgsrc="/assets/icons/star-regular.svg" />

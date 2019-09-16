@@ -1,12 +1,11 @@
 const Theme = {
-
   // Color
-  colorDark: "#323232",
-  colorDarkGrey: "#1C1C1C",
-  colorLight: "#FFF",
-  colorPrimary: "tomato",
-  colorSecondary: "papyawhip",
-  orange: "#E29829",
+  colorDark: '#323232',
+  colorDarkGrey: '#1C1C1C',
+  colorLight: '#FFF',
+  colorPrimary: 'tomato',
+  colorSecondary: 'papyawhip',
+  orange: '#E29829',
 
   // Font
   fontMobileH1: "36px/100% 'Roboto', sans-serif",
@@ -15,8 +14,5 @@ const Theme = {
   fontMobileH4: "16px/100% 'Roboto', sans-serif",
   fontMobileP: "14px/100% 'Roboto', sans-serif",
   fontMobilePsmall: "12px/100% 'Roboto', sans-serif",
-
-  // Margins
-  viewsBottomMargin: 'padding-bottom: 20px; margin-bottom: 60px;'  // Height of navbar + margin
 };
 export default Theme;

@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import PoddPlayer from './modals/PodPlayer';
+import PodPlayer from '../players/PodPlayer';
 const StyledPodSingle = styled.div``;
 
 const PodSingle = props => {
   return (
     <StyledPodSingle>
-      <PoddPlayer />
+      <PodPlayer />
     </StyledPodSingle>
   );
 };
