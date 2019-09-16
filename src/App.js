@@ -7,6 +7,7 @@ import Home from './components/views/Home/Home';
 import Nav from './components/navbar/Nav';
 import VideoSingle from './components/views/VideoSingle';
 import VideoPlayer from './components/players/VideoPlayer';
+import PodPlayer from './components/players/PodPlayer';
 import PodSingle from './components/views/PodSingle';
 import CategorySinglePage from './components/categories/CategorySinglePage';
 import Settings from './components/views/Settings';
@@ -21,7 +22,7 @@ const StyledApp = styled.div`
 `;
 const App = () => {
   const [displayMenu, setDisplayMenu] = useState('none');
-  const [playerVisible, setPlayerVisible] = useState(false);
+  const [playerVisible, setPlayerVisible] = useState('none');
 
   return (
     <StyledApp className="App">
@@ -41,8 +42,8 @@ const App = () => {
               </Switch>
             </PlayerContext.Provider>
             <PlayerContext.Provider value={{ playerVisible, setPlayerVisible }}>
-              {playerVisible && <VideoPlayer />}
-              {/* <PodPlayer /> */}
+              {playerVisible === 'video' && <VideoPlayer />}
+              {playerVisible === 'pod' && <PodPlayer />}
             </PlayerContext.Provider>
             <MenuContext.Provider value={{ displayMenu, setDisplayMenu }}>
               <Menu />
