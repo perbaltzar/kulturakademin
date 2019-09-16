@@ -48,7 +48,7 @@ const CategorySingle = ({match}) => {
           return (
             <Pod 
               key={i}
-              title={media.title}
+              title={media.title.substr(5, 1000)}
               description={media.description && `${media.description.substr(0, 70)}...`}
               thumbnail={media.thumbnail}
               saved={false}
