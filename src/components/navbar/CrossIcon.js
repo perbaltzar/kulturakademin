@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const StyledCrossIcon = styled.div`
   position: absolute;
@@ -12,7 +12,7 @@ const StyledCrossIcon = styled.div`
   :after {
     position: absolute;
     left: 15px;
-    content: " ";
+    content: ' ';
     height: 24px;
     width: 2px;
     background-color: white;

@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import { Link } from 'react-router-dom'
-import { MenuContext } from "../MenuContext";
-import styled from "styled-components";
-import CrossIcon from "../CrossIcon";
-import CategoryGrid from "../CategoryGrid";
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { MenuContext } from '../Context';
+import styled from 'styled-components';
+import CrossIcon from './CrossIcon';
+import CategoryGrid from '../categories/CategoryGrid';
 
 const StyledMenu = styled.div`
   position: absolute;
@@ -32,6 +32,7 @@ const StyledMenu = styled.div`
     }
     span {
       display: block;
+      top: -60px;
       background-color: ${props => props.theme.colorLight};
       margin: 5px 0px 25px 0px;
       height: 2px;
@@ -50,16 +51,18 @@ const Menu = props => {
   const { displayMenu, setDisplayMenu } = useContext(MenuContext);
   return (
     <StyledMenu display={displayMenu.toString()}>
-      <CrossIcon onClick={() => setDisplayMenu("none")} />
+      <CrossIcon onClick={() => setDisplayMenu('none')} />
       <div className="menu-items">
-        <Link to='/' >
-          <h2>Hem</h2>
-        </Link>
-        <h2>Om Kulturplay</h2>
-        <h2>Kurser</h2>
-        <h2>Inställningar</h2>
-        <h2>English</h2>
-        <h4>Kategorier</h4>
+        <div onClick={() => setDisplayMenu('none')}>
+          <Link to="/">
+            <h2>Hem</h2>
+          </Link>
+          <h2>Om Kulturplay</h2>
+          <h2>Kurser</h2>
+          <h2>Inställningar</h2>
+          <h2>English</h2>
+          <h4>Kategorier</h4>
+        </div>
         <span></span>
         <CategoryGrid gridTemplate="1fr 1fr"></CategoryGrid>
       </div>
