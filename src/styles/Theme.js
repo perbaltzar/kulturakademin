@@ -17,6 +17,6 @@ const Theme = {
   fontMobilePsmall: "12px/100% 'Roboto', sans-serif",
 
   // Margins
-  viewsBottomMargin: '80px'  // Height of navbar + margin
+  viewsBottomMargin: 'padding-bottom: 20px; margin-bottom: 60px;'  // Height of navbar + margin
 };
 export default Theme;

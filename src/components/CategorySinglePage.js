@@ -18,7 +18,7 @@ let data = [youtube, tracks, playlists].flat();
 const StyledCategorySinglePage = styled.div`
   background-color: ${props => props.theme.colorDark};
   min-height: 100%;
-  margin-bottom: ${props => props.theme.viewsBottomMargin};
+  ${props => props.theme.viewsBottomMargin}
 `;
 
 const CategorySingle = ({match}) => {
