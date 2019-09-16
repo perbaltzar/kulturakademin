@@ -15,6 +15,7 @@ const StyledNav = styled.div`
   padding: 0px 10px;
   height: 60px;
   width: 100%;
+  z-index: 100;
 `;
 
 const Nav = props => {

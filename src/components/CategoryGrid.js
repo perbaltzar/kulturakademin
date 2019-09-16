@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from 'react-router-dom'
+import capitalize from '../lib/capitalize';
+
 import CategoryBox from "./CategoryBox";
 const StyledCategoryGrid = styled.div`
   display: grid;
@@ -9,18 +12,18 @@ const StyledCategoryGrid = styled.div`
 `;
 
 const categories = [
-  "Konst",
-  "Musik",
-  "Hantverk",
-  "Dans",
-  "Sång",
-  "Scenkonst",
-  "Smink",
-  "Film",
-  "Teater",
-  "Poesi",
-  "Event",
-  "Mode"
+  "konst",
+  "musik",
+  "hantverk",
+  "dans",
+  "sång",
+  "scenkonst",
+  "smink",
+  "film",
+  "teater",
+  "poesi",
+  "event",
+  "mode"
 ];
 
 const CategoryGrid = props => {
@@ -29,11 +32,13 @@ const CategoryGrid = props => {
     <StyledCategoryGrid {...props}>
       {categories.map((category, i) => {
         return (
-          <CategoryBox
-            name={category}
-            key={i}
-            backgroundColor={colors[i % colors.length]}
-          />
+          <Link to={`/kategori/${category}`} key={i}>
+            <CategoryBox
+              name={capitalize(category)}
+              key={i}
+              backgroundColor={colors[i % colors.length]}
+            />
+          </Link>
         );
       })}
     </StyledCategoryGrid>

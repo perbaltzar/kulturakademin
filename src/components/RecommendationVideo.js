@@ -13,6 +13,10 @@ const StyledRecommendationPod = styled.div`
         height: 230px;
         width: 100%;
     }
+    p{
+        margin-top: 5px;
+        color: white;
+    }
 `;
 
 const RecommendationPod = props => {
@@ -20,6 +24,7 @@ const RecommendationPod = props => {
         <StyledRecommendationPod>
             <h2>Rekommenderat Klipp</h2>
             <div>
+                {/* Put the pod here later */}
             </div>
             <p>En beskrivning igen på ett större klipp</p>
         </StyledRecommendationPod>

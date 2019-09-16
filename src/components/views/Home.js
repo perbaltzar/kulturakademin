@@ -11,7 +11,8 @@ import RecommendationsPods from '../RecommendationsPods';
 
 const StyledHome = styled.div`
   overflow: scroll;
-  margin-bottom: ${props => props.theme.viewsBottomMargin};
+  ${props => props.theme.viewsBottomMargin}
+  background-color: ${props => props.theme.colorDark};
 `;
 
 const Home = props => {

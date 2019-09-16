@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from 'react-router-dom'
 import { MenuContext } from "../MenuContext";
 import styled from "styled-components";
 import CrossIcon from "../CrossIcon";
@@ -8,7 +9,7 @@ const StyledMenu = styled.div`
   position: absolute;
   top: 0;
   display: ${props => props.display};
-  z-index: 1;
+  z-index: 1000;
   height: 100vh;
   width: 100%;
   overflow: auto;
@@ -51,7 +52,9 @@ const Menu = props => {
     <StyledMenu display={displayMenu.toString()}>
       <CrossIcon onClick={() => setDisplayMenu("none")} />
       <div className="menu-items">
-        <h2>Hem</h2>
+        <Link to='/' >
+          <h2>Hem</h2>
+        </Link>
         <h2>Om Kulturplay</h2>
         <h2>Kurser</h2>
         <h2>Inställningar</h2>

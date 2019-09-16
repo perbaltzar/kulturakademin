@@ -10,6 +10,11 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     position: relative;
 }
+a{
+    text-decoration: none;
+    color: white;
+}
+p { font: ${({ theme}) => theme.fontMobileP}; }
 h1 { font: ${({ theme }) => theme.fontMobileH1}; }
 h2 { font: ${({ theme }) => theme.fontMobileH2}; }
 h3 { font: ${({ theme }) => theme.fontMobileH3}; }

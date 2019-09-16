@@ -15,6 +15,7 @@ const StyledHomeBanner = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 40px;
   }
   div {
     width: 70%;
@@ -22,17 +23,19 @@ const StyledHomeBanner = styled.div`
     justify-content: center;
     flex-direction: column;
   }
+  div h3{
+    margin-bottom: 5px;
+  }
 `;
 const HomeBanner = props => {
   return (
     <StyledHomeBanner>
       <span>
-        K<br />
-        PLAY
+        <img src="/assets/icons/k-play.svg" alt="k-play" />
       </span>
       <div>
-        <p>Play-sidan för dig</p>
-        <p>som söker mer kultur</p>
+        <h3>Play-sidan för dig</h3>
+        <h3>som söker mer kultur</h3>
       </div>
     </StyledHomeBanner>
   );
