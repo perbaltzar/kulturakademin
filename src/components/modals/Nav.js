@@ -5,6 +5,8 @@ import BurgerMenu from "../BurgerMenu";
 import Icon from "../Icon";
 
 const StyledNav = styled.div`
+  height: 60px;
+  width: 100%;
   display: grid;
   background-color: whitesmoke;
   grid-template-columns: repeat(4, 1fr);
@@ -13,8 +15,6 @@ const StyledNav = styled.div`
   position: fixed;
   bottom: 0;
   padding: 0px 10px;
-  height: 60px;
-  width: 100%;
   z-index: 100;
 `;
 
