@@ -57,7 +57,7 @@ const CategorySingle = ({ match }) => {
               id={media.id}
             />
           );
-        } 
+        }
         // else if (media.type === 'playlist') {
         //   return (
         //     <Pod
