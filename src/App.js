@@ -33,8 +33,9 @@ const App = props => {
         <>
           <GlobalStyles />
           <Router>
-
-            <PlayerContext.Provider value={{ playerVisible, setPlayerVisible, mediaId, setMediaId  }}>
+            <PlayerContext.Provider
+              value={{ playerVisible, setPlayerVisible, mediaId, setMediaId }}
+            >
               {playerVisible === 'video' && <VideoPlayer />}
               {playerVisible === 'pod' && <PodPlayer id={mediaId} />}
               <Switch>

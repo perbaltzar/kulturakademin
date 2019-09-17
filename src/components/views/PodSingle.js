@@ -12,7 +12,7 @@ const PodSingle = ({ match }) => {
   const { setPlayerVisible, setMediaId } = useContext(PlayerContext);
   useEffect(() => {
     setMediaId(match.params.id);
-  })
+  });
   return (
     <StyledPodSingle>
       <button onClick={() => setPlayerVisible('pod')}>PLAY</button>
