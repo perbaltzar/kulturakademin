@@ -6,7 +6,7 @@ import CrossIcon from './CrossIcon';
 import CategoryGrid from '../categories/CategoryGrid';
 
 const StyledMenu = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   display: ${props => props.display};
   z-index: 1000;
@@ -64,7 +64,7 @@ const Menu = props => {
           <h4>Kategorier</h4>
         </div>
         <span></span>
-        <CategoryGrid gridTemplate="1fr 1fr"></CategoryGrid>
+        <CategoryGrid gridTemplate="1fr 1fr" onClick={() => setDisplayMenu('none')}></CategoryGrid>
       </div>
       <h2>Tillbaka till</h2>
       <h4>kulturakademin.com</h4>
