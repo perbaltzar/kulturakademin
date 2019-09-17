@@ -1,43 +1,84 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { PlayButton, VolumeControl, Progress } from 'react-soundplayer/components';
+import { PlayButton, Progress } from 'react-soundplayer/components';
 import { withSoundCloudAudio } from 'react-soundplayer/addons';
-import tracks from '../../data/tracks.json';
-// import playlists from '../../data/playlists.json';
-console.log(tracks);
-// console.log(playlists);
+// import tracks from '../../data/tracks.json';
+import { PlayerContext } from '../Context';
 
 const clientId = "45ca7c7c9b41fdcb2501bb7dd27e168b";
-console.log(clientId);
 const resolveUrl = 'https://soundcloud.com/user-994747535/129-eeva-bolin-nya-organisation-for-kultur-i-grundskola-och-forskola';
 
+const StyledMoveButton = styled.button`
+
+`;
+
+const StyledCloseButton = styled.button`
+`;
+
+
+
 const StyledReactPlayer = styled.div`
-  height: 100px;
+  position: fixed;
+  height: 60px;
   width: 100%;
-  display: flex;
   background-color: #1C1C1C;
-  button{
-    height: 100px;
-    width: 100px;
+  bottom: 60px;
+  z-index: 101;
+  div:first-of-type {
+    height: 90%;
+    width: 100%;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  div button{ /* PLAYBUTTON */
+    color: white;
+    font-size: 20px;
+    height: 28px;
+    width: 20px;
+
     svg{
       fill: white;
     }
   }
-  div{
-    height: 10px;
-    width: 100%;
+  div:last-of-type{ /* PROGRESSBAR */
+    background-color: ${props => props.theme.orange};
+    height: 6px;
+    width: ${props => 100*props.currentTime/props.duration}%;
   }
 `
 
 const Player = withSoundCloudAudio(props => {
-  const { track, duration, currentTime } = props;
+  let { soundCloudAudio, track, duration, currentTime, isReady } = props;
+  const { setPlayerVisible } = useContext(PlayerContext);
+  const [canAutoPlay, setCanAutoPlay] = useState(true);
+
+  useEffect(() => {
+    if (isReady && canAutoPlay){
+      soundCloudAudio.play();
+      setCanAutoPlay(false);
+    }
+
+  }, [isReady, canAutoPlay, soundCloudAudio])
   return (
-        <StyledReactPlayer>
-          <PlayButton 
-            className="flex-none h4 button button-transparent button-grow rounded"  
+        <StyledReactPlayer currentTime={currentTime} duration={duration}>
+          <div>
+            <StyledMoveButton>-15</StyledMoveButton>
+            <PlayButton 
+              className="flex-none h4 button button-transparent button-grow rounded"  
+              {...props}
+            />
+            <StyledMoveButton>+15</StyledMoveButton>
+            <StyledCloseButton onClick={() => setPlayerVisible('none')}>
+              <img src="/assets/icons/close.svg" alt="X" />
+            </StyledCloseButton>
+
+          </div>
+          <Progress 
+            duration={track ? track.duration / 1000 : 0} 
+            currentTime={currentTime} 
             {...props}
           />
-          <Progress />
         </StyledReactPlayer>
   );
 });
@@ -47,9 +88,12 @@ const StyledPodPlayer = styled.div``;
 
 
 const PodPlayer = props => {
+  const [isReady, setIsReady] = useState(false);
   return (
     <StyledPodPlayer>
-      <Player onReady={() => console.log('track is loaded!')} 
+      <Player
+        onReady={() => { setIsReady(!isReady) }}
+        isReady={isReady}
         clientId={clientId}
         resolveUrl={resolveUrl}
         imgUrl={"https://i1.sndcdn.com/artworks-000557757795-foa5ie-large.jpg"}
