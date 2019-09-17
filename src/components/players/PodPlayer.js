@@ -2,20 +2,14 @@ import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { PlayButton, Progress } from 'react-soundplayer/components';
 import { withSoundCloudAudio } from 'react-soundplayer/addons';
-// import tracks from '../../data/tracks.json';
+import tracks from '../../data/tracks.json';
 import { PlayerContext } from '../Context';
 
 const clientId = "45ca7c7c9b41fdcb2501bb7dd27e168b";
-const resolveUrl = 'https://soundcloud.com/user-994747535/129-eeva-bolin-nya-organisation-for-kultur-i-grundskola-och-forskola';
 
-const StyledMoveButton = styled.button`
+const StyledMoveButton = styled.button``;
 
-`;
-
-const StyledCloseButton = styled.button`
-`;
-
-
+const StyledCloseButton = styled.button``;
 
 const StyledReactPlayer = styled.div`
   position: fixed;
@@ -87,17 +81,30 @@ const Player = withSoundCloudAudio(props => {
 const StyledPodPlayer = styled.div``;
 
 
-const PodPlayer = props => {
+const PodPlayer = ({ id }) => {
   const [isReady, setIsReady] = useState(false);
+  const [track, setTrack] = useState({})
+  const [loading, setLoading] = useState(true)
+  useEffect(() => {
+    setTrack(selectTrack(id, tracks));
+    setLoading(false);
+  }, [id, track])  
+
+  const selectTrack = (id, tracks) => {
+    const newTrack = tracks.filter(track => (track.id.toString() === id))
+    return newTrack[0];
+  }
+
   return (
     <StyledPodPlayer>
+    {!loading && 
       <Player
         onReady={() => { setIsReady(!isReady) }}
         isReady={isReady}
         clientId={clientId}
-        resolveUrl={resolveUrl}
-        imgUrl={"https://i1.sndcdn.com/artworks-000557757795-foa5ie-large.jpg"}
-        />
+        resolveUrl={"https://soundcloud.com/user-994747535/111-i-begynnelsen-var-ordet-ett-samtal-mellan-dramatiker-live-2019-05-17"}
+        imgUrl={track.thumbnail}
+        />}
     </StyledPodPlayer>
   );
 };
