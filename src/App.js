@@ -7,6 +7,7 @@ import Home from './components/views/Home/Home';
 import Nav from './components/navbar/Nav';
 import VideoSingle from './components/views/VideoSingle';
 import VideoPlayer from './components/players/VideoPlayer';
+import PodPlayer from './components/players/PodPlayer';
 import PodSingle from './components/views/PodSingle';
 import CategorySinglePage from './components/categories/CategorySinglePage';
 import Settings from './components/views/Settings';
@@ -21,15 +22,17 @@ const StyledApp = styled.div`
 `;
 const App = () => {
   const [displayMenu, setDisplayMenu] = useState('none');
-  const [playerVisible, setPlayerVisible] = useState(false);
-
+  const [playerVisible, setPlayerVisible] = useState('none');
+  const [mediaId, setMediaId] = useState('');
   return (
     <StyledApp className="App">
       <ThemeProvider theme={Theme}>
         <>
           <GlobalStyles />
           <Router>
-            <PlayerContext.Provider value={{ playerVisible, setPlayerVisible }}>
+            <PlayerContext.Provider value={{ playerVisible, setPlayerVisible, mediaId, setMediaId  }}>
+              {playerVisible === 'video' && <VideoPlayer />}
+              {playerVisible === 'pod' && <PodPlayer id={mediaId} />}
               <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/installningar" exact component={Settings} />
@@ -39,10 +42,6 @@ const App = () => {
                 <Route path="/kategori/:id" component={CategorySinglePage} />
                 <Route path="/" component={NotFound} />
               </Switch>
-            </PlayerContext.Provider>
-            <PlayerContext.Provider value={{ playerVisible, setPlayerVisible }}>
-              {playerVisible && <VideoPlayer />}
-              {/* <PodPlayer /> */}
             </PlayerContext.Provider>
             <MenuContext.Provider value={{ displayMenu, setDisplayMenu }}>
               <Menu />
