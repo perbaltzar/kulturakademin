@@ -18,7 +18,8 @@ const StyledVideoPlayer = styled.div`
     left: 10px;
     border-radius: 8px;
     border: 1px solid transparent;
-    max-width: 160px;
+    max-width: 160px
+    z-index: 9;
   }`
         : `div{
     height: 211px;
@@ -35,6 +36,7 @@ const VideoPlayer = () => {
       <button
         onClick={() => {
           setSmallPlayer(!smallPlayer);
+          console.log(smallPlayer);
         }}
       >
         TOGGLE
