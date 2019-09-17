@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledTagBox = styled.div`
+const StyledTagBox = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 64px;
-  margin: 20px 0;
   height: 31px;
+  padding: 0 15px;
   background-color: ${props => props.theme.colorDarkGrey};
   color: ${props => props.theme.orange};
   p {
@@ -15,11 +14,10 @@ const StyledTagBox = styled.div`
   }
 `;
 
-const TagBox = props => {
-  const { tagName } = props;
+const TagBox = ({ text }) => {
   return (
     <StyledTagBox>
-      <p>{tagName}</p>
+      <p>{text}</p>
     </StyledTagBox>
   );
 };
