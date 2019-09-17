@@ -5,6 +5,8 @@ import VideoPlayer from '../players/VideoPlayer';
 import FilterButton from '../players/FilterButton';
 import TagBox from '../miniature/TagBox';
 import Save from '../miniature/Save';
+import tracks from '../../data/tracks.json';
+import videos from '../../data/youtube.json';
 
 const StyledVideoSingle = styled.div`
   height: 100vh;
@@ -25,12 +27,16 @@ const StyledFlexBox = styled.div`
 const VideoSingle = props => {
   const { videoHeader } = props;
   const { playerVisible, setPlayerVisible } = useContext(PlayerContext);
-  // useEffect(() => {
-  //   setPlayerVisible(true);
-  // });
+  const { mediaId, setmediaId } = useContext(PlayerContext);
+
+  useEffect(() => {
+    setPlayerVisible('video');
+    setmediaId(props.match.params.id);
+    console.log(mediaId);
+  });
   return (
     <StyledVideoSingle {...props}>
-      <VideoPlayer />
+      {/* <VideoPlayer /> */}
       <div className="container">
         <StyledFlexBox justifyContent="space-between">
           <h3>{videoHeader} Video Header</h3>

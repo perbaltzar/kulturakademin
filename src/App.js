@@ -19,17 +19,21 @@ import { MenuContext, PlayerContext } from './components/Context';
 const StyledApp = styled.div`
   height: 100vh;
   background-color: ${props => props.theme.colorDark};
+  overflow: ${props => (props.menuOpen === 'block' ? 'hidden' : 'auto')};
 `;
-const App = () => {
+const App = props => {
   const [displayMenu, setDisplayMenu] = useState('none');
   const [playerVisible, setPlayerVisible] = useState('none');
+  const [smallPlayer, setSmallPlayer] = useState(false);
   const [mediaId, setMediaId] = useState('');
+
   return (
-    <StyledApp className="App">
+    <StyledApp className="App" {...props} menuOpen={displayMenu}>
       <ThemeProvider theme={Theme}>
         <>
           <GlobalStyles />
           <Router>
+
             <PlayerContext.Provider value={{ playerVisible, setPlayerVisible, mediaId, setMediaId  }}>
               {playerVisible === 'video' && <VideoPlayer />}
               {playerVisible === 'pod' && <PodPlayer id={mediaId} />}

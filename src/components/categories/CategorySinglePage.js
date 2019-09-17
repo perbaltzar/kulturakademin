@@ -39,10 +39,11 @@ const CategorySingle = ({ match }) => {
           return (
             <Video
               key={i}
-              title={media.title.substr(0, 40)}
-              description={media.description && `${media.description.substr(0, 70)}...`}
+              title={media.title}
+              // description={media.description && `${media.description.substr(0, 70)}...`}
               thumbnail={media.thumbnail}
               saved={false}
+              id={media.id}
             />
           );
         } else if (media.type === 'podcast') {

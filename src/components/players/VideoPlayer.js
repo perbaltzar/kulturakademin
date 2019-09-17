@@ -27,7 +27,7 @@ const StyledVideoPlayer = styled.div`
 `;
 
 const VideoPlayer = () => {
-  const { playerVisible, setPlayerVisible } = useContext(PlayerContext);
+  const { playerVisible, mediaId, setPlayerVisible } = useContext(PlayerContext);
   const [smallPlayer, setSmallPlayer] = useState(false);
 
   return (
@@ -41,7 +41,7 @@ const VideoPlayer = () => {
       </button>
       <button
         onClick={() => {
-          setPlayerVisible(false);
+          setPlayerVisible('none');
         }}
       >
         CLOSE
@@ -52,7 +52,7 @@ const VideoPlayer = () => {
           height="100%"
           showInfo={false}
           annotations={false}
-          video={'M7lc1UVf-VE'}
+          video={mediaId}
           modestBranding={true}
         />
       </div>
