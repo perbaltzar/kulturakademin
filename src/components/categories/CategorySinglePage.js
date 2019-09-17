@@ -53,19 +53,21 @@ const CategorySingle = ({ match }) => {
               description={media.description && `${media.description.substr(0, 70)}...`}
               thumbnail={media.thumbnail}
               saved={false}
+              id={media.id}
             />
           );
-        } else if (media.type === 'playlist') {
-          return (
-            <Pod
-              key={i}
-              title={media.title}
-              description={media.description && `${media.description.substr(0, 70)}...`}
-              thumbnail={media.thumbnail}
-              saved={false}
-            />
-          );
-        }
+        } 
+        // else if (media.type === 'playlist') {
+        //   return (
+        //     <Pod
+        //       key={i}
+        //       title={media.title}
+        //       description={media.description && `${media.description.substr(0, 70)}...`}
+        //       thumbnail={media.thumbnail}
+        //       saved={false}
+        //     />
+        //   );
+        // }
         return <></>;
       })}
     </StyledCategorySinglePage>
