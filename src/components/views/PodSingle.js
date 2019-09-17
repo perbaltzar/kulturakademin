@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
-import PodPlayer from '../players/PodPlayer';
-const StyledPodSingle = styled.div``;
+import { PlayerContext } from '../Context';
 
-const PodSingle = props => {
+const StyledPodSingle = styled.div`
+  height: 100vh;
+  padding-bottom: 100px;
+  overflow: scroll;
+`;
+
+const PodSingle = ({ match }) => {
+  const { setPlayerVisible, setMediaId } = useContext(PlayerContext);
+  useEffect(() => {
+    setMediaId(match.params.id);
+  })
   return (
     <StyledPodSingle>
-      <PodPlayer />
+      <button onClick={() => setPlayerVisible('pod')}>PLAY</button>
     </StyledPodSingle>
   );
 };
