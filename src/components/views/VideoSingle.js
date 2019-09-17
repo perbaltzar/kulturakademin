@@ -27,11 +27,11 @@ const StyledFlexBox = styled.div`
 const VideoSingle = props => {
   const { videoHeader } = props;
   const { playerVisible, setPlayerVisible } = useContext(PlayerContext);
-  const { mediaId, setmediaId } = useContext(PlayerContext);
+  const { mediaId, setMediaId } = useContext(PlayerContext);
 
   useEffect(() => {
     setPlayerVisible('video');
-    setmediaId(props.match.params.id);
+    setMediaId(props.match.params.id);
     console.log(mediaId);
   });
   return (
