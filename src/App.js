@@ -7,6 +7,7 @@ import Home from './components/views/Home/Home';
 import Nav from './components/navbar/Nav';
 import VideoSingle from './components/views/VideoSingle';
 import VideoPlayer from './components/players/VideoPlayer';
+import PodPlayer from './components/players/PodPlayer';
 import PodSingle from './components/views/PodSingle';
 import CategorySinglePage from './components/categories/CategorySinglePage';
 import Settings from './components/views/Settings';
@@ -22,7 +23,9 @@ const StyledApp = styled.div`
 `;
 const App = props => {
   const [displayMenu, setDisplayMenu] = useState('none');
-  const [playerVisible, setPlayerVisible] = useState(false);
+  const [playerVisible, setPlayerVisible] = useState('none');
+  const [mediaId, setmediaId] = useState('none');
+  const [smallPlayer, setSmallPlayer] = useState(false);
 
   return (
     <StyledApp className="App" {...props} menuOpen={displayMenu}>
@@ -30,7 +33,11 @@ const App = props => {
         <>
           <GlobalStyles />
           <Router>
-            <PlayerContext.Provider value={{ playerVisible, setPlayerVisible }}>
+            <PlayerContext.Provider
+              value={{ playerVisible, setPlayerVisible, mediaId, setmediaId }}
+            >
+              {playerVisible === 'video' && <VideoPlayer id={mediaId} />}
+              {playerVisible === 'pod' && <PodPlayer />}
               <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/installningar" exact component={Settings} />
@@ -40,10 +47,6 @@ const App = props => {
                 <Route path="/kategori/:id" component={CategorySinglePage} />
                 <Route path="/" component={NotFound} />
               </Switch>
-            </PlayerContext.Provider>
-            <PlayerContext.Provider value={{ playerVisible, setPlayerVisible }}>
-              {playerVisible && <VideoPlayer />}
-              {/* <PodPlayer /> */}
             </PlayerContext.Provider>
             <MenuContext.Provider value={{ displayMenu, setDisplayMenu }}>
               <Menu />
