@@ -1,17 +1,18 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
-import PodPlayer from '../players/PodPlayer';
 import { PlayerContext } from '../Context';
-const StyledPodSingle = styled.div``;
+const StyledPodSingle = styled.div`
+  height: 100vh;
+  padding-bottom: 100px;
+  overflow: scroll;
+`;
 
 const PodSingle = props => {
-  const { playerVisible, setPlayerVisible } = useContext(PlayerContext);
-  useEffect(() => {
-    setPlayerVisible(true);
-  });
+  const { setPlayerVisible } = useContext(PlayerContext);
+
   return (
     <StyledPodSingle>
-      <PodPlayer />
+      <button onClick={() => setPlayerVisible('pod')}>PLAY</button>
     </StyledPodSingle>
   );
 };
