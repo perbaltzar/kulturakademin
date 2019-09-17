@@ -24,8 +24,8 @@ const StyledApp = styled.div`
 const App = props => {
   const [displayMenu, setDisplayMenu] = useState('none');
   const [playerVisible, setPlayerVisible] = useState('none');
-  const [mediaId, setmediaId] = useState('none');
   const [smallPlayer, setSmallPlayer] = useState(false);
+  const [mediaId, setMediaId] = useState('');
 
   return (
     <StyledApp className="App" {...props} menuOpen={displayMenu}>
@@ -33,11 +33,10 @@ const App = props => {
         <>
           <GlobalStyles />
           <Router>
-            <PlayerContext.Provider
-              value={{ playerVisible, setPlayerVisible, mediaId, setmediaId }}
-            >
-              {playerVisible === 'video' && <VideoPlayer id={mediaId} />}
-              {playerVisible === 'pod' && <PodPlayer />}
+
+            <PlayerContext.Provider value={{ playerVisible, setPlayerVisible, mediaId, setMediaId  }}>
+              {playerVisible === 'video' && <VideoPlayer />}
+              {playerVisible === 'pod' && <PodPlayer id={mediaId} />}
               <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/installningar" exact component={Settings} />
