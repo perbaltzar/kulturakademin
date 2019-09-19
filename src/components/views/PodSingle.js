@@ -16,13 +16,16 @@ const StyledPodSingle = styled.div`
 `;
 
 const StyledHero = styled.div`
-  padding: 80px 80px 0 80px;
+  padding: 50px 50px 0 50px;
   margin-bottom: 30px;
   img {
     width: 100%;
   }
   h2 {
-    margin-top: 10px;
+    margin: 10px 0;
+    color: white;
+  }
+  p {
     color: white;
   }
 `;
@@ -40,9 +43,10 @@ const getTracksFromPlaylist = playlist => {
 };
 
 const PodSingle = ({ match }) => {
-  const { setPlayerVisible } = useContext(PlayerContext);
+  const { mediaId, playerVisible, setPlayerVisible } = useContext(PlayerContext);
   const [playlist, setPlaylist] = useState({});
   const [playlistTracks, setPlaylistTracks] = useState([]);
+  const [playingTrack, setPlayingTrack] = useState({ title: '' });
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -50,15 +54,13 @@ const PodSingle = ({ match }) => {
     setPlaylist(selectTrackById(match.params.id, playlists));
     // Fetching tracks from playlist
     setPlaylistTracks(getTracksFromPlaylist(playlist));
-    setLoaded(true);
-  }, [match.params.id, playlist]);
-
-  // Delete this later
-  useEffect(() => {
-    if (loaded) {
-      console.log(playlist, playlistTracks);
+    // Fetching Track info if pod is playing
+    if (playerVisible === 'pod') {
+      setPlayingTrack(selectTrackById(mediaId.toString(), tracks));
     }
-  }, [loaded, playlist, playlistTracks]);
+    // SETTING LOADED TIME DONE
+    setLoaded(true);
+  }, [match.params.id, mediaId, playerVisible, playlist]);
 
   return (
     <StyledPodSingle>
@@ -67,6 +69,7 @@ const PodSingle = ({ match }) => {
           <StyledHero>
             <img onClick={() => setPlayerVisible('pod')} src={playlist.thumbnail} alt="thumbnail" />
             <h2>{playlist.title}</h2>
+            <p>{playingTrack.title}</p>
           </StyledHero>
           <TagGrid tags={playlist.tags} />
           <Line />
