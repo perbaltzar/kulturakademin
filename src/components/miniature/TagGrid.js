@@ -14,8 +14,8 @@ const TagGrid = ({ tags }) => {
   return (
     <StyledTagGrid>
       {tags.length > 0 &&
-        tags.map(tag => {
-          return <TagBox text={tag} />;
+        tags.map((tag, i) => {
+          return <TagBox key={i} text={tag} />;
         })}
     </StyledTagGrid>
   );
