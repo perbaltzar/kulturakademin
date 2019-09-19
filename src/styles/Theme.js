@@ -6,6 +6,7 @@ const Theme = {
   colorPrimary: 'tomato',
   colorSecondary: 'papyawhip',
   orange: '#E29829',
+  colorLine: ' #555555',
 
   // Font
   fontMobileH1: "36px/100% 'Roboto', sans-serif",
