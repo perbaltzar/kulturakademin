@@ -5,11 +5,12 @@ import TagGrid from '../miniature/TagGrid';
 import Line from '../players/Line';
 import Playlist from '../players/Playlist';
 import tracks from '../../data/tracks.json';
+import playlists from '../../data/playlists.json';
 import selectTrackById from '../../lib/search/selectTrackById';
 
 const StyledPodSingle = styled.div`
   height: 100vh;
-  padding: 0 20px;
+  padding-bottom: 80px;
   overflow: scroll;
   background: ${props => props.theme.colorDark};
 `;
@@ -26,32 +27,52 @@ const StyledHero = styled.div`
   }
 `;
 
+// MOVE THIS TO /lib/ later
+const getTracksFromPlaylist = playlist => {
+  const newTracks = [];
+  if (playlist.trackIds) {
+    playlist.trackIds.forEach(id => {
+      const track = selectTrackById(id.toString(), tracks);
+      newTracks.push(track);
+    });
+  }
+  return newTracks;
+};
+
 const PodSingle = ({ match }) => {
   const { setPlayerVisible, setMediaId } = useContext(PlayerContext);
-  const [pod, setPod] = useState({});
+  const [playlist, setPlaylist] = useState({});
+  const [playlistTracks, setPlaylistTracks] = useState([]);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
+    // Save ID from browser
     setMediaId(match.params.id);
-    setPod(selectTrackById(match.params.id, tracks));
+    // Fetching playlist from DB
+    setPlaylist(selectTrackById(match.params.id, playlists));
+    // Fetching tracks from playlist
+    setPlaylistTracks(getTracksFromPlaylist(playlist));
     setLoaded(true);
-  }, [setMediaId, match.params.id]);
+  }, [setMediaId, match.params.id, playlist]);
 
+  // Delete this later
   useEffect(() => {
-    if (loaded) console.log(pod);
-  }, [loaded, pod]);
+    if (loaded) {
+      console.log(playlist, playlistTracks);
+    }
+  }, [loaded, playlist, playlistTracks]);
 
   return (
     <StyledPodSingle>
       {loaded && (
         <>
           <StyledHero>
-            <img onClick={() => setPlayerVisible('pod')} src={pod.thumbnail} alt="thumbnail" />
-            <h2>{pod.title.substr(5, 1000)}</h2>
+            <img onClick={() => setPlayerVisible('pod')} src={playlist.thumbnail} alt="thumbnail" />
+            <h2>{playlist.title}</h2>
           </StyledHero>
-          <TagGrid tags={pod.tags} />
+          <TagGrid tags={playlist.tags} />
           <Line />
-            <Playlist />
+          {playlistTracks.length > 0 && <Playlist playlistTracks={playlistTracks} />}
           <Line />
         </>
       )}
