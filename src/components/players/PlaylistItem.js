@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const StyledPlaylistItem = styled.div`
     display: flex;
+    margin-bottom: 10px;
     img{
         height: 55px;
         width: auto;

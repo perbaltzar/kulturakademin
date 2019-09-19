@@ -16,7 +16,23 @@ const Playlist = props => {
                 duration="370110"
                 plays="997"
                 playing={false}
-                 />
+            />
+            <PlaylistItem 
+                number="2" 
+                img="https://i1.sndcdn.com/artworks-000557759277-nwur66-t500x500.jpg"
+                title="Eeva Bolin - Ny organisation för kultur i grundskola och förskola"
+                duration="370110"
+                plays="997"
+                playing={false}
+            />
+            <PlaylistItem 
+                number="3" 
+                img="https://i1.sndcdn.com/artworks-000557759277-nwur66-t500x500.jpg"
+                title="Eeva Bolin - Ny organisation för kultur i grundskola och förskola"
+                duration="370110"
+                plays="997"
+                playing={false}
+            />
         </StyledPlaylist>
     );
 };
