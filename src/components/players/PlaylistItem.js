@@ -2,9 +2,13 @@ import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 
 import { PlayerContext } from '../Context';
+import Listen from '../miniature/Listen';
 
 const StyledPlaylistItem = styled.div`
-  display: flex;
+  section {
+    display: flex;
+    margin-bottom: 10px;
+  }
   margin-bottom: 10px;
   img {
     height: 55px;
@@ -57,34 +61,46 @@ const displayDuration = duration => {
 
 const PlaylistItem = ({ number, img, title, plays, duration, playing, description, id }) => {
   const { setMediaId, setPlayerVisible } = useContext(PlayerContext);
-  const [open, setOpen] = useState('false');
+  const [open, setOpen] = useState(false);
 
   return (
     <StyledPlaylistItem>
-      <div>
-        <span></span>
-        <span
-          onClick={() => {
-            setMediaId(id);
-            setPlayerVisible('pod');
-          }}
-        >
-          <p>{number}</p>
-        </span>
-        <img src={img} alt="thumbnail" />
-      </div>
-      <div>
-        <p>{title}</p>
-        <p>{plays} plays</p>
-      </div>
-      <div>
-        <p>{displayDuration(duration)}</p>
-      </div>
-      {open && (
+      <section
+        onClick={() => {
+          setOpen(!open);
+        }}
+      >
         <div>
-          <p>{description}</p>
+          <span></span>
+          <span>
+            <p>{number}</p>
+          </span>
+          <img src={img} alt="thumbnail" />
         </div>
-      )}
+        <div>
+          <p>{title}</p>
+          <p>{plays} plays</p>
+        </div>
+        <div>
+          <p>{displayDuration(duration)}</p>
+        </div>
+      </section>
+      <section>
+        {open && (
+          <div>
+            <p>{description}</p>
+            <Listen
+              onClick={() => {
+                setPlayerVisible('none');
+                setTimeout(() => {
+                  setMediaId(id);
+                  setPlayerVisible('pod');
+                }, 250);
+              }}
+            />
+          </div>
+        )}
+      </section>
     </StyledPlaylistItem>
   );
 };
