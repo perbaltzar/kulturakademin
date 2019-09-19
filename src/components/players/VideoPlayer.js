@@ -28,8 +28,7 @@ const StyledVideoPlayer = styled.div`
 `;
 
 const VideoPlayer = () => {
-  const { playerVisible, mediaId, setPlayerVisible } = useContext(PlayerContext);
-  const [smallPlayer, setSmallPlayer] = useState(false);
+  const { mediaId, setPlayerVisible, smallPlayer, setSmallPlayer } = useContext(PlayerContext);
 
   return (
     <StyledVideoPlayer smallPlayer={smallPlayer}>
