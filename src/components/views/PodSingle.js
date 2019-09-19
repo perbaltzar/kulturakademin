@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { PlayerContext } from '../Context';
-import TagBox from '../miniature/TagBox';
+import TagGrid from '../miniature/TagGrid';
+import Line from '../players/Line';
+import Playlist from '../players/Playlist';
 import tracks from '../../data/tracks.json';
 import selectTrackById from '../../lib/search/selectTrackById';
 
@@ -10,10 +12,6 @@ const StyledPodSingle = styled.div`
   padding: 0 20px;
   overflow: scroll;
   background: ${props => props.theme.colorDark};
-`;
-
-const StyledTagsContainer = styled.div`
-  display: flex;
 `;
 
 const StyledHero = styled.div`
@@ -51,11 +49,10 @@ const PodSingle = ({ match }) => {
             <img onClick={() => setPlayerVisible('pod')} src={pod.thumbnail} alt="thumbnail" />
             <h2>{pod.title.substr(5, 1000)}</h2>
           </StyledHero>
-          <StyledTagsContainer>
-            {pod.tags.map(tag => {
-              return <TagBox text={tag} />;
-            })}
-          </StyledTagsContainer>
+          <TagGrid tags={pod.tags} />
+          <Line />
+            <Playlist />
+          <Line />
         </>
       )}
     </StyledPodSingle>
