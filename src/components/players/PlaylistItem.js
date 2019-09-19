@@ -55,15 +55,20 @@ const displayDuration = duration => {
   return time;
 };
 
-const PlaylistItem = ({ number, img, title, plays, duration, playing }) => {
-  const { setMediaId } = useContext(PlayerContext);
+const PlaylistItem = ({ number, img, title, plays, duration, playing, description, id }) => {
+  const { setMediaId, setPlayerVisible } = useContext(PlayerContext);
   const [open, setOpen] = useState('false');
 
   return (
     <StyledPlaylistItem>
       <div>
         <span></span>
-        <span>
+        <span
+          onClick={() => {
+            setMediaId(id);
+            setPlayerVisible('pod');
+          }}
+        >
           <p>{number}</p>
         </span>
         <img src={img} alt="thumbnail" />
@@ -75,7 +80,11 @@ const PlaylistItem = ({ number, img, title, plays, duration, playing }) => {
       <div>
         <p>{displayDuration(duration)}</p>
       </div>
-      {open && <div></div>}
+      {open && (
+        <div>
+          <p>{description}</p>
+        </div>
+      )}
     </StyledPlaylistItem>
   );
 };

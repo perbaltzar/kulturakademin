@@ -19,6 +19,7 @@ const Playlist = ({ playlistTracks, number }) => {
             duration={track.duration}
             plays="997"
             playing={false}
+            id={track.id}
           />
         );
       })}
