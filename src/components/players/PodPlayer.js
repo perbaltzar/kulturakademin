@@ -81,25 +81,23 @@ const StyledPodPlayer = styled.div``;
 const PodPlayer = ({ id }) => {
   const [isReady, setIsReady] = useState(false);
   const [track, setTrack] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [loaded, setLoaded] = useState(false);
   useEffect(() => {
-    setTrack(selectTrackById(id, tracks));
-    setLoading(false);
+    setTrack(selectTrackById(id.toString(), tracks));
+    setLoaded(true);
+    console.log(track, id);
   }, [id, track]);
 
   return (
     <StyledPodPlayer>
-      {!loading && (
+      {loaded && (
         <Player
           onReady={() => {
             setIsReady(!isReady);
           }}
           isReady={isReady}
           clientId={clientId}
-          resolveUrl={
-            'https://soundcloud.com/user-994747535/111-i-begynnelsen-var-ordet-ett-samtal-mellan-dramatiker-live-2019-05-17'
-          }
-          imgUrl={track.thumbnail}
+          resolveUrl={track.trackUrl}
         />
       )}
     </StyledPodPlayer>
