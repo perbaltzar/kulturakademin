@@ -40,20 +40,18 @@ const getTracksFromPlaylist = playlist => {
 };
 
 const PodSingle = ({ match }) => {
-  const { setPlayerVisible, setMediaId } = useContext(PlayerContext);
+  const { setPlayerVisible } = useContext(PlayerContext);
   const [playlist, setPlaylist] = useState({});
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    // Save ID from browser
-    setMediaId(match.params.id);
     // Fetching playlist from DB
     setPlaylist(selectTrackById(match.params.id, playlists));
     // Fetching tracks from playlist
     setPlaylistTracks(getTracksFromPlaylist(playlist));
     setLoaded(true);
-  }, [setMediaId, match.params.id, playlist]);
+  }, [match.params.id, playlist]);
 
   // Delete this later
   useEffect(() => {
