@@ -55,17 +55,21 @@ const Video = ({ title, description, thumbnail, saved, id }) => {
           </div>
           <img src={thumbnail} alt="video thumbnail" />
         </section>
-        <section>
-          <div>
+      </Link>
+      <section>
+        <div>
+          <Link to={`/video/${id}`}>
             <h4>{title}</h4>
             <p>{description}</p>
-          </div>
-          <div>
+          </Link>
+        </div>
+        <div>
+          <Link to={`/video/${id}`}>
             <Watch />
-            <Save saved={saved} />
-          </div>
-        </section>
-      </Link>
+          </Link>
+          <Save saved={saved} />
+        </div>
+      </section>
     </StyledVideo>
   );
 };
