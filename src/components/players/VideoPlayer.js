@@ -18,7 +18,8 @@ const StyledVideoPlayer = styled.div`
     left: 10px;
     border-radius: 8px;
     border: 1px solid transparent;
-    max-width: 160px;
+    max-width: 160px
+    z-index: 9;
   }`
         : `div{
     height: 211px;
@@ -27,14 +28,14 @@ const StyledVideoPlayer = styled.div`
 `;
 
 const VideoPlayer = () => {
-  const { playerVisible, mediaId, setPlayerVisible } = useContext(PlayerContext);
-  const [smallPlayer, setSmallPlayer] = useState(false);
+  const { mediaId, setPlayerVisible, smallPlayer, setSmallPlayer } = useContext(PlayerContext);
 
   return (
     <StyledVideoPlayer smallPlayer={smallPlayer}>
       <button
         onClick={() => {
           setSmallPlayer(!smallPlayer);
+          console.log(smallPlayer);
         }}
       >
         TOGGLE

@@ -10,7 +10,7 @@ const StyledfilterButton = styled.div`
   margin: 20px 10px 0 0;
   color: ${props => props.theme.colorLight};
   border: 2px solid ${props => props.theme.colorLight};
-
+  opacity: ${props => (props.isActive ? '1' : '0.1')};
   p {
     font: ${props => props.theme.fontMobilePsmall};
   }
@@ -18,8 +18,9 @@ const StyledfilterButton = styled.div`
 
 const FilterButton = props => {
   const { filterName } = props;
+  const { isActive } = props;
   return (
-    <StyledfilterButton>
+    <StyledfilterButton isActive={isActive} onClick={props.onClick}>
       <p>{filterName}</p>
     </StyledfilterButton>
   );
