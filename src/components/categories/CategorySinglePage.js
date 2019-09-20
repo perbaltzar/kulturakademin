@@ -19,7 +19,7 @@ let data = [youtube, tracks, playlists].flat();
 const StyledCategorySinglePage = styled.div`
   background-color: ${props => props.theme.colorDark};
   min-height: 100%;
-  padding-bottom: 20px;
+  padding: 20px;
   margin-bottom: 60px;
 `;
 
@@ -35,49 +35,51 @@ const CategorySingle = ({ match }) => {
   }, [match]);
 
   return (
-    <StyledCategorySinglePage>
+    <>
       <CategoryBanner text={capitalize(category)} />
-      {media.map((media, i) => {
-        if (media.type === 'video') {
-          return (
-            <Video
-              key={i}
-              title={media.title}
-              // description={media.description && `${media.description.substr(0, 70)}...`}
-              thumbnail={media.thumbnail}
-              saved={false}
-              id={media.id}
-            />
-          );
-        }
-        // if (media.type === 'podcast') {
-        //   return (
-        //     <Pod
-        //       key={i}
-        //       title={media.title.substr(5, 1000)}
-        //       description={media.description && `${media.description.substr(0, 70)}...`}
-        //       thumbnail={media.thumbnail}
-        //       saved={false}
-        //       id={media.id}
-        //     />
-        //   );
-        // }
-        if (media.type === 'playlist') {
-          return (
-            <Pod
-              id={media.id}
-              key={i}
-              title={media.title}
-              description={media.description && `${media.description.substr(0, 70)}...`}
-              thumbnail={media.thumbnail}
-              saved={false}
-              playlistTracks={media.trackIds}
-            />
-          );
-        }
-        return <></>;
-      })}
-    </StyledCategorySinglePage>
+      <StyledCategorySinglePage>
+        {media.map((media, i) => {
+          if (media.type === 'video') {
+            return (
+              <Video
+                key={i}
+                title={media.title}
+                // description={media.description && `${media.description.substr(0, 70)}...`}
+                thumbnail={media.thumbnail}
+                saved={false}
+                id={media.id}
+              />
+            );
+          }
+          // if (media.type === 'podcast') {
+          //   return (
+          //     <Pod
+          //       key={i}
+          //       title={media.title.substr(5, 1000)}
+          //       description={media.description && `${media.description.substr(0, 70)}...`}
+          //       thumbnail={media.thumbnail}
+          //       saved={false}
+          //       id={media.id}
+          //     />
+          //   );
+          // }
+          if (media.type === 'playlist') {
+            return (
+              <Pod
+                id={media.id}
+                key={i}
+                title={media.title}
+                description={media.description && `${media.description.substr(0, 70)}...`}
+                thumbnail={media.thumbnail}
+                saved={false}
+                playlistTracks={media.trackIds}
+              />
+            );
+          }
+          return <></>;
+        })}
+      </StyledCategorySinglePage>
+    </>
   );
 };
 
