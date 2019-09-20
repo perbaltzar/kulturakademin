@@ -7,8 +7,7 @@ const StyledTagGrid = styled.div`
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto;
   grid-gap: 10px;
-  margin: 10px 0;
-  padding: 0 20px; /* FUNKAR DET ATT HA DENNA HÄR ADRIAN ELLER FACKAR DET UR DÅ? */
+  margin: 15px 0;
 `;
 
 const TagGrid = ({ tags }) => {
