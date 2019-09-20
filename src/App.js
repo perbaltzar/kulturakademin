@@ -27,6 +27,9 @@ const App = props => {
   const [playerVisible, setPlayerVisible] = useState('none');
   const [smallPlayer, setSmallPlayer] = useState(false);
   const [mediaId, setMediaId] = useState('');
+  const [favourites, setFavourites] = useState(
+    JSON.parse(localStorage.getItem('favourites')) || [],
+  );
 
   return (
     <StyledApp className="App" {...props} menuOpen={displayMenu}>
@@ -42,6 +45,8 @@ const App = props => {
                 setMediaId,
                 smallPlayer,
                 setSmallPlayer,
+                favourites,
+                setFavourites,
               }}
             >
               {playerVisible === 'video' && <VideoPlayer />}
