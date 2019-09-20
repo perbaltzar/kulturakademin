@@ -13,6 +13,9 @@ const StyledPodSingle = styled.div`
   padding-bottom: 80px;
   overflow: scroll;
   background: ${props => props.theme.colorDark};
+  section:nth-child(2) {
+    padding: 0 20px;
+  }
 `;
 
 const StyledHero = styled.div`
@@ -71,7 +74,9 @@ const PodSingle = ({ match }) => {
             <h2>{playlist.title}</h2>
             <p>{playingTrack.title}</p>
           </StyledHero>
-          <TagGrid tags={playlist.tags} />
+          <section>
+            <TagGrid tags={playlist.tags} />
+          </section>
           <Line />
           {playlistTracks.length > 0 && <Playlist playlistTracks={playlistTracks} />}
           <Line />

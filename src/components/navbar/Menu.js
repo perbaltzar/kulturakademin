@@ -57,17 +57,29 @@ const Menu = props => {
           <Link to="/">
             <h2>Hem</h2>
           </Link>
-          <h2>Om Kulturplay</h2>
-          <h2>Kurser</h2>
-          <h2>Inställningar</h2>
+          <Link to="/om">
+            <h2>Om Kulturplay</h2>
+          </Link>
+          <a
+            href="http://www.kulturakademin.com/kurskatalog"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <h2>Kurser</h2>
+          </a>
+          <Link to="/installningar">
+            <h2>Inställningar</h2>
+          </Link>
           <h2>English</h2>
           <h4>Kategorier</h4>
         </div>
         <span></span>
         <CategoryGrid gridTemplate="1fr 1fr" onClick={() => setDisplayMenu('none')}></CategoryGrid>
       </div>
-      <h2>Tillbaka till</h2>
-      <h4>kulturakademin.com</h4>
+      <a href="https://www.kulturakademin.com/" target="_blank" rel="noopener noreferrer">
+        <h2>Tillbaka till</h2>
+        <h4>kulturakademin.com</h4>
+      </a>
     </StyledMenu>
   );
 };

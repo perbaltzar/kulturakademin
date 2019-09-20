@@ -8,6 +8,7 @@ const StyledTagGrid = styled.div`
   grid-template-rows: auto;
   grid-gap: 10px;
   margin: 15px 0;
+
 `;
 
 const TagGrid = ({ tags }) => {
