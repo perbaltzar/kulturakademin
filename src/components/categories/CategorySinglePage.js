@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
 
 import capitalize from '../../lib/capitalize';
@@ -11,6 +11,7 @@ import Pod from '../miniature/Pod';
 import youtube from '../../data/youtube.json';
 import tracks from '../../data/tracks.json';
 import playlists from '../../data/playlists.json';
+import { PlayerContext } from '../Context';
 
 let data = [youtube, tracks, playlists].flat();
 // data = findMediaByCategory('musik', data);
@@ -25,10 +26,12 @@ const StyledCategorySinglePage = styled.div`
 const CategorySingle = ({ match }) => {
   const [category, setCategory] = useState('');
   const [media, setMedia] = useState(data);
+  const { smallPlayer, setPlayerVisible } = useContext(PlayerContext);
 
   useEffect(() => {
     setCategory(match.params.id);
     setMedia(findMediaByCategory(match.params.id, data));
+    if (!smallPlayer) setPlayerVisible('none');
   }, [match]);
 
   return (
@@ -46,7 +49,7 @@ const CategorySingle = ({ match }) => {
               id={media.id}
             />
           );
-        } 
+        }
         // if (media.type === 'podcast') {
         //   return (
         //     <Pod

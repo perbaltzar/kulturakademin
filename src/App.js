@@ -14,6 +14,7 @@ import Settings from './components/views/Settings';
 import Favourites from './components/views/Favourites';
 import NotFound from './components/views/NotFound';
 import Menu from './components/navbar/Menu';
+import About from './components/views/About';
 import { MenuContext, PlayerContext } from './components/Context';
 
 const StyledApp = styled.div`
@@ -33,14 +34,23 @@ const App = props => {
         <>
           <GlobalStyles />
           <Router>
-
-            <PlayerContext.Provider value={{ playerVisible, setPlayerVisible, mediaId, setMediaId  }}>
+            <PlayerContext.Provider
+              value={{
+                playerVisible,
+                setPlayerVisible,
+                mediaId,
+                setMediaId,
+                smallPlayer,
+                setSmallPlayer,
+              }}
+            >
               {playerVisible === 'video' && <VideoPlayer />}
               {playerVisible === 'pod' && <PodPlayer id={mediaId} />}
               <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/installningar" exact component={Settings} />
                 <Route path="/favoriter" exact component={Favourites} />
+                <Route path="/om" exact component={About} />
                 <Route path="/video/:id" component={VideoSingle} />
                 <Route path="/podd/:id" component={PodSingle} />
                 <Route path="/kategori/:id" component={CategorySinglePage} />
