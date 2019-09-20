@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { MenuContext } from '../Context';
+import { MenuContext, SearchContext } from '../Context';
 import BurgerMenu from './BurgerMenu';
 import Icon from './Icon';
 
@@ -21,10 +21,14 @@ const StyledNav = styled.div`
 
 const Nav = props => {
   const { setDisplayMenu } = useContext(MenuContext);
+  const { displaySearch, setDisplaySearch } = useContext(SearchContext);
   return (
     <StyledNav>
       <BurgerMenu onClick={() => setDisplayMenu('block')} />
-      <Icon imgsrc="/assets/icons/search-solid.svg" />
+      <Icon
+        imgsrc="/assets/icons/search-solid.svg"
+        onClick={() => setDisplaySearch(!displaySearch)}
+      />
 
       <Link to="/">
         <Icon imgsrc="/assets/icons/home-solid.svg" />
