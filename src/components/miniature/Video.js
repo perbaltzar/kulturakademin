@@ -5,7 +5,7 @@ import Watch from './Watch';
 import Save from './Save';
 
 const StyledVideo = styled.div`
-  margin: 20px 20px 20px;
+  margin: 20px 0;
   display: flex;
   h4 {
     color: white;
