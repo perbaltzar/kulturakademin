@@ -57,9 +57,13 @@ const Menu = props => {
           <Link to="/">
             <h2>Hem</h2>
           </Link>
-          <h2>Om Kulturplay</h2>
+          <Link to="/om">
+            <h2>Om Kulturplay</h2>
+          </Link>
           <h2>Kurser</h2>
-          <h2>Inställningar</h2>
+          <Link to="/installningar">
+            <h2>Inställningar</h2>
+          </Link>
           <h2>English</h2>
           <h4>Kategorier</h4>
         </div>

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { MenuContext } from '../Context';
 import BurgerMenu from './BurgerMenu';
@@ -24,8 +25,13 @@ const Nav = props => {
     <StyledNav>
       <BurgerMenu onClick={() => setDisplayMenu('block')} />
       <Icon imgsrc="/assets/icons/search-solid.svg" />
-      <Icon imgsrc="/assets/icons/home-solid.svg" />
-      <Icon imgsrc="/assets/icons/star-regular.svg" />
+
+      <Link to="/">
+        <Icon imgsrc="/assets/icons/home-solid.svg" />
+      </Link>
+      <Link to="/favoriter">
+        <Icon imgsrc="/assets/icons/star-regular.svg" />
+      </Link>
     </StyledNav>
   );
 };
