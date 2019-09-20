@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import Listen from './Listen';
 import Save from './Save';
+import addToFavourites from '../../lib/addToFavourites';
+import { PlayerContext } from '../Context';
+import isFavourite from '../../lib/search/isFavourite';
 
 const StyledPod = styled.div`
   margin: 20px 0px;
@@ -45,6 +48,7 @@ const StyledPod = styled.div`
 `;
 
 const Pod = ({ title, description, thumbnail, saved, id }) => {
+  const { favourites, setFavourites } = useContext(PlayerContext);
   return (
     <StyledPod>
       <Link to={`/podd/${id}`}>
@@ -66,7 +70,14 @@ const Pod = ({ title, description, thumbnail, saved, id }) => {
           <Link to={`podd/${id}`}>
             <Listen />
           </Link>
-          <Save saved={saved} />
+          <Save
+            onClick={() => {
+              addToFavourites(id, favourites);
+              setFavourites(JSON.parse(localStorage.getItem('favourites')));
+            }}
+            saved={isFavourite(id, favourites)}
+            marginleft
+          />
         </div>
       </section>
     </StyledPod>
