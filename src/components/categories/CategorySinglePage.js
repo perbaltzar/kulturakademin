@@ -49,29 +49,32 @@ const CategorySingle = ({ match }) => {
               id={media.id}
             />
           );
-        } else if (media.type === 'podcast') {
-          return (
-            <Pod
-              key={i}
-              title={media.title.substr(5, 1000)}
-              description={media.description && `${media.description.substr(0, 70)}...`}
-              thumbnail={media.thumbnail}
-              saved={false}
-              id={media.id}
-            />
-          );
         }
-        // else if (media.type === 'playlist') {
+        // if (media.type === 'podcast') {
         //   return (
         //     <Pod
         //       key={i}
-        //       title={media.title}
+        //       title={media.title.substr(5, 1000)}
         //       description={media.description && `${media.description.substr(0, 70)}...`}
         //       thumbnail={media.thumbnail}
         //       saved={false}
+        //       id={media.id}
         //     />
         //   );
         // }
+        if (media.type === 'playlist') {
+          return (
+            <Pod
+              id={media.id}
+              key={i}
+              title={media.title}
+              description={media.description && `${media.description.substr(0, 70)}...`}
+              thumbnail={media.thumbnail}
+              saved={false}
+              playlistTracks={media.trackIds}
+            />
+          );
+        }
         return <></>;
       })}
     </StyledCategorySinglePage>
