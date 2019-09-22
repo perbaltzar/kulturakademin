@@ -1,8 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { PlayerContext } from '../Context';
 import FilterButton from '../players/FilterButton';
-import TagBox from '../miniature/TagBox';
 import Save from '../miniature/Save';
 import tracks from '../../data/tracks.json';
 import videos from '../../data/youtube.json';
@@ -64,20 +63,19 @@ const VideoSingle = props => {
     setMediaId(props.match.params.id);
     setVideo(selectMediaById(props.match.params.id, videos));
     setLoaded(true);
-  });
+  }, [mediaId, props.match.params.id, setPlayerVisible, setMediaId, setSmallPlayer]);
 
   useEffect(() => {
     if (loaded) {
       let relatedMedia = [];
       video.tags.map(tag => {
-        const asd = findMediaByCategory(tag, data);
-        relatedMedia.push(asd);
+        const related = findMediaByCategory(tag, data);
+        return relatedMedia.push(related);
       });
-      relatedMedia = [...new Set(relatedMedia.flat())];
-      let filteredRelatedMedia = relatedMedia.slice(0, 10);
-      setRelated(filteredRelatedMedia);
+      relatedMedia = [...new Set(relatedMedia.flat())].slice(0, 10);
+      setRelated(relatedMedia);
     }
-  }, [loaded]);
+  }, [loaded, video.tags]);
 
   return (
     <StyledVideoSingle {...props}>
@@ -91,6 +89,7 @@ const VideoSingle = props => {
             <StyledFlexBox>
               <StyledDescription toggleText={showText}>
                 <p>{video.description}</p>
+                <TagGrid tags={video.tags} />
               </StyledDescription>
               <StyledImg
                 toggleText={showText}
@@ -99,7 +98,6 @@ const VideoSingle = props => {
                 onClick={() => setShowText(!showText)}
               />
             </StyledFlexBox>
-            <TagGrid tags={video.tags} />
             <Line />
             <StyledText margin="20px 0 0 0">filtrera</StyledText>
             <StyledFlexBox justifyContent="flex-start">
