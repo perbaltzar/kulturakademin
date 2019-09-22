@@ -7,7 +7,7 @@ const StyledLine = styled.div`
   width: 100%;
 `;
 
-const Line = props => {
+const Line = () => {
   return <StyledLine></StyledLine>;
 };
 

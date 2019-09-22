@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledSave = styled.div`
-  margin-left: 20%;
+  margin-left: ${props => (props.marginleft ? '20%' : '0')};
   display: flex;
   align-items: center;
   img {
@@ -10,11 +10,11 @@ const StyledSave = styled.div`
   }
 `;
 
-const Save = ({ saved }) => {
+const Save = props => {
   return (
-    <StyledSave>
-      {saved && <img src="/assets/icons/star-filled.svg" alt="listen" />}
-      {!saved && <img src="/assets/icons/star.svg" alt="listen" />}
+    <StyledSave {...props}>
+      {props.saved && <img src="/assets/icons/star-filled.svg" alt="listen" />}
+      {!props.saved && <img src="/assets/icons/star.svg" alt="listen" />}
 
       <p>Spara</p>
     </StyledSave>

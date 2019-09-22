@@ -6,7 +6,7 @@ import Line from '../players/Line';
 import Playlist from '../players/Playlist';
 import tracks from '../../data/tracks.json';
 import playlists from '../../data/playlists.json';
-import selectTrackById from '../../lib/search/selectTrackById';
+import selectMediaById from '../../lib/search/selectMediaById';
 
 const StyledPodSingle = styled.div`
   height: 100vh;
@@ -38,7 +38,7 @@ const getTracksFromPlaylist = playlist => {
   const newTracks = [];
   if (playlist.trackIds) {
     playlist.trackIds.forEach(id => {
-      const track = selectTrackById(id.toString(), tracks);
+      const track = selectMediaById(id.toString(), tracks);
       newTracks.push(track);
     });
   }
@@ -54,12 +54,12 @@ const PodSingle = ({ match }) => {
 
   useEffect(() => {
     // Fetching playlist from DB
-    setPlaylist(selectTrackById(match.params.id, playlists));
+    setPlaylist(selectMediaById(match.params.id, playlists));
     // Fetching tracks from playlist
     setPlaylistTracks(getTracksFromPlaylist(playlist));
     // Fetching Track info if pod is playing
     if (playerVisible === 'pod') {
-      setPlayingTrack(selectTrackById(mediaId.toString(), tracks));
+      setPlayingTrack(selectMediaById(mediaId.toString(), tracks));
     }
     // SETTING LOADED TIME DONE
     setLoaded(true);

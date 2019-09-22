@@ -20,14 +20,17 @@ import { MenuContext, PlayerContext, SearchContext } from './components/Context'
 
 const StyledApp = styled.div`
   height: 100vh;
-  background-color: ${props => props.theme.colorDark};
   overflow: ${props => (props.menuOpen === 'block' ? 'hidden' : 'auto')};
+  background-color: #323232;
 `;
 const App = props => {
   const [displayMenu, setDisplayMenu] = useState('none');
   const [playerVisible, setPlayerVisible] = useState('none');
   const [smallPlayer, setSmallPlayer] = useState(false);
   const [mediaId, setMediaId] = useState('');
+  const [favourites, setFavourites] = useState(
+    JSON.parse(localStorage.getItem('favourites')) || [],
+  );
 
   // Search modal open och close
   const [displaySearch, setDisplaySearch] = useState(true);
