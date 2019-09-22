@@ -27,7 +27,6 @@ const search = query => {
 
   let results = [titleResults, descriptionResults, tagResults].flat();
   results = [...new Set(results)];
-  console.log(results);
   return results;
 };
 
