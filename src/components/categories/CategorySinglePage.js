@@ -32,7 +32,7 @@ const CategorySingle = ({ match }) => {
     setCategory(match.params.id);
     setMedia(findMediaByCategory(match.params.id, data));
     if (!smallPlayer) setPlayerVisible('none');
-  }, [match]);
+  }, [match, smallPlayer, setPlayerVisible]);
 
   return (
     <>
