@@ -5,6 +5,7 @@ const StyledLine = styled.div`
   background-color: ${props => props.theme.colorLine};
   height: 2px;
   width: 100%;
+  margin: 10px 0px;
 `;
 
 const Line = () => {
