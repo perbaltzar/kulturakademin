@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import search from '../../../lib/search/search';
-
 const StyledSearchBar = styled.div`
   background-color: ${props => props.theme.orange};
   width: 100%;
@@ -25,11 +23,8 @@ const StyledSearchBar = styled.div`
   }
 `;
 
-const SearchBar = props => {
+const SearchBar = ({ handleChange }) => {
   const [query, setQuery] = useState('');
-  const handleChange = () => {
-    search(query);
-  };
 
   return (
     <StyledSearchBar>
@@ -40,7 +35,7 @@ const SearchBar = props => {
           onChange={({ target }) => {
             setQuery(target.value);
           }}
-          onKeyUp={() => handleChange()}
+          onKeyUp={() => handleChange(query)}
           value={query}
         />
       </form>
