@@ -1,6 +1,6 @@
 const Theme = {
   // Color
-  colorDark: '#323232',
+  colorDark: '#141414',
   colorDarkGrey: '#1C1C1C',
   colorLight: '#FFF',
   colorPrimary: 'tomato',
