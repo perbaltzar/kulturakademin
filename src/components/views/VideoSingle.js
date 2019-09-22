@@ -1,19 +1,18 @@
 import React, { useEffect, useContext, useState } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { PlayerContext } from '../Context';
 import FilterButton from '../players/FilterButton';
-import TagBox from '../miniature/TagBox';
 import Save from '../miniature/Save';
 import tracks from '../../data/tracks.json';
 import videos from '../../data/youtube.json';
 import playlists from '../../data/playlists.json';
-import selectTrackById from '../../lib/search/selectTrackById';
+import selectMediaById from '../../lib/search/selectMediaById';
 import TagGrid from '../miniature/TagGrid';
 import Video from '../miniature/Video';
 import Pod from '../miniature/Pod';
 import findMediaByCategory from '../../lib/search/findMediaByCategory';
 import Line from '../players/Line';
-import { NONAME } from 'dns';
+
 let data = [videos, tracks, playlists].flat();
 
 const StyledVideoSingle = styled.div`
@@ -31,16 +30,19 @@ const StyledFlexBox = styled.div`
   justify-content: ${props => props.justifyContent};
 `;
 const StyledImg = styled.img`
+  justify-self: flex-start;
+  align-self: flex-start;
   margin-top: 5px;
-  transform: ${props => (props.toggleText ? 'rotate(180deg)' : 'rotate(0deg)')};
+  transform: ${props => (props.toggleText ? 'rotate(0deg)' : 'rotate(-90deg)')};
+  transition: 0.2s;
 `;
 const StyledText = styled.p`
   margin: ${props => props.margin};
 `;
 const StyledDescription = styled.div`
   max-height: ${props => (props.toggleText ? 'auto' : '28px')};
+  transition: 0.5s;
   overflow: hidden;
-  text-overflow: ellipsis;
   margin: ${props => props.margin};
 `;
 
@@ -51,7 +53,6 @@ const VideoSingle = props => {
   const [related, setRelated] = useState(data);
   const [showFilterVideo, setShowFilterVideo] = useState(true);
   const [showFilterPod, setShowFilterPod] = useState(true);
-
   const [showText, setShowText] = useState(false);
 
   useEffect(() => {
@@ -60,22 +61,21 @@ const VideoSingle = props => {
     }
     setPlayerVisible('video');
     setMediaId(props.match.params.id);
-    setVideo(selectTrackById(props.match.params.id, videos));
+    setVideo(selectMediaById(props.match.params.id, videos));
     setLoaded(true);
-  });
+  }, [mediaId, props.match.params.id, setPlayerVisible, setMediaId, setSmallPlayer]);
 
   useEffect(() => {
     if (loaded) {
       let relatedMedia = [];
       video.tags.map(tag => {
-        const asd = findMediaByCategory(tag, data);
-        relatedMedia.push(asd);
+        const related = findMediaByCategory(tag, data);
+        return relatedMedia.push(related);
       });
-      relatedMedia = [...new Set(relatedMedia.flat())];
-      let filteredRelatedMedia = relatedMedia.slice(0, 10);
-      setRelated(filteredRelatedMedia);
+      relatedMedia = [...new Set(relatedMedia.flat())].slice(0, 10);
+      setRelated(relatedMedia);
     }
-  }, [loaded]);
+  }, [loaded, video.tags]);
 
   return (
     <StyledVideoSingle {...props}>
@@ -86,15 +86,18 @@ const VideoSingle = props => {
               <h3>{video.title}</h3>
               <Save saved={false} />
             </StyledFlexBox>
-
-            <StyledDescription toggleText={showText}>{video.description}</StyledDescription>
-            <StyledImg
-              toggleText={showText}
-              src="/assets/icons/rectangle.svg"
-              alt=""
-              onClick={() => setShowText(!showText)}
-            />
-            <TagGrid tags={video.tags} />
+            <StyledFlexBox>
+              <StyledDescription toggleText={showText}>
+                <p>{video.description}</p>
+                <TagGrid tags={video.tags} />
+              </StyledDescription>
+              <StyledImg
+                toggleText={showText}
+                src="/assets/icons/rectangle.svg"
+                alt=""
+                onClick={() => setShowText(!showText)}
+              />
+            </StyledFlexBox>
             <Line />
             <StyledText margin="20px 0 0 0">filtrera</StyledText>
             <StyledFlexBox justifyContent="flex-start">

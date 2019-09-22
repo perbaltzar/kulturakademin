@@ -5,7 +5,7 @@ import { withSoundCloudAudio } from 'react-soundplayer/addons';
 import tracks from '../../data/tracks.json';
 import { PlayerContext } from '../Context';
 
-import selectTrackById from '../../lib/search/selectTrackById';
+import selectMediaById from '../../lib/search/selectMediaById';
 
 const clientId = '45ca7c7c9b41fdcb2501bb7dd27e168b';
 
@@ -83,7 +83,7 @@ const PodPlayer = ({ id }) => {
   const [track, setTrack] = useState({});
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
-    setTrack(selectTrackById(id.toString(), tracks));
+    setTrack(selectMediaById(id.toString(), tracks));
     setLoaded(true);
     console.log(track, id);
   }, [id, track]);

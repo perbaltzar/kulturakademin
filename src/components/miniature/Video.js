@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import Watch from './Watch';
 import Save from './Save';
+import addToFavourites from '../../lib/addToFavourites';
+import { PlayerContext } from '../Context';
+import isFavourite from '../../lib/search/isFavourite';
 
 const StyledVideo = styled.div`
   margin: 20px 0;
@@ -46,6 +49,7 @@ const StyledVideo = styled.div`
 `;
 
 const Video = ({ title, description, thumbnail, saved, id }) => {
+  const { favourites, setFavourites } = useContext(PlayerContext);
   return (
     <StyledVideo>
       <Link to={`/video/${id}`}>
@@ -67,7 +71,14 @@ const Video = ({ title, description, thumbnail, saved, id }) => {
           <Link to={`/video/${id}`}>
             <Watch />
           </Link>
-          <Save saved={saved} />
+          <Save
+            onClick={() => {
+              addToFavourites(id, favourites);
+              setFavourites(JSON.parse(localStorage.getItem('favourites')));
+            }}
+            saved={isFavourite(id, favourites)}
+            marginleft
+          />
         </div>
       </section>
     </StyledVideo>

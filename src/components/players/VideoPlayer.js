@@ -35,7 +35,6 @@ const VideoPlayer = () => {
       <button
         onClick={() => {
           setSmallPlayer(!smallPlayer);
-          console.log(smallPlayer);
         }}
       >
         TOGGLE
