@@ -7,6 +7,7 @@ import Playlist from '../players/Playlist';
 import tracks from '../../data/tracks.json';
 import playlists from '../../data/playlists.json';
 import selectMediaById from '../../lib/search/selectMediaById';
+import getTracksFromPlaylist from '../../lib/search/getTracksFromPlaylist';
 
 const StyledPodSingle = styled.div`
   height: 100vh;
@@ -34,16 +35,6 @@ const StyledHero = styled.div`
 `;
 
 // MOVE THIS TO /lib/ later
-const getTracksFromPlaylist = playlist => {
-  const newTracks = [];
-  if (playlist.trackIds) {
-    playlist.trackIds.forEach(id => {
-      const track = selectMediaById(id.toString(), tracks);
-      newTracks.push(track);
-    });
-  }
-  return newTracks;
-};
 
 const PodSingle = ({ match }) => {
   const { mediaId, playerVisible, setPlayerVisible } = useContext(PlayerContext);
@@ -56,7 +47,7 @@ const PodSingle = ({ match }) => {
     // Fetching playlist from DB
     setPlaylist(selectMediaById(match.params.id, playlists));
     // Fetching tracks from playlist
-    setPlaylistTracks(getTracksFromPlaylist(playlist));
+    setPlaylistTracks(getTracksFromPlaylist(playlist, tracks));
     // Fetching Track info if pod is playing
     if (playerVisible === 'pod') {
       setPlayingTrack(selectMediaById(mediaId.toString(), tracks));
