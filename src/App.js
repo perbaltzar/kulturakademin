@@ -19,8 +19,8 @@ import { MenuContext, PlayerContext } from './components/Context';
 
 const StyledApp = styled.div`
   height: 100vh;
-  background-color: ${props => props.theme.colorDark};
   overflow: ${props => (props.menuOpen === 'block' ? 'hidden' : 'auto')};
+  background-color: #323232;
 `;
 const App = props => {
   const [displayMenu, setDisplayMenu] = useState('none');
