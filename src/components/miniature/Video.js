@@ -64,7 +64,7 @@ const Video = ({ title, description, thumbnail, saved, id }) => {
         <div>
           <Link to={`/video/${id}`}>
             <h4>{title}</h4>
-            <p>{description}</p>
+            {/* <p>{description}</p> */}
           </Link>
         </div>
         <div>
