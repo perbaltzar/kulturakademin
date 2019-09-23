@@ -23,7 +23,7 @@ const StyledSearchBar = styled.div`
   }
 `;
 
-const SearchBar = ({ handleChange }) => {
+const SearchBar = ({ handleChange, onFocus }) => {
   const [query, setQuery] = useState('');
 
   return (
@@ -35,6 +35,7 @@ const SearchBar = ({ handleChange }) => {
           onChange={({ target }) => {
             setQuery(target.value);
           }}
+          onFocus={() => onFocus()}
           onKeyUp={() => handleChange(query)}
           value={query}
         />
