@@ -22,28 +22,25 @@ const StyledVideo = styled.div`
   section:nth-child(1) {
     height: auto;
     margin-right: 10px;
-    div {
-      background-color: ${props => props.theme.orange};
-      /* background-color: blue; */
-      position: absolute;
-      z-index: 2;
-      margin: 103px 0 0 128px;
-      /* opacity: 0.5;      */
-      padding: 1px;
-    }
     img {
-      width: auto;
-      height: 122px;
+      border-radius: 2px;
+      object-fit: cover;
+      width: 118px;
+      height: 66px;
     }
   }
+  section {
+    padding: 0px;
+  }
   section:nth-child(2) {
-    padding: 10px 0 10px 0;
+    padding: 0px 0 10px 10px;
     height: auto;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
     div:nth-child(2) {
+      padding: 0;
       display: flex;
+      margin-left: 30px;
     }
   }
 `;
@@ -54,23 +51,16 @@ const Video = ({ title, description, thumbnail, saved, id }) => {
     <StyledVideo>
       <Link to={`/video/${id}`}>
         <section>
-          <div>
-            <p>10:02</p>
-          </div>
           <img src={thumbnail} alt="video thumbnail" />
         </section>
       </Link>
       <section>
         <div>
           <Link to={`/video/${id}`}>
-            <h4>{title}</h4>
-            {/* <p>{description}</p> */}
+            <p>{title}</p>
           </Link>
         </div>
         <div>
-          <Link to={`/video/${id}`}>
-            <Watch />
-          </Link>
           <Save
             onClick={() => {
               addToFavourites(id, favourites);
