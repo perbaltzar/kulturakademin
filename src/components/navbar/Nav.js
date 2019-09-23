@@ -20,10 +20,15 @@ const StyledNav = styled.div`
 `;
 
 const Nav = props => {
-  const { setDisplayMenu } = useContext(MenuContext);
+  const { setDisplayMenu, toggleMenuAnimation, setToggleMenuAnimation } = useContext(MenuContext);
   return (
     <StyledNav>
-      <BurgerMenu onClick={() => setDisplayMenu('block')} />
+      <BurgerMenu
+        onClick={() => {
+          setDisplayMenu('block');
+          setToggleMenuAnimation(!toggleMenuAnimation);
+        }}
+      />
       <Icon imgsrc="/assets/icons/search-solid.svg" />
 
       <Link to="/">
