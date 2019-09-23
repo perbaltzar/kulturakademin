@@ -29,6 +29,7 @@ const App = props => {
   const [playerVisible, setPlayerVisible] = useState('none');
   const [smallPlayer, setSmallPlayer] = useState(false);
   const [mediaId, setMediaId] = useState('');
+  const [navPath, setNavPath] = useState('');
   const [favourites, setFavourites] = useState(
     JSON.parse(localStorage.getItem('favourites')) || [],
   );
@@ -51,6 +52,10 @@ const App = props => {
                   setMediaId,
                   smallPlayer,
                   setSmallPlayer,
+                  favourites,
+                  setFavourites,
+                  navPath,
+                  setNavPath
                 }}
               >
                 {displaySearch && <Search />}
@@ -65,14 +70,15 @@ const App = props => {
                   <Route path="/podd/:id" component={PodSingle} />
                   <Route path="/kategori/:id" component={CategorySinglePage} />
                   <Route path="/" component={NotFound} />
-                </Switch>
+              </Switch>
               </PlayerContext.Provider>
-              <MenuContext.Provider value={{ displayMenu, setDisplayMenu }}>
+              <MenuContext.Provider
+                value={{ displayMenu, setDisplayMenu, toggleMenuAnimation, setToggleMenuAnimation , navPath, setNavPath}}
+                >
                 <Menu />
                 <Nav />
               </MenuContext.Provider>
             </SearchContext.Provider>
-
           </Router>
         </>
       </ThemeProvider>

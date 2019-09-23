@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
-
 import HomeBanner from './HomeBanner';
+import { PlayerContext } from '../../Context';
 import ContinueWatch from './ContinueWatch';
 import ContinueListen from './ContinueListen';
 import RecommendationsVideos from './RecommendationsVideos';
@@ -16,6 +16,8 @@ const StyledHome = styled.div`
 `;
 
 const Home = props => {
+  const { setNavPath } = useContext(PlayerContext)
+  setNavPath(props.match.path)
   return (
     <StyledHome>
       <HomeBanner />
