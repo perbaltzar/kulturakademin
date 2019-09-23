@@ -7,6 +7,7 @@ const StyledCategoryBox = styled.div`
   justify-content: center;
   width: 100%;
   height: 57px;
+  border-radius: 4px;
   background-color: ${props => props.backgroundColor};
   p {
     font: ${props => props.theme.fontMobileP};

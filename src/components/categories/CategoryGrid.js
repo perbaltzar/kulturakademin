@@ -8,7 +8,7 @@ const StyledCategoryGrid = styled.div`
   display: grid;
   grid-template-columns: ${props => props.gridTemplate};
   grid-gap: 10px;
-  margin-bottom: 57px;
+  margin-bottom: 4vh;
 `;
 
 const categories = [
@@ -22,8 +22,6 @@ const categories = [
   'film',
   'teater',
   'poesi',
-  'event',
-  'mode',
 ];
 
 const CategoryGrid = props => {

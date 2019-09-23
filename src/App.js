@@ -20,10 +20,11 @@ import { MenuContext, PlayerContext } from './components/Context';
 const StyledApp = styled.div`
   height: 100vh;
   overflow: ${props => (props.menuOpen === 'block' ? 'hidden' : 'auto')};
-  background-color: #323232;
+  background-color: #141414;
 `;
 const App = props => {
   const [displayMenu, setDisplayMenu] = useState('none');
+  const [toggleMenuAnimation, setToggleMenuAnimation] = useState(true);
   const [playerVisible, setPlayerVisible] = useState('none');
   const [smallPlayer, setSmallPlayer] = useState(false);
   const [mediaId, setMediaId] = useState('');
@@ -62,7 +63,9 @@ const App = props => {
                 <Route path="/" component={NotFound} />
               </Switch>
             </PlayerContext.Provider>
-            <MenuContext.Provider value={{ displayMenu, setDisplayMenu }}>
+            <MenuContext.Provider
+              value={{ displayMenu, setDisplayMenu, toggleMenuAnimation, setToggleMenuAnimation }}
+            >
               <Menu />
               <Nav />
             </MenuContext.Provider>
