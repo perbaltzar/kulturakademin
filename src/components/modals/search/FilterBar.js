@@ -34,7 +34,6 @@ const StyledFilterBar = styled.div`
 `;
 
 const FilterBar = ({ chosen, onClick }) => {
-  console.log(chosen);
   return (
     <StyledFilterBar>
       <div>
