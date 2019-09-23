@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { MenuContext } from '../Context';
-import BurgerMenu from './BurgerMenu';
 import Icon from './Icon';
 
 const StyledNav = styled.div`
@@ -19,24 +18,33 @@ const StyledNav = styled.div`
   z-index: 100;
 `;
 
-const Nav = props => {
+const Nav = () => {
   const { setDisplayMenu, toggleMenuAnimation, setToggleMenuAnimation } = useContext(MenuContext);
-  return (
-    <StyledNav>
-      <BurgerMenu
-        onClick={() => {
-          setDisplayMenu('block');
-          setToggleMenuAnimation(!toggleMenuAnimation);
+  const { navPath, setNavPath } = useContext(MenuContext);
+  const [ searchIcon, setSearchIcon] = useState("Faded")
+  
+  const toggleSearchIcon = () => {
+    searchIcon === "Faded" ? setSearchIcon("Filled") : setSearchIcon("Faded") 
+  }
+  setNavPath(window.location.pathname);
+  
+
+return (
+  <StyledNav>
+      <Icon
+      imgsrc="/assets/icons/Menu-Faded.svg"
+      onClick={() => {
+      setDisplayMenu('block');
+      setToggleMenuAnimation(!toggleMenuAnimation);
         }}
       />
-      <Icon imgsrc="/assets/icons/search-solid.svg" />
-
       <Link to="/">
-        <Icon imgsrc="/assets/icons/home-solid.svg" />
+      <Icon imgsrc={navPath === "/" ? "/assets/icons/Home-Filled.svg" : "/assets/icons/Home-Faded.svg"}/>
       </Link>
       <Link to="/favoriter">
-        <Icon imgsrc="/assets/icons/star-regular.svg" />
+        <Icon imgsrc={navPath === "/favoriter" ? "/assets/icons/Favourites-Filled.svg" : "/assets/icons/Favourites-Faded.svg"} />
       </Link>
+        <Icon imgsrc={`assets/icons/Search-${searchIcon}.svg`} onClick={() => toggleSearchIcon()}/>
     </StyledNav>
   );
 };
