@@ -4,9 +4,8 @@ import styled from 'styled-components';
 const StyledIcon = styled.img`
 `;
 
-const Icon = props => {
-  const { imgsrc } = props;
-  return <StyledIcon src={imgsrc} alt="" onClick={props.onClick}></StyledIcon>;
+const Icon = ({ imgsrc, onClick }) => {
+  return <StyledIcon src={imgsrc} alt="" onClick={onClick}></StyledIcon>;
 };
 
 export default Icon;

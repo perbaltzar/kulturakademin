@@ -23,7 +23,7 @@ const StyledCategorySinglePage = styled.div`
   margin-bottom: 60px;
 `;
 
-const CategorySingle = ({ match }) => {
+const CategorySinglePage = ({ match }) => {
   const [category, setCategory] = useState('');
   const [media, setMedia] = useState(data);
   const { smallPlayer, setPlayerVisible } = useContext(PlayerContext);
@@ -83,4 +83,4 @@ const CategorySingle = ({ match }) => {
   );
 };
 
-export default CategorySingle;
+export default CategorySinglePage;

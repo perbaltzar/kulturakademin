@@ -63,7 +63,7 @@ const Pod = ({ title, description, thumbnail, saved, id }) => {
         <div>
           <Link to={`/podd/${id}`}>
             <h4>{title}</h4>
-            <p>{description}</p>
+            {/* <p>{description}</p> */}
           </Link>
         </div>
         <div>
