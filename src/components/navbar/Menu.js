@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { MenuContext } from '../Context';
 import styled, { keyframes, css } from 'styled-components';
@@ -77,7 +77,7 @@ const Menu = props => {
     MenuContext,
   );
 
-  const fadeOutAnim = () => {
+  const toggleMenu = () => {
     setToggleMenuAnimation(!toggleMenuAnimation);
     setTimeout(() => {
       setDisplayMenu('none');
@@ -88,12 +88,12 @@ const Menu = props => {
     <StyledMenu {...props} display={displayMenu.toString()} animation={toggleMenuAnimation}>
       <CrossIcon
         onClick={() => {
-          fadeOutAnim();
+          toggleMenu();
         }}
       />
       <div
         onClick={() => {
-          fadeOutAnim();
+          toggleMenu();
         }}
       >
         <div className="menu-items">
@@ -119,7 +119,7 @@ const Menu = props => {
           <span></span>
         </StyledFlex>
       </div>
-      <CategoryGrid gridTemplate="1fr 1fr" onClick={() => fadeOutAnim()}></CategoryGrid>
+      <CategoryGrid gridTemplate="1fr 1fr" onClick={() => toggleMenu()}></CategoryGrid>
       <a href="https://www.kulturakademin.com/" target="_blank" rel="noopener noreferrer">
         <StyledFlex>
           <h5>kulturakademin.se</h5>
