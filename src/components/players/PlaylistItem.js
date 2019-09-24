@@ -1,53 +1,29 @@
-import React, { useContext, useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 
 import { PlayerContext } from '../Context';
-import Listen from '../miniature/Listen';
+import ProgressBar from './ProgressBar';
+import DescriptionArrow from './DescriptionArrow';
 
 const StyledPlaylistItem = styled.div`
+  color: ${props => (props.playing ? `${props.theme.orange}` : 'white')};
   section {
+    height: 45px;
+    margin: 30px 0;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+  }
+  div {
     display: flex;
-    margin-bottom: 10px;
-  }
-  margin-bottom: 10px;
-  img {
-    height: 55px;
-    width: auto;
-    border-radius: 50%;
-  }
-  div:first-of-type {
-    margin-right: 20px;
-    span {
-      position: absolute;
-    }
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
   }
   p {
     font-size: 13px;
   }
-  span {
-    z-index: 3;
-    color: white;
-    font-size: 14px;
-    width: 55px;
-    height: 55px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  span:first-of-type {
-    border-radius: 50px;
-    z-index: 2;
-    background-color: black;
-    opacity: 0.6;
-  }
-
-  div:nth-child(2) {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    p:nth-child(2) {
-      color: grey;
-    }
+  h4 {
+    margin-top: 5px;
   }
 `;
 
@@ -60,49 +36,46 @@ const displayDuration = duration => {
 };
 
 const PlaylistItem = ({ number, img, title, plays, duration, playing, description, id }) => {
-  const { setMediaId, setPlayerVisible } = useContext(PlayerContext);
   const [open, setOpen] = useState(false);
-
+  const { setMediaId, setPlayerVisible } = useContext(PlayerContext);
   return (
-    <StyledPlaylistItem>
+    <StyledPlaylistItem playing={playing}>
       <section
         onClick={() => {
-          setOpen(!open);
+          setPlayerVisible('none');
+          setTimeout(() => {
+            setMediaId(id);
+            setPlayerVisible('pod');
+          }, 250);
         }}
       >
         <div>
-          <span></span>
-          <span>
-            <p>{number}</p>
-          </span>
-          <img src={img} alt="thumbnail" />
+          <h4>{number}</h4>
         </div>
         <div>
           <p>{title}</p>
-          <p>{plays} plays</p>
+          <ProgressBar progress={100} />
         </div>
         <div>
           <p>{displayDuration(duration)}</p>
+          <DescriptionArrow
+            toggleText={open}
+            onClick={() => {
+              setOpen(!open);
+            }}
+          />
         </div>
       </section>
-      <section>
-        {open && (
-          <div>
-            <p>{description}</p>
-            <Listen
-              onClick={() => {
-                setPlayerVisible('none');
-                setTimeout(() => {
-                  setMediaId(id);
-                  setPlayerVisible('pod');
-                }, 250);
-              }}
-            />
-          </div>
-        )}
-      </section>
+      {open && (
+        <div>
+          <p>{description}</p>
+        </div>
+      )}
     </StyledPlaylistItem>
   );
 };
 
 export default PlaylistItem;
+
+// Put on the rest
+//
