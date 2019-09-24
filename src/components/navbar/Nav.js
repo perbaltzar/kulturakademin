@@ -22,35 +22,60 @@ const Nav = () => {
   const { setDisplayMenu, toggleMenuAnimation, setToggleMenuAnimation } = useContext(MenuContext);
 
   const { navPath, setNavPath } = useContext(MenuContext);
-  const [ searchIcon, setSearchIcon] = useState("Faded")
+  const [searchIcon, setSearchIcon] = useState('Faded');
   const { displaySearch, setDisplaySearch } = useContext(SearchContext);
   const toggleSearchIcon = () => {
-    searchIcon === "Faded" ? setSearchIcon("Filled") : setSearchIcon("Faded") 
-  }
+    searchIcon === 'Faded' ? setSearchIcon('Filled') : setSearchIcon('Faded');
+  };
+  const checkIfDisplaySearch = () => {
+    if (displaySearch === true) {
+      setDisplaySearch(!displaySearch);
+      toggleSearchIcon();
+    }
+  };
   setNavPath(window.location.pathname);
-  
 
-return (
-  <StyledNav>
+  return (
+    <StyledNav>
       <Icon
-      imgsrc="/assets/icons/Menu-Faded.svg"
-      onClick={() => {
-      setDisplayMenu('block');
-      setToggleMenuAnimation(!toggleMenuAnimation);
+        imgsrc="/assets/icons/Menu-Faded.svg"
+        onClick={() => {
+          setDisplayMenu('block');
+          setToggleMenuAnimation(!toggleMenuAnimation);
+          checkIfDisplaySearch();
         }}
       />
 
       <Link to="/">
-      <Icon imgsrc={navPath === "/" ? "/assets/icons/Home-Filled.svg" : "/assets/icons/Home-Faded.svg"}/>
+        <Icon
+          imgsrc={
+            navPath === '/' ? '/assets/icons/Home-Filled.svg' : '/assets/icons/Home-Faded.svg'
+          }
+          onClick={() => {
+            checkIfDisplaySearch();
+          }}
+        />
       </Link>
       <Link to="/favoriter">
-        <Icon imgsrc={navPath === "/favoriter" ? "/assets/icons/Favourites-Filled.svg" : "/assets/icons/Favourites-Faded.svg"} />
+        <Icon
+          imgsrc={
+            navPath === '/favoriter'
+              ? '/assets/icons/Favourites-Filled.svg'
+              : '/assets/icons/Favourites-Faded.svg'
+          }
+          onClick={() => {
+            checkIfDisplaySearch();
+          }}
+        />
       </Link>
-        <Icon imgsrc={`assets/icons/Search-${searchIcon}.svg`} onClick={() => {
-          toggleSearchIcon();
+      <Icon
+        imgsrc={`/assets/icons/Search-${searchIcon}.svg`}
+        onClick={() => {
           setDisplaySearch(!displaySearch);
-            }
-        }/>
+          checkIfDisplaySearch();
+          toggleSearchIcon();
+        }}
+      />
     </StyledNav>
   );
 };
