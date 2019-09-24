@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import PlaylistItem from './PlaylistItem';
+import { PlayerContext } from '../Context';
+
 const StyledPlaylist = styled.div`
   margin: 20px 0;
   padding: 10px 20px;
-  background-color: white;
+  background-color: ${props => props.theme.colorDarkGrey};
 `;
 
 const Playlist = ({ playlistTracks, number }) => {
+  const { mediaId } = useContext(PlayerContext);
   return (
     <StyledPlaylist>
       {playlistTracks.map((track, i) => {
@@ -18,7 +21,7 @@ const Playlist = ({ playlistTracks, number }) => {
             title={track.title}
             duration={track.duration}
             plays="997"
-            playing={false}
+            playing={track.id === mediaId}
             id={track.id}
             description={track.description}
           />
