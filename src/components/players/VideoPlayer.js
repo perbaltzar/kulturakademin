@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import YouTube from '@u-wave/react-youtube';
 import videos from '../../data/youtube.json';
-import CategoryBanner from '../categories/CategoryBanner';
+import PageBanner from '../views/Home/PageBanner';
 import { PlayerContext } from '../Context';
 import selectMediaById from '../../lib/search/selectMediaById.js';
 import Icon from '../navbar/Icon.js';
@@ -49,7 +49,7 @@ const VideoPlayer = () => {
 
   return (
     <StyledVideoPlayer smallPlayer={smallPlayer}>
-      <CategoryBanner />
+      <PageBanner />
       <button
         onClick={() => {
           setSmallPlayer(!smallPlayer);
