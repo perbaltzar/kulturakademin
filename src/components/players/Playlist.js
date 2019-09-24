@@ -5,7 +5,7 @@ import { PlayerContext } from '../Context';
 
 const StyledPlaylist = styled.div`
   margin: 20px 0;
-  padding: 10px 20px;
+  padding-top: 10px;
   background-color: ${props => props.theme.colorDarkGrey};
 `;
 
