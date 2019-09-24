@@ -1,8 +1,25 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "KulturPlay",
+  "name": "KulturPlay av Kulturakademin",
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#E29829",
+  "background_color": "#141414",
+  "icons": [
+    {
+      "src": "assets/pwa/kulturplay_48px.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/pwa/kulturplay_72px.pngg",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/pwa/kulturplay_192px.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
 }
