@@ -5,14 +5,13 @@ import { SearchContext } from '../../Context';
 
 import SearchBar from './SearchBar';
 import FilterBar from './FilterBar';
-import Line from '../../players/Line';
-import CategoryGrid from '../../categories/CategoryGrid';
 import PodResults from './PodResults';
 import VideoResults from './VideoResults';
 import NoResults from './NoResults';
 import TopResults from './TopResults';
 import History from './History';
 import Suggestions from './Suggestions';
+import SearchCategories from './SearchCategories';
 import search from '../../../lib/search/search';
 
 const StyledSearch = styled.div`
@@ -25,7 +24,7 @@ const StyledSearch = styled.div`
   background-color: ${props => props.theme.colorDark};
   width: 100%;
   padding-bottom: 80px;
-  section {
+  article {
     padding: 66px 20px 0 20px;
   }
   h3 {
@@ -78,7 +77,7 @@ const Search = props => {
             setShowView('history');
           }}
         />
-        <section>
+        <article>
           {showView === 'suggestions' && <Suggestions />}
           {showView === 'history' && <History />}
           {showView === 'results' && (
@@ -87,13 +86,11 @@ const Search = props => {
               {topResults.length > 0 && <TopResults topResults={topResults} />}
               {podResults.length > 0 && <PodResults pods={podResults} />}
               {videoResults.length > 0 && <VideoResults videos={videoResults} />}
-              <p>Kategorier</p>
-              <CategoryGrid gridTemplate="1fr 1fr 1fr" />
-              <Line />
+              <SearchCategories />
             </>
           )}
           {showView === 'no-results' && <NoResults query={searchQuery} />}
-        </section>
+        </article>
       </StyledSearch>
     </>
   );

@@ -35,7 +35,7 @@ const App = props => {
   );
 
   // Search modal open och close
-  const [displaySearch, setDisplaySearch] = useState(true);
+  const [displaySearch, setDisplaySearch] = useState(false);
 
   return (
     <StyledApp className="App" {...props} menuOpen={displayMenu}>
@@ -55,7 +55,7 @@ const App = props => {
                   favourites,
                   setFavourites,
                   navPath,
-                  setNavPath
+                  setNavPath,
                 }}
               >
                 {displaySearch && <Search />}
@@ -70,11 +70,18 @@ const App = props => {
                   <Route path="/podd/:id" component={PodSingle} />
                   <Route path="/kategori/:id" component={CategorySinglePage} />
                   <Route path="/" component={NotFound} />
-              </Switch>
+                </Switch>
               </PlayerContext.Provider>
               <MenuContext.Provider
-                value={{ displayMenu, setDisplayMenu, toggleMenuAnimation, setToggleMenuAnimation , navPath, setNavPath}}
-                >
+                value={{
+                  displayMenu,
+                  setDisplayMenu,
+                  toggleMenuAnimation,
+                  setToggleMenuAnimation,
+                  navPath,
+                  setNavPath,
+                }}
+              >
                 <Menu />
                 <Nav />
               </MenuContext.Provider>

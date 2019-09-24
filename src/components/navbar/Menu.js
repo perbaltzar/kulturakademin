@@ -8,7 +8,7 @@ import CategoryGrid from '../categories/CategoryGrid';
 // KeyFrames for menu
 const fadeIn = keyframes`
   from {
-    transform: translateX(100vw)
+    transform: translateX(-100vw)
   }
 
   to {
@@ -21,7 +21,7 @@ const fadeOut = keyframes`
   }
 
   to {
-    transform: translateX(100vw)
+    transform: translateX(-100vw)
   }
 `;
 const StyledMenu = styled.div`

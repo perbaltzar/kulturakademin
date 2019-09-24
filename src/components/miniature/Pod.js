@@ -21,27 +21,40 @@ const StyledPod = styled.div`
     color: white;
   }
   section:nth-child(1) {
+    padding: 0px;
     height: auto;
     margin-right: 10px;
     div {
-      background-color: ${props => props.theme.orange};
+      box-shadow: 0px 0px 5px #ccc;
+      background-color: #00000099;
       position: absolute;
       z-index: 2;
-      margin: 103px 0 0 85px;
-      padding: 1px;
+      margin: 5px 0 0 40px;
+      padding: 5px;
+      border-radius: 50%;
+      width: 21px;
+      height: 21px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        height: 9px;
+        width: auto;
+      }
     }
     img {
+      border-radius: 2px;
       width: auto;
-      height: 122px;
+      height: 66px;
     }
   }
   section:nth-child(2) {
-    padding: 10px 0 10px 0;
+    padding: 0px 0px 10px 10px;
     height: auto;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
     div:nth-child(2) {
+      margin-left: 30px;
       display: flex;
     }
   }
@@ -54,7 +67,7 @@ const Pod = ({ title, description, thumbnail, saved, id }) => {
       <Link to={`/podd/${id}`}>
         <section>
           <div>
-            <p>10:02</p>
+            <img src="/assets/icons/headphones.svg" alt="headphones" />
           </div>
           <img src={thumbnail} alt="Pod thumbnail" />
         </section>
@@ -62,14 +75,10 @@ const Pod = ({ title, description, thumbnail, saved, id }) => {
       <section>
         <div>
           <Link to={`/podd/${id}`}>
-            <h4>{title}</h4>
-            {/* <p>{description}</p> */}
+            <p>{title}</p>
           </Link>
         </div>
         <div>
-          <Link to={`podd/${id}`}>
-            <Listen />
-          </Link>
           <Save
             onClick={() => {
               addToFavourites(id, favourites);
