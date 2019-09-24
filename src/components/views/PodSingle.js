@@ -4,20 +4,26 @@ import { PlayerContext } from '../Context';
 import Line from '../players/Line';
 import Playlist from '../players/Playlist';
 import tracks from '../../data/tracks.json';
+import youtube from '../../data/youtube.json';
 import playlists from '../../data/playlists.json';
 import selectMediaById from '../../lib/search/selectMediaById';
 import getTracksFromPlaylist from '../../lib/search/getTracksFromPlaylist';
 import CategoryBanner from '../categories/CategoryBanner';
 import PodHero from './PodHero';
+import FilterBar from '../modals/search/FilterBar';
+import Video from '../miniature/Video';
+import Pod from '../miniature/Pod';
 
 const StyledPodSingle = styled.div`
   height: 100vh;
   padding-bottom: 80px;
   overflow: scroll;
   background: ${props => props.theme.colorDark};
-  section:nth-child(2) {
-    padding: 0 20px;
-  }
+  color: white;
+`;
+
+const StyledFilterSection = styled.div`
+  padding: 30px 20px;
 `;
 
 const PodSingle = ({ match }) => {
@@ -25,8 +31,9 @@ const PodSingle = ({ match }) => {
   const [playlist, setPlaylist] = useState({});
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [playingTrack, setPlayingTrack] = useState({ title: '' });
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [chosenFilter, setChosenFilter] = useState('a-ö');
 
   useEffect(() => {
     // Fetching playlist from DB
@@ -53,10 +60,40 @@ const PodSingle = ({ match }) => {
             playlistThumbnail={playlist.thumbnail}
             playlistTitle={playlist.title}
           />
-          <section></section>
-          <Line />
           {playlistTracks.length > 0 && <Playlist playlistTracks={playlistTracks} />}
-          <Line />
+          <StyledFilterSection>
+            <FilterBar
+              chosen={chosenFilter}
+              onClick={chosenFilter => setChosenFilter(chosenFilter)}
+            />
+            <h3>Förslag</h3>
+            <Line orange marginBotton />
+            <p>Video</p>
+            <Line marginBotton />
+            <Video
+              title={youtube[0].title}
+              // description={media.description && `${media.description.substr(0, 70)}...`}
+              thumbnail={youtube[0].thumbnail}
+              saved={false}
+              id={youtube[0].id}
+            />
+            <p>Podd</p>
+            <Line />
+            <Pod
+              title={tracks[0].title}
+              // description={media.description && `${media.description.substr(0, 70)}...`}
+              thumbnail={tracks[0].thumbnail}
+              saved={false}
+              id={tracks[0].id}
+            />
+            <Pod
+              title={tracks[1].title}
+              // description={media.description && `${media.description.substr(0, 70)}...`}
+              thumbnail={tracks[1].thumbnail}
+              saved={false}
+              id={tracks[1].id}
+            />
+          </StyledFilterSection>
         </>
       )}
     </StyledPodSingle>
