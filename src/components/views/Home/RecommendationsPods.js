@@ -5,9 +5,9 @@ import PodThumbnail from './PodThumbnail';
 
 const StyledRecommendationsPods = styled.div`
   margin-top: 34px;
-  margin-left: 20px;
+  margin-bottom: 20px;
   h2 {
-    color: ${props => props.theme.orange};
+    color: ${props => props.theme.colorLight};
     margin-bottom: 18px;
   }
   section {
@@ -17,12 +17,17 @@ const StyledRecommendationsPods = styled.div`
   div {
     display: flex;
   }
+  .header-box {
+    margin: 20px 0;
+  }
 `;
 
 const RecommendationsPods = props => {
   return (
     <StyledRecommendationsPods>
-      <h2>Rekommenderade Poddar</h2>
+      <div className="header-box">
+        <h5>Poddar som inspirerar</h5>
+      </div>
       <section>
         <div>
           <PodThumbnail />
