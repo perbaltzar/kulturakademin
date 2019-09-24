@@ -25,7 +25,8 @@ const StyledPod = styled.div`
     height: auto;
     margin-right: 10px;
     div {
-      background-color: #000000aa;
+      box-shadow: 0px 0px 5px #ccc;
+      background-color: #00000099;
       position: absolute;
       z-index: 2;
       margin: 5px 0 0 40px;
