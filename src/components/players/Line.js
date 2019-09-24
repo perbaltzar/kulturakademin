@@ -5,8 +5,8 @@ const StyledLine = styled.div`
   background-color: ${props => (props.orange ? props.theme.orange : props.theme.colorLine)};
   height: 2px;
   width: 100%;
-  margin: 10px 0px;
-  margin-bottom: ${props => (props.marginBotton ? '30px' : '10px')};
+  margin: 20px 0px;
+  margin-bottom: ${props => (props.marginBotton ? '30px' : '20px')};
 `;
 
 const Line = props => {

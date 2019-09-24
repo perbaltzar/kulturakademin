@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import capitalize from '../../lib/capitalize';
 import findMediaByCategory from '../../lib/search/findMediaByCategory';
 
-import CategoryBanner from './CategoryBanner';
+import PageBanner from '../views/Home/PageBanner';
 import Video from '../miniature/Video';
 import Pod from '../miniature/Pod';
 
@@ -14,7 +14,6 @@ import playlists from '../../data/playlists.json';
 import { PlayerContext } from '../Context';
 
 let data = [youtube, tracks, playlists].flat();
-// data = findMediaByCategory('musik', data);
 
 const StyledCategorySinglePage = styled.div`
   background-color: ${props => props.theme.colorDark};
@@ -36,7 +35,7 @@ const CategorySinglePage = ({ match }) => {
 
   return (
     <>
-      <CategoryBanner text={capitalize(category)} />
+      <PageBanner text={capitalize(category)} />
       <StyledCategorySinglePage>
         {media.map((media, i) => {
           if (media.type === 'video') {
