@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { PlayerContext } from '../Context';
-import TagGrid from '../miniature/TagGrid';
 import Line from '../players/Line';
 import Playlist from '../players/Playlist';
 import tracks from '../../data/tracks.json';
 import playlists from '../../data/playlists.json';
 import selectMediaById from '../../lib/search/selectMediaById';
 import getTracksFromPlaylist from '../../lib/search/getTracksFromPlaylist';
+import CategoryBanner from '../categories/CategoryBanner';
+import PodHero from './PodHero';
 
 const StyledPodSingle = styled.div`
   height: 100vh;
@@ -19,28 +20,12 @@ const StyledPodSingle = styled.div`
   }
 `;
 
-const StyledHero = styled.div`
-  padding: 50px 50px 0 50px;
-  margin-bottom: 30px;
-  img {
-    width: 100%;
-  }
-  h2 {
-    margin: 10px 0;
-    color: white;
-  }
-  p {
-    color: white;
-  }
-`;
-
-// MOVE THIS TO /lib/ later
-
 const PodSingle = ({ match }) => {
   const { mediaId, playerVisible, setPlayerVisible } = useContext(PlayerContext);
   const [playlist, setPlaylist] = useState({});
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [playingTrack, setPlayingTrack] = useState({ title: '' });
+  const [isPlaying, setIsPlaying] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -60,14 +45,15 @@ const PodSingle = ({ match }) => {
     <StyledPodSingle>
       {loaded && (
         <>
-          <StyledHero>
-            <img onClick={() => setPlayerVisible('pod')} src={playlist.thumbnail} alt="thumbnail" />
-            <h2>{playlist.title}</h2>
-            <p>{playingTrack.title}</p>
-          </StyledHero>
-          <section>
-            <TagGrid tags={playlist.tags} />
-          </section>
+          <CategoryBanner />
+          <PodHero
+            onClick={() => setPlayerVisible('pod')}
+            trackTitle={playingTrack.title}
+            trackPlaying={isPlaying}
+            playlistThumbnail={playlist.thumbnail}
+            playlistTitle={playlist.title}
+          />
+          <section></section>
           <Line />
           {playlistTracks.length > 0 && <Playlist playlistTracks={playlistTracks} />}
           <Line />
