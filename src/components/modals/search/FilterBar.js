@@ -16,7 +16,7 @@ const StyledFilterBar = styled.div`
   div {
     border-radius: 5px;
     height: 20px;
-    width: 80%;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
