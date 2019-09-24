@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import CategoryBanner from '../categories/CategoryBanner';
-import { PlayerContext } from '../Context';
+import { PlayerContext, SearchContext } from '../Context';
 import tracks from '../../data/tracks.json';
 import playlists from '../../data/playlists.json';
 import youtube from '../../data/youtube.json';
@@ -39,8 +39,8 @@ const StyledButton = styled.button`
 `;
 
 const Favourites = ({ match }) => {
-  const {favourites, setNavPath} = useContext(PlayerContext);
-
+  const { favourites, setNavPath, smallPlayer, setPlayerVisible } = useContext(PlayerContext);
+  const { displaySearch, setDisplaySearch } = useContext(SearchContext);
   const [savedFavourites, setSavedFavourites] = useState({});
 
   const getFavourites = () => {
@@ -48,12 +48,12 @@ const Favourites = ({ match }) => {
       return selectMediaById(fav.id, allMedia);
     });
   };
-
   useEffect(() => {
+    if (!smallPlayer) setPlayerVisible('none');
     setSavedFavourites(getFavourites);
-    setNavPath(match.path)
-  }, []);
-  
+    setNavPath(match.path);
+  }, [favourites.length > savedFavourites.length]);
+
   if (savedFavourites.length > 0) {
     return (
       <StyledFavourites>
@@ -113,7 +113,7 @@ const Favourites = ({ match }) => {
           <p>Oroa dig inte, det är lätt. Klicka bara på hjärtat</p>
           <p> vid önskade spår så visas de här.</p>
         </div>
-        <StyledButton>
+        <StyledButton onClick={() => setDisplaySearch(!displaySearch)}>
           <p>Sök video och podd</p>
         </StyledButton>
       </StyledGrid>

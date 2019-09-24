@@ -16,8 +16,9 @@ const StyledHome = styled.div`
 `;
 
 const Home = props => {
-  const { setNavPath } = useContext(PlayerContext)
-  setNavPath(props.match.path)
+  const { setNavPath, smallPlayer, setPlayerVisible } = useContext(PlayerContext);
+  if (!smallPlayer) setPlayerVisible('none');
+  setNavPath(props.match.path);
   return (
     <StyledHome>
       <HomeBanner />
