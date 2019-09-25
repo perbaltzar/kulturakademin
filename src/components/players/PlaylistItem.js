@@ -5,6 +5,8 @@ import { PlayerContext } from '../Context';
 import ProgressBar from './ProgressBar';
 import DescriptionArrow from './DescriptionArrow';
 
+import displayProperTime from '../../lib/displayProperTimer';
+
 const StyledPlaylistItem = styled.div`
   color: ${props => (props.playing ? `${props.theme.orange}` : 'white')};
   section {
@@ -35,17 +37,6 @@ const StyledPlaylistItem = styled.div`
   }
 `;
 
-const displayDuration = duration => {
-  let seconds = Math.floor(duration / 1000);
-  let minutes = Math.floor(seconds / 60);
-  seconds -= minutes * 60;
-  if (seconds < 10) {
-    seconds = `0${seconds}`;
-  }
-  let time = `${minutes}:${seconds}`;
-  return time;
-};
-
 const PlaylistItem = ({ number, img, title, plays, duration, playing, description, id }) => {
   const [open, setOpen] = useState(false);
   const { setMediaId, setPlayerVisible } = useContext(PlayerContext);
@@ -71,7 +62,7 @@ const PlaylistItem = ({ number, img, title, plays, duration, playing, descriptio
             setOpen(!open);
           }}
         >
-          <p>{displayDuration(duration)}</p>
+          <p>{displayProperTime(duration)}</p>
           <DescriptionArrow toggleText={open} />
         </div>
       </section>
