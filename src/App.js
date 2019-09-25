@@ -17,6 +17,7 @@ import Menu from './components/navbar/Menu';
 import Search from './components/modals/search/Search';
 import About from './components/views/About';
 import { MenuContext, PlayerContext, SearchContext } from './components/Context';
+import Cookies from './components/modals/Cookies';
 
 const StyledApp = styled.div`
   height: 100vh;
@@ -28,6 +29,7 @@ const App = props => {
   const [toggleMenuAnimation, setToggleMenuAnimation] = useState(true);
   const [playerVisible, setPlayerVisible] = useState('none');
   const [smallPlayer, setSmallPlayer] = useState(false);
+  const [cookie, setCookie] = useState(localStorage.getItem('seenCookies'));
   const [mediaId, setMediaId] = useState('');
   const [navPath, setNavPath] = useState('');
   const [favourites, setFavourites] = useState(
@@ -58,6 +60,8 @@ const App = props => {
                   setNavPath,
                 }}
               >
+                {!cookie && <Cookies onClick={() => setCookie(true)} />}
+
                 {displaySearch && <Search />}
                 {playerVisible === 'video' && <VideoPlayer />}
                 {playerVisible === 'pod' && <PodPlayer id={mediaId} />}
