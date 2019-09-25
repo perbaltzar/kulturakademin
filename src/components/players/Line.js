@@ -7,7 +7,7 @@ const StyledLine = styled.div`
   width: 100%;
   margin: 20px 0px;
   margin-bottom: ${props => (props.marginBotton ? '30px' : '10px')};
-
+`;
 
 const Line = props => {
   return <StyledLine {...props}></StyledLine>;
