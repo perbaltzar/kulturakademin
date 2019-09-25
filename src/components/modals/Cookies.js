@@ -1,14 +1,18 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import Icon from "../Icon";
+import React from 'react';
+
+import styled from 'styled-components';
+import Icon from '../navbar/Icon';
 
 const StyledCookies = styled.div`
-  display: ${props => props.isToggled};
-  position: absolute;
+  display: grid;
+  grid-template-columns: 1fr 4fr 2fr;
+  align-items: center;
+  position: fixed;
+  padding: 0 20px;
   z-index: 10;
-  top: 40vh;
-  width: 375px;
-  height: 100px;
+  bottom: 60px;
+  width: 100vw;
+  height: 120px;
   background-color: ${props => props.theme.colorDarkGrey};
   color: ${props => props.theme.colorLight};
   p {
@@ -18,23 +22,36 @@ const StyledCookies = styled.div`
   button {
     border: none;
     width: 85px;
+    border-radius: 4px;
     height: 32px;
     color: ${props => props.theme.colorLight};
     background-color: ${props => props.theme.orange};
   }
+  img {
+  }
 `;
 
-const Cookies = props => {
-  const [isToggled, setIsToggled] = useState("block");
+const Cookies = ({ onClick }) => {
+  const acceptCookie = () => {
+    localStorage.setItem('seenCookies', true);
+  };
+
   return (
-    <StyledCookies isToggled={isToggled}>
+    <StyledCookies>
+      <Icon imgsrc="/assets/icons/Cookie.svg" />
       <div>
-        <Icon imgsrc="/assets/icons/cookie-bite-solid.svg" />
         <h4>K-play är en hemsida</h4>
         <h4>som använder cookies</h4>
+        <p>Cookies-policy</p>
       </div>
-      <p>Cookies-policy</p>
-      <button onClick={() => setIsToggled("none")}>Jag förstår</button>
+      <button
+        onClick={() => {
+          acceptCookie();
+          onClick();
+        }}
+      >
+        Jag förstår
+      </button>
     </StyledCookies>
   );
 };
