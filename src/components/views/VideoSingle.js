@@ -1,17 +1,19 @@
 import React, { useEffect, useContext, useState } from 'react';
 import styled from 'styled-components';
 import { PlayerContext } from '../Context';
-import FilterButton from '../players/FilterButton';
+
+import FilterBar from '../modals/search/FilterBar';
 import Save from '../miniature/Save';
-import tracks from '../../data/tracks.json';
-import videos from '../../data/youtube.json';
 import playlists from '../../data/playlists.json';
 import selectMediaById from '../../lib/search/selectMediaById';
-import TagGrid from '../miniature/TagGrid';
 import Video from '../miniature/Video';
 import Pod from '../miniature/Pod';
 import findMediaByCategory from '../../lib/search/findMediaByCategory';
 import Line from '../players/Line';
+
+import tracks from '../../data/tracks.json';
+import videos from '../../data/youtube.json';
+import youtube from '../../data/youtube.json';
 
 let data = [videos, tracks, playlists].flat();
 
@@ -54,6 +56,7 @@ const VideoSingle = props => {
   const [showFilterVideo, setShowFilterVideo] = useState(true);
   const [showFilterPod, setShowFilterPod] = useState(true);
   const [showText, setShowText] = useState(false);
+  const [chosenFilter, setChosenFilter] = useState('a-ö');
 
   useEffect(() => {
     if (mediaId !== props.match.params.id) {
@@ -89,7 +92,6 @@ const VideoSingle = props => {
             <StyledFlexBox>
               <StyledDescription toggleText={showText}>
                 <p>{video.description}</p>
-                <TagGrid tags={video.tags} />
               </StyledDescription>
               <StyledImg
                 toggleText={showText}
@@ -98,46 +100,41 @@ const VideoSingle = props => {
                 onClick={() => setShowText(!showText)}
               />
             </StyledFlexBox>
-            <Line />
-            <StyledText margin="20px 0 0 0">filtrera</StyledText>
-            <StyledFlexBox justifyContent="flex-start">
-              <FilterButton
-                filterName="Podd"
-                isActive={showFilterPod}
-                onClick={() => setShowFilterPod(!showFilterPod)}
+            <Line margins />
+
+            <div>
+              <FilterBar
+                chosen={chosenFilter}
+                onClick={chosenFilter => setChosenFilter(chosenFilter)}
               />
-              <FilterButton
-                filterName="Video"
-                isActive={showFilterVideo}
-                onClick={() => setShowFilterVideo(!showFilterVideo)}
+              <h3>Förslag</h3>
+              <Line orange />
+              <p>Video</p>
+              <Line />
+              <Video
+                title={youtube[0].title}
+                // description={media.description && `${media.description.substr(0, 70)}...`}
+                thumbnail={youtube[0].thumbnail}
+                saved={false}
+                id={youtube[0].id}
               />
-            </StyledFlexBox>
-            {related.map((media, i) => {
-              if (media.type === 'video' && showFilterVideo === true) {
-                return (
-                  <Video
-                    key={i}
-                    title={media.title}
-                    // description={media.description && `${media.description.substr(0, 70)}...`}
-                    thumbnail={media.thumbnail}
-                    saved={false}
-                    id={media.id}
-                  />
-                );
-              } else if (media.type === 'podcast' && showFilterPod) {
-                return (
-                  <Pod
-                    key={i}
-                    title={media.title.substr(5, 1000)}
-                    // description={media.description && `${media.description.substr(0, 70)}...`}
-                    thumbnail={media.thumbnail}
-                    saved={false}
-                    id={media.id}
-                  />
-                );
-              }
-              return <></>;
-            })}
+              <p>Podd</p>
+              <Line />
+              <Pod
+                title={tracks[0].title}
+                // description={media.description && `${media.description.substr(0, 70)}...`}
+                thumbnail={tracks[0].thumbnail}
+                saved={false}
+                id={tracks[0].id}
+              />
+              <Pod
+                title={tracks[1].title}
+                // description={media.description && `${media.description.substr(0, 70)}...`}
+                thumbnail={tracks[1].thumbnail}
+                saved={false}
+                id={tracks[1].id}
+              />
+            </div>
           </StyledContainer>
         )}
       </>
