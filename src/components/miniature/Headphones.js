@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 const StyledHeadphones = styled.div`
   box-shadow: 0px 0px 5px #ccc;
   background-color: #00000099;
@@ -18,6 +19,7 @@ const StyledHeadphones = styled.div`
     width: auto;
   }
 `;
+
 const Headphones = props => {
   return (
     <StyledHeadphones>
@@ -25,4 +27,5 @@ const Headphones = props => {
     </StyledHeadphones>
   );
 };
+
 export default Headphones;

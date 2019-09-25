@@ -67,9 +67,9 @@ const PodSingle = ({ match }) => {
               onClick={chosenFilter => setChosenFilter(chosenFilter)}
             />
             <h3>Förslag</h3>
-            <Line orange marginBotton />
+            <Line orange />
             <p>Video</p>
-            <Line marginBotton />
+            <Line />
             <Video
               title={youtube[0].title}
               // description={media.description && `${media.description.substr(0, 70)}...`}
