@@ -22,8 +22,8 @@ const VideoThumbnail = props => {
     <>
       {youtube.map((video, i) => {
         let newDescription =
-          video.description.length > 30
-            ? `${video.description.substring(0, 30)}...`
+          video.description.length > 50
+            ? `${video.description.substring(0, 50)}...`
             : video.description;
 
         return (

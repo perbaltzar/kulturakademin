@@ -6,8 +6,6 @@ import News from './News';
 import RecommendationsPods from './RecommendationsPods';
 import Line from '../../players/Line';
 import CategoryGrid from '../../categories/CategoryGrid';
-import youtube from '../../../data/youtube.json';
-import tracks from '../../../data/tracks.json';
 
 const StyledHome = styled.div`
   padding-bottom: 100px;
@@ -26,7 +24,7 @@ const Home = props => {
   setNavPath(props.match.path);
   return (
     <StyledHome>
-      <PageBanner paragraphText={'En playsida för kulturintresserade'} />
+      <PageBanner paragraphText={'En playsida för kulturintresserade'} margin={true} />
       <div className="header-box">
         <h5>Kultur ur ett nytt perspektiv</h5>
       </div>
