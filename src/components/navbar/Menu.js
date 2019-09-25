@@ -119,7 +119,11 @@ const Menu = props => {
           <span></span>
         </StyledFlex>
       </div>
-      <CategoryGrid gridTemplate="1fr 1fr" onClick={() => toggleMenu()}></CategoryGrid>
+      <CategoryGrid
+        gridTemplate="1fr 1fr"
+        onClick={() => toggleMenu()}
+        numberOfCategories={10}
+      ></CategoryGrid>
       <a href="https://www.kulturakademin.com/" target="_blank" rel="noopener noreferrer">
         <StyledFlex>
           <h5>kulturakademin.se</h5>
