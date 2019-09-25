@@ -6,7 +6,7 @@ const StyledLine = styled.div`
   height: 2px;
   width: 100%;
   margin: 20px 0px;
-  margin-bottom: ${props => (props.marginBotton ? '30px' : '10px')};
+  margin-bottom: ${props => (props.marginBotton ? '30px' : '20px')};
 `;
 
 const Line = props => {
