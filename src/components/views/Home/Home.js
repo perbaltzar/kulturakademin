@@ -6,6 +6,7 @@ import News from './News';
 import RecommendationsPods from './RecommendationsPods';
 import Line from '../../players/Line';
 import CategoryGrid from '../../categories/CategoryGrid';
+import playlists from '../../../data/playlists.json';
 
 const StyledHome = styled.div`
   padding-bottom: 100px;
@@ -15,6 +16,11 @@ const StyledHome = styled.div`
 
   .header-box {
     margin: 20px 0;
+  }
+  .header-image {
+    margin-bottom: 10px;
+    width: 100%;
+    height: auto;
   }
 `;
 
@@ -28,7 +34,7 @@ const Home = props => {
       <div className="header-box">
         <h5>Kultur ur ett nytt perspektiv</h5>
       </div>
-      <img src="/assets/images/home-image.png" alt="" />
+      <img src="/assets/images/home-image.png" alt="" className="header-image" />
       <p>Using an agile workstructure with the help of...</p>
       <Line margins />
       <News />
@@ -38,8 +44,7 @@ const Home = props => {
       <div className="header-box">
         <h5>Kategorier</h5>
       </div>
-      <CategoryGrid gridTemplate="1fr 1fr 1fr" />
-      {/* Put Categories here */}
+      <CategoryGrid gridTemplate="1fr 1fr 1fr" numberOfCategories={12} />
     </StyledHome>
   );
 };

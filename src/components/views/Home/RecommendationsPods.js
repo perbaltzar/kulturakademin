@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 import PodThumbnail from './PodThumbnail';
+import Headphones from '../../miniature/Headphones';
+import playlists from '../../../data/playlists.json';
 
 const StyledRecommendationsPods = styled.div`
   margin-top: 34px;
@@ -30,11 +32,8 @@ const RecommendationsPods = props => {
       </div>
       <section>
         <div>
-          <PodThumbnail />
-          <PodThumbnail />
-          <PodThumbnail />
-          <PodThumbnail />
-          <PodThumbnail />
+          <PodThumbnail thumbnail={playlists[1].thumbnail} title={playlists[1].title} />
+          <PodThumbnail thumbnail={playlists[2].thumbnail} title={playlists[2].title} />
         </div>
       </section>
     </StyledRecommendationsPods>

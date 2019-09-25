@@ -13,6 +13,7 @@ import History from './History';
 import Suggestions from './Suggestions';
 import SearchCategories from './SearchCategories';
 import search from '../../../lib/search/search';
+import CategoryGrid from '../../categories/CategoryGrid';
 
 const StyledSearch = styled.div`
   position: sticky;
@@ -32,6 +33,7 @@ const StyledSearch = styled.div`
   }
   p {
     color: white;
+    margin: 10px 0;
   }
 `;
 
@@ -86,7 +88,8 @@ const Search = props => {
               {topResults.length > 0 && <TopResults topResults={topResults} />}
               {podResults.length > 0 && <PodResults pods={podResults} />}
               {videoResults.length > 0 && <VideoResults videos={videoResults} />}
-              <SearchCategories />
+              <p>Kategorier</p>
+              <CategoryGrid gridTemplate="1fr 1fr 1fr" numberOfCategories={2} />
             </>
           )}
           {showView === 'no-results' && <NoResults query={searchQuery} />}
