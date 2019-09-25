@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import Listen from './Listen';
+import Headphones from './Headphones';
 import Save from './Save';
 import addToFavourites from '../../lib/addToFavourites';
 import { PlayerContext } from '../Context';
@@ -24,24 +24,6 @@ const StyledPod = styled.div`
     padding: 0px;
     height: auto;
     margin-right: 10px;
-    div {
-      box-shadow: 0px 0px 5px #ccc;
-      background-color: #00000099;
-      position: absolute;
-      z-index: 2;
-      margin: 5px 0 0 40px;
-      padding: 5px;
-      border-radius: 50%;
-      width: 21px;
-      height: 21px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      img {
-        height: 9px;
-        width: auto;
-      }
-    }
     img {
       border-radius: 2px;
       width: auto;
@@ -60,14 +42,14 @@ const StyledPod = styled.div`
   }
 `;
 
-const Pod = ({ title, description, thumbnail, saved, id }) => {
+const Pod = ({ title, thumbnail, saved, id }) => {
   const { favourites, setFavourites } = useContext(PlayerContext);
   return (
     <StyledPod>
       <Link to={`/podd/${id}`}>
         <section>
           <div>
-            <img src="/assets/icons/headphones.svg" alt="headphones" />
+            <Headphones />
           </div>
           <img src={thumbnail} alt="Pod thumbnail" />
         </section>
