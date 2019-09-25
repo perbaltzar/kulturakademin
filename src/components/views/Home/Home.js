@@ -30,11 +30,11 @@ const Home = props => {
       </div>
       <img src="/assets/images/home-image.png" alt="" />
       <p>Using an agile workstructure with the help of...</p>
-      <Line />
+      <Line margins />
       <News />
-      <Line />
+      <Line margins />
       <RecommendationsPods />
-      <Line />
+      <Line margins />
       <div className="header-box">
         <h5>Kategorier</h5>
       </div>
