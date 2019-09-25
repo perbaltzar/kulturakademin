@@ -14,6 +14,7 @@ const StyledNews = styled.div`
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     width: 90vw;
+    grid-gap: 10px;
   }
 `;
 

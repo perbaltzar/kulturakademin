@@ -22,6 +22,8 @@ const categories = [
   'film',
   'teater',
   'poesi',
+  'event',
+  'mode',
 ];
 
 const CategoryGrid = props => {
@@ -29,15 +31,18 @@ const CategoryGrid = props => {
   return (
     <StyledCategoryGrid {...props}>
       {categories.map((category, i) => {
-        return (
-          <Link to={`/kategori/${category}`} key={i}>
-            <CategoryBox
-              name={capitalize(category)}
-              key={i}
-              backgroundColor={colors[i % colors.length]}
-            />
-          </Link>
-        );
+        if (i < props.numberOfCategories) {
+          return (
+            <Link to={`/kategori/${category}`} key={i}>
+              <CategoryBox
+                name={capitalize(category)}
+                key={i}
+                backgroundColor={colors[i % colors.length]}
+              />
+            </Link>
+          );
+        }
+        return <></>;
       })}
     </StyledCategoryGrid>
   );

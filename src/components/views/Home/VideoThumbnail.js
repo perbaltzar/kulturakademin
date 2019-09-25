@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import youtube from '../../../data/youtube.json';
 const StyledVideoThumbnail = styled.div`
-  margin-right: 10px;
   color: black;
   display: flex;
   flex-direction: column;
@@ -10,10 +9,11 @@ const StyledVideoThumbnail = styled.div`
     margin-top: 5px;
     font-size: 12px;
     color: ${props => props.theme.colorLight};
-  }
-  img,
-  p {
     margin-bottom: 10px;
+  }
+  img {
+    width: 100%;
+    height: auto;
   }
 `;
 youtube.pop();
