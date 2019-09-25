@@ -8,7 +8,7 @@ import youtube from '../../data/youtube.json';
 import playlists from '../../data/playlists.json';
 import selectMediaById from '../../lib/search/selectMediaById';
 import getTracksFromPlaylist from '../../lib/search/getTracksFromPlaylist';
-import CategoryBanner from '../categories/CategoryBanner';
+import PageBanner from '../views/Home/PageBanner';
 import PodHero from './PodHero';
 import FilterBar from '../modals/search/FilterBar';
 import Video from '../miniature/Video';
@@ -52,7 +52,7 @@ const PodSingle = ({ match }) => {
     <StyledPodSingle>
       {loaded && (
         <>
-          <CategoryBanner />
+          <PageBanner />
           <PodHero
             onClick={() => setPlayerVisible('pod')}
             trackTitle={playingTrack.title}
