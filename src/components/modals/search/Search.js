@@ -33,6 +33,8 @@ const StyledSearch = styled.div`
   }
   p {
     color: white;
+  }
+  .categories {
     margin: 10px 0;
   }
 `;
@@ -88,7 +90,7 @@ const Search = props => {
               {topResults.length > 0 && <TopResults topResults={topResults} />}
               {podResults.length > 0 && <PodResults pods={podResults} />}
               {videoResults.length > 0 && <VideoResults videos={videoResults} />}
-              <p>Kategorier</p>
+              <p className="categories">Kategorier</p>
               <CategoryGrid gridTemplate="1fr 1fr 1fr" numberOfCategories={2} />
             </>
           )}
