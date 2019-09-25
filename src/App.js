@@ -24,6 +24,7 @@ const StyledApp = styled.div`
   overflow: ${props => (props.menuOpen === 'block' ? 'hidden' : 'auto')};
   background-color: #141414;
 `;
+
 const App = props => {
   const [displayMenu, setDisplayMenu] = useState('none');
   const [toggleMenuAnimation, setToggleMenuAnimation] = useState(true);
@@ -32,10 +33,11 @@ const App = props => {
   const [cookie, setCookie] = useState(localStorage.getItem('seenCookies'));
   const [mediaId, setMediaId] = useState('');
   const [navPath, setNavPath] = useState('');
-  const [favourites, setFavourites] = useState(
-    JSON.parse(localStorage.getItem('favourites')) || [],
-  );
 
+  const getLocalstorageFavourites = () => {
+    return JSON.parse(localStorage.getItem('favourites')) || [];
+  };
+  const [favourites, setFavourites] = useState(getLocalstorageFavourites);
   // Search modal open och close
   const [displaySearch, setDisplaySearch] = useState(false);
 
