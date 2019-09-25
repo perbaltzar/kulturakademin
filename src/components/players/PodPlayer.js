@@ -30,6 +30,8 @@ const StyledReactPlayer = styled.div`
   }
   div button {
     /* PLAYBUTTON */
+    background-color: transparent;
+    border: 0;
     color: white;
     font-size: 20px;
     height: 28px;
