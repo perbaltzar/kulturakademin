@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
-import CategoryBanner from '../categories/CategoryBanner';
 import { PlayerContext, SearchContext } from '../Context';
 import tracks from '../../data/tracks.json';
 import playlists from '../../data/playlists.json';
@@ -9,6 +8,7 @@ import selectMediaById from '../../lib/search/selectMediaById';
 import Video from '../miniature/Video';
 import Pod from '../miniature/Pod';
 import Line from '../players/Line';
+import PageBanner from './Home/PageBanner';
 
 let allMedia = [youtube, tracks, playlists].flat();
 
@@ -57,7 +57,7 @@ const Favourites = ({ match }) => {
   if (savedFavourites.length > 0) {
     return (
       <StyledFavourites>
-        <CategoryBanner text="Favoriter"></CategoryBanner>
+        <PageBanner />
         {savedFavourites.map((media, i) => {
           if (media.type === 'video') {
             return (
@@ -91,7 +91,7 @@ const Favourites = ({ match }) => {
   }
   return (
     <StyledFavourites>
-      <CategoryBanner />
+      <PageBanner />
       <h3>Favoriter</h3>
       <Line />
       <StyledGrid>

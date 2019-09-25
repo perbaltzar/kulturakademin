@@ -85,7 +85,6 @@ const PodPlayer = ({ id }) => {
   useEffect(() => {
     setTrack(selectMediaById(id.toString(), tracks));
     setLoaded(true);
-    console.log(track, id);
   }, [id, track]);
 
   return (
