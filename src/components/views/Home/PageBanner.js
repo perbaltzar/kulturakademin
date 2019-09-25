@@ -13,7 +13,7 @@ const StyledPageBanner = styled.div`
   justify-content: center;
   svg {
     position: absolute;
-    left: 25px;
+    left: 10px;
     top: 41px;
   }
   `};

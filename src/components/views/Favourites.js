@@ -91,9 +91,9 @@ const Favourites = ({ match }) => {
   }
   return (
     <StyledFavourites>
-      <PageBanner />
-      <h3>Favoriter</h3>
-      <Line />
+      <PageBanner margin />
+      <h2>Favoriter</h2>
+      <Line orange />
       <StyledGrid>
         <svg
           width="35"
