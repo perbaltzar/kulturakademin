@@ -6,7 +6,6 @@ import News from './News';
 import RecommendationsPods from './RecommendationsPods';
 import Line from '../../players/Line';
 import CategoryGrid from '../../categories/CategoryGrid';
-import playlists from '../../../data/playlists.json';
 
 const StyledHome = styled.div`
   padding-bottom: 100px;
