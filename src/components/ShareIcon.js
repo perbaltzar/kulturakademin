@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ShareIconStyled = styled.svg`
-  margin-right: ${props => (props.marginRight ? '20px' : '')};
+  margin-bottom: ${props => (props.marginBottom ? '20px' : '')};
 `;
 const ShareIcon = props => {
   return (

@@ -8,38 +8,26 @@ import addToFavourites from '../../lib/addToFavourites';
 import ShareIcon from '../ShareIcon';
 
 const StyledPodHero = styled.div`
-  padding: 10px 20px 0px 50px;
+  padding: 10px 60px 0px 60px;
   margin-bottom: 30px;
   color: white;
-  div:first-of-type {
+
+  section:nth-child(2) {
+    padding-top: 30px;
     display: flex;
-    div {
-      align-items: flex-start;
+    justify-content: space-between;
+    align-items: flex-start;
+    p {
+      width: 80%;
     }
-  }
-  div:nth-child(2) {
-    padding-top: 10px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
   }
   img {
     border-radius: 2px;
-    width: 50%;
-    margin-right: 10px;
+    width: 100%;
+    margin-bottom: 30px;
   }
   h2 {
     margin: 10px 0;
-  }
-`;
-
-const StyledPodHeroPlaying = styled.div`
-  padding: 10px 50px 0 50px;
-
-  display: flex;
-
-  h3 {
-    color: white;
   }
 `;
 
@@ -47,36 +35,27 @@ const PodHero = ({ onClick, playlistThumbnail, playlistTitle, trackTitle, trackP
   const { favourites, setFavourites } = useContext(PlayerContext);
 
   return (
-    <>
-      {trackPlaying && (
-        <StyledPodHeroPlaying>
-          <img onClick={onClick} src={playlistThumbnail} alt="thumbnail" />
-          <h2>{playlistTitle}</h2>
-          <p>{trackTitle}</p>
-        </StyledPodHeroPlaying>
-      )}
-      {!trackPlaying && (
-        <StyledPodHero>
-          <div>
-            <img onClick={onClick} src={playlistThumbnail} alt="thumbnail" />
-            <div>
-              <h3>{playlistTitle}</h3>
-              <p>{trackTitle}</p>
-            </div>
-          </div>
-          <div>
-            <ShareIcon marginRight />
-            <Save
-              onClick={() => {
-                addToFavourites(id, favourites);
-                setFavourites(JSON.parse(localStorage.getItem('favourites')));
-              }}
-              saved={isFavourite(id, favourites)}
-            />
-          </div>
-        </StyledPodHero>
-      )}
-    </>
+    <StyledPodHero>
+      <section>
+        <img onClick={onClick} src={playlistThumbnail} alt="thumbnail" />
+        <div>
+          <h3>{playlistTitle}</h3>
+        </div>
+      </section>
+      <section>
+        <p>{trackTitle}</p>
+        <div>
+          <ShareIcon marginBottom />
+          <Save
+            onClick={() => {
+              addToFavourites(id, favourites);
+              setFavourites(JSON.parse(localStorage.getItem('favourites')));
+            }}
+            saved={isFavourite(id, favourites)}
+          />
+        </div>
+      </section>
+    </StyledPodHero>
   );
 };
 

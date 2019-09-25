@@ -50,13 +50,13 @@ const VideoPlayer = () => {
   return (
     <StyledVideoPlayer smallPlayer={smallPlayer}>
       <PageBanner />
-      <button
+      {/* <button
         onClick={() => {
           setSmallPlayer(!smallPlayer);
         }}
       >
         TOGGLE
-      </button>
+      </button> */}
       {smallPlayer ? (
         <div className="small-player-container">
           <div className="small-player">
