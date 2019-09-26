@@ -25,7 +25,6 @@ const StyledRecommendationsPods = styled.div`
 
 const RecommendationsPods = props => {
   const { numberOfVisits } = useContext(PlayerContext);
-  console.log(numberOfVisits);
   return (
     <StyledRecommendationsPods>
       <div className="header-box">
