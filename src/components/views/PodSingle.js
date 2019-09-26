@@ -59,6 +59,7 @@ const PodSingle = ({ match }) => {
             trackPlaying={isPlaying}
             playlistThumbnail={playlist.thumbnail}
             playlistTitle={playlist.title}
+            id={playlist.id}
           />
           {playlistTracks.length > 0 && <Playlist playlistTracks={playlistTracks} />}
           <StyledFilterSection>
@@ -74,7 +75,6 @@ const PodSingle = ({ match }) => {
               title={youtube[0].title}
               // description={media.description && `${media.description.substr(0, 70)}...`}
               thumbnail={youtube[0].thumbnail}
-              saved={false}
               id={youtube[0].id}
             />
             <p>Podd</p>
@@ -83,14 +83,12 @@ const PodSingle = ({ match }) => {
               title={tracks[0].title}
               // description={media.description && `${media.description.substr(0, 70)}...`}
               thumbnail={tracks[0].thumbnail}
-              saved={false}
               id={tracks[0].id}
             />
             <Pod
               title={tracks[1].title}
               // description={media.description && `${media.description.substr(0, 70)}...`}
               thumbnail={tracks[1].thumbnail}
-              saved={false}
               id={tracks[1].id}
             />
           </StyledFilterSection>
