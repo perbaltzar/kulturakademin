@@ -36,7 +36,7 @@ const PodSingle = ({ match }) => {
   const [playingTrack, setPlayingTrack] = useState({ title: '' });
   const [isPlaying] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const [chosenFilter, setChosenFilter] = useState('a-ö');
+  const [chosenFilter, setChosenFilter] = useState('senaste');
 
   if (!smallPlayer) setPlayerVisible('none');
 
