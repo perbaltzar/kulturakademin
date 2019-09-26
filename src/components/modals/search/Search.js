@@ -46,10 +46,10 @@ const StyledSearch = styled.div`
   animation: ${props =>
     props.animation
       ? css`
-          ${fadeOut} 0.25s ease-in-out forwards
+          ${fadeOut} 0.35s ease-in-out forwards
         `
       : css`
-          ${fadeIn} 0.25s ease-in-out forwards
+          ${fadeIn} 0.35s ease-in-out forwards
         `};
   article {
     padding: 66px 20px 0 20px;

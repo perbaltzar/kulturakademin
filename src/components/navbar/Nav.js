@@ -34,10 +34,14 @@ const Nav = () => {
   };
   const toggleSearch = () => {
     console.log(toggleSearchAnimation);
+
     setToggleSearchAnimation(!toggleSearchAnimation);
-    setTimeout(() => {
-      setDisplaySearch(!displaySearch);
-    }, 300);
+
+    displaySearch
+      ? setTimeout(() => {
+          setDisplaySearch(!displaySearch);
+        }, 400)
+      : setDisplaySearch(!displaySearch);
   };
 
   const checkIfDisplaySearch = () => {
@@ -85,7 +89,6 @@ const Nav = () => {
       <Icon
         imgsrc={`/assets/icons/navbar/search-${searchIcon}.svg`}
         onClick={() => {
-          checkIfDisplaySearch();
           toggleSearchIcon();
           toggleSearch();
         }}
