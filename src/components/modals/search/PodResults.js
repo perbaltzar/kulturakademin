@@ -6,7 +6,7 @@ import Pod from '../../miniature/Pod';
 
 const StyledPodResults = styled.div``;
 
-const PodResults = ({ pods }) => {
+const PodResults = ({ pods, toggleSearch }) => {
   return (
     <StyledPodResults>
       <p>Podd</p>
@@ -19,6 +19,7 @@ const PodResults = ({ pods }) => {
             thumbnail={pod.thumbnail}
             description={pod.description}
             title={pod.title}
+            toggleSearch={toggleSearch}
           />
         );
       })}

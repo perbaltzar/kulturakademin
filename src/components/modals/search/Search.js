@@ -73,8 +73,26 @@ const Search = props => {
   const [results, setResults] = useState([]);
   const [chosen, setChosen] = useState('senaste');
   const [showView, setShowView] = useState('suggestions');
-  const { displaySearch, toggleSearchAnimation } = useContext(SearchContext);
   const [searchQuery, setSearchQuery] = useState('');
+
+  const {
+    displaySearch,
+    setDisplaySearch,
+    toggleSearchAnimation,
+    setToggleSearchAnimation,
+  } = useContext(SearchContext);
+
+  const toggleSearch = () => {
+    if (displaySearch) {
+      setTimeout(() => {
+        setDisplaySearch(!displaySearch);
+      }, 400);
+    } else {
+      setDisplaySearch(!displaySearch);
+    }
+    setToggleSearchAnimation(!toggleSearchAnimation);
+  };
+
   const handleChange = query => {
     if (query.length > 0) {
       setSearchQuery(query);
@@ -106,14 +124,22 @@ const Search = props => {
           }}
         />
         <article>
-          {showView === 'suggestions' && <Suggestions animation={toggleSearchAnimation} />}
+          {showView === 'suggestions' && (
+            <Suggestions animation={toggleSearchAnimation} toggleSearch={toggleSearch} />
+          )}
           {showView === 'history' && <History />}
           {showView === 'results' && (
             <>
               <FilterBar chosen={chosen} onClick={chosenFilter => setChosen(chosenFilter)} />
-              {topResults.length > 0 && <TopResults topResults={topResults} />}
-              {podResults.length > 0 && <PodResults pods={podResults} />}
-              {videoResults.length > 0 && <VideoResults videos={videoResults} />}
+              {topResults.length > 0 && (
+                <TopResults topResults={topResults} toggleSearch={toggleSearch} />
+              )}
+              {podResults.length > 0 && (
+                <PodResults pods={podResults} toggleSearch={toggleSearch} />
+              )}
+              {videoResults.length > 0 && (
+                <VideoResults videos={videoResults} toggleSearch={toggleSearch} />
+              )}
               <p className="categories">Kategorier</p>
               <CategoryGrid gridTemplate="1fr 1fr 1fr" numberOfCategories={2} />
             </>
