@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import youtube from '../../../data/youtube.json';
 const StyledRecommendedForYou = styled.div`
   h5 {
     margin-bottom: 10px;
@@ -15,15 +15,14 @@ const StyledRecommendedForYou = styled.div`
     font: ${props => props.theme.fontMobilePsmall};
   }
 `;
-
+console.log(youtube[0]);
 const RecommendedForYou = props => {
   return (
     <StyledRecommendedForYou>
       <h5>Rekommenderat för dig</h5>
-      <img src="./assets/images/recommended-image.png" alt="" />
+      <img src="./assets/images/home-image.png" alt="" />
       <div>
-        <p>Ut orci, sem eleifend facilisis cras sed. Risus, commodo</p>
-        <p>tortor tincidunt sodales scelerisque. Non morbi vitae senectus vel egestas quis.</p>
+        <p>Using an agile workstructure with the help of...</p>
       </div>
     </StyledRecommendedForYou>
   );
