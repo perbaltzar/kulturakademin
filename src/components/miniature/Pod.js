@@ -46,7 +46,12 @@ const Pod = ({ title, thumbnail, saved, id }) => {
   const { favourites, setFavourites } = useContext(PlayerContext);
   return (
     <StyledPod>
-      <Link to={`/podd/${id}`}>
+      <Link
+        to={`/podd/${id}`}
+        onClick={() => {
+          window.scrollTo(0, 0);
+        }}
+      >
         <section>
           <div>
             <Headphones />
@@ -56,7 +61,7 @@ const Pod = ({ title, thumbnail, saved, id }) => {
       </Link>
       <section>
         <div>
-          <Link to={`/podd/${id}`}>
+          <Link to={`/podd/${id}`} onClick={() => window.scrollTo(0, 0)}>
             <p>{title}</p>
           </Link>
         </div>

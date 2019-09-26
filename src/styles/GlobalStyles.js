@@ -9,6 +9,7 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     position: relative;
     font-family: Roboto;
+    outline: none;
 }
 a{
     text-decoration: none;

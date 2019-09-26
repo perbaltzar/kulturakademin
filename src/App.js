@@ -18,6 +18,7 @@ import Search from './components/modals/search/Search';
 import About from './components/views/About';
 import { MenuContext, PlayerContext, SearchContext } from './components/Context';
 import Cookies from './components/modals/Cookies';
+import Tack from './components/views/Tack';
 
 const StyledApp = styled.div`
   height: 100vh;
@@ -75,6 +76,7 @@ const App = props => {
                   <Route path="/video/:id" component={VideoSingle} />
                   <Route path="/podd/:id" component={PodSingle} />
                   <Route path="/kategori/:id" component={CategorySinglePage} />
+                  <Route path="/tack" component={Tack} />
                   <Route path="/" component={NotFound} />
                 </Switch>
               </PlayerContext.Provider>

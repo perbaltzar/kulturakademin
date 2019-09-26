@@ -19,6 +19,9 @@ const StyledPlaylistItem = styled.div`
     height: auto;
     grid-template-columns: 1fr 5fr;
     padding-right: 20px;
+    p {
+      color: white;
+    }
   }
   div {
     display: flex;

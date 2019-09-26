@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const ShareIconStyled = styled.svg`
   margin-bottom: ${props => (props.marginBottom ? '20px' : '')};
+  margin-top: ${props => (props.marginTop ? '20px' : '')};
 `;
 const ShareIcon = props => {
   return (
