@@ -15,40 +15,32 @@ const StyledNav = styled.div`
   position: fixed;
   bottom: 0;
   padding: 0px 10px;
-  z-index: 100;
+  z-index: 230;
 `;
 
 const Nav = () => {
   const { setDisplayMenu, toggleMenuAnimation, setToggleMenuAnimation } = useContext(MenuContext);
 
   const { navPath, setNavPath } = useContext(MenuContext);
-  const [searchIcon, setSearchIcon] = useState('faded');
+
   const {
     displaySearch,
     setDisplaySearch,
     toggleSearchAnimation,
     setToggleSearchAnimation,
   } = useContext(SearchContext);
-  const toggleSearchIcon = () => {
-    searchIcon === 'faded' ? setSearchIcon('filled') : setSearchIcon('faded');
-  };
+
   const toggleSearch = () => {
-    console.log(toggleSearchAnimation);
-
-    setToggleSearchAnimation(!toggleSearchAnimation);
-
-    displaySearch
-      ? setTimeout(() => {
-          setDisplaySearch(!displaySearch);
-        }, 400)
-      : setDisplaySearch(!displaySearch);
-  };
-
-  const checkIfDisplaySearch = () => {
-    if (displaySearch === true) {
-      toggleSearchIcon();
+    if (displaySearch) {
+      setTimeout(() => {
+        setDisplaySearch(!displaySearch);
+      }, 400);
+    } else {
+      setDisplaySearch(!displaySearch);
     }
+    setToggleSearchAnimation(!toggleSearchAnimation);
   };
+
   setNavPath(window.location.pathname);
 
   return (
@@ -58,7 +50,6 @@ const Nav = () => {
         onClick={() => {
           setDisplayMenu('block');
           setToggleMenuAnimation(!toggleMenuAnimation);
-          checkIfDisplaySearch();
         }}
       />
 
@@ -70,7 +61,7 @@ const Nav = () => {
               : '/assets/icons/navbar/home-faded.svg'
           }
           onClick={() => {
-            checkIfDisplaySearch();
+            if (displaySearch) toggleSearch();
           }}
         />
       </Link>
@@ -82,14 +73,17 @@ const Nav = () => {
               : '/assets/icons/navbar/favourites-faded.svg'
           }
           onClick={() => {
-            checkIfDisplaySearch();
+            if (displaySearch) toggleSearch();
           }}
         />
       </Link>
       <Icon
-        imgsrc={`/assets/icons/navbar/search-${searchIcon}.svg`}
+        imgsrc={
+          displaySearch
+            ? `/assets/icons/navbar/search-filled.svg`
+            : `/assets/icons/navbar/search-faded.svg`
+        }
         onClick={() => {
-          toggleSearchIcon();
           toggleSearch();
         }}
       />

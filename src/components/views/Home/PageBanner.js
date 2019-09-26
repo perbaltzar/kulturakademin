@@ -13,12 +13,13 @@ const StyledPageBanner = styled.div`
   justify-content: center;
   svg {
     position: absolute;
-    left: 10px;
-    top: 41px;
+    left: 20px;
+    top: 40px;
   }
   `};
   display: flex;
   align-items: center;
+  z-index: 201;
   justify-content: center;
   flex-direction: column;
   background-color: ${props => props.theme.colorDark};

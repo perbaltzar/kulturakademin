@@ -22,6 +22,7 @@ const fadeIn = keyframes`
 
   to {
     transform: translateY(0vh)
+
   }
 `;
 const fadeOut = keyframes`
@@ -34,22 +35,22 @@ const fadeOut = keyframes`
   }
 `;
 const StyledSearch = styled.div`
-  position: sticky;
-  ${props => (props.displaySearch ? 'display: block' : 'display: none')};
+  position: fixed;
+  display: block;
   top: 0;
-  z-index: 99;
+  z-index: 220;
   height: 100vh;
-  overflow: scroll;
+  overflow: auto;
   background-color: ${props => props.theme.colorDark};
   width: 100%;
   padding-bottom: 80px;
   animation: ${props =>
     props.animation
       ? css`
-          ${fadeOut} 0.35s ease-in-out forwards
+          ${fadeIn} 0.35s ease-in-out forwards
         `
       : css`
-          ${fadeIn} 0.35s ease-in-out forwards
+          ${fadeOut} 0.35s ease-in-out forwards
         `};
   article {
     padding: 66px 20px 0 20px;
@@ -73,7 +74,6 @@ const Search = props => {
   const [chosen, setChosen] = useState('senaste');
   const [showView, setShowView] = useState('suggestions');
   const { displaySearch, toggleSearchAnimation } = useContext(SearchContext);
-
   const [searchQuery, setSearchQuery] = useState('');
   const handleChange = query => {
     if (query.length > 0) {
