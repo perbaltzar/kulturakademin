@@ -10,7 +10,7 @@ import Video from '../miniature/Video';
 import Pod from '../miniature/Pod';
 import findMediaByCategory from '../../lib/search/findMediaByCategory';
 import Line from '../players/Line';
-
+import PageBanner from '../views/Home/PageBanner';
 import tracks from '../../data/tracks.json';
 import videos from '../../data/youtube.json';
 import youtube from '../../data/youtube.json';
@@ -31,6 +31,14 @@ const StyledFlexBox = styled.div`
   margin: 0px 0 20px 0;
   justify-content: ${props => props.justifyContent};
 `;
+
+const StyledVideoHero = styled.div`
+  display: flex;
+  margin: 0px 0 20px 0;
+  justify-content: space-between;
+  margin-top: 210px;
+`;
+
 const StyledImg = styled.img`
   justify-self: flex-start;
   align-self: flex-start;
@@ -91,10 +99,11 @@ const VideoSingle = props => {
       <>
         {loaded && (
           <StyledContainer>
-            <StyledFlexBox justifyContent="space-between">
+            <PageBanner />
+            <StyledVideoHero>
               <h3>{video.title}</h3>
               <Save saved={false} />
-            </StyledFlexBox>
+            </StyledVideoHero>
             <StyledFlexBox>
               <StyledDescription toggleText={showText}>
                 <p>{video.description}</p>
@@ -126,18 +135,18 @@ const VideoSingle = props => {
               <p>Podd</p>
               <Line />
               <Pod
-                title={tracks[0].title}
+                title={playlists[0].title}
                 // description={media.description && `${media.description.substr(0, 70)}...`}
-                thumbnail={tracks[0].thumbnail}
+                thumbnail={playlists[0].thumbnail}
                 saved={false}
-                id={tracks[0].id}
+                id={playlists[0].id}
               />
               <Pod
-                title={tracks[1].title}
+                title={playlists[1].title}
                 // description={media.description && `${media.description.substr(0, 70)}...`}
-                thumbnail={tracks[1].thumbnail}
+                thumbnail={playlists[1].thumbnail}
                 saved={false}
-                id={tracks[1].id}
+                id={playlists[1].id}
               />
             </StyledFilterCointainer>
           </StyledContainer>
