@@ -9,7 +9,7 @@ import Line from '../players/Line';
 const StyledAbout = styled.div`
   background-color: ${props => props.theme.colorDark};
   padding: 0 20px 80px 20px;
-  height: 100vh;
+  height: 85vh;
   overflow: scroll;
   color: white;
   display: flex;
