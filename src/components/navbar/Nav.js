@@ -23,13 +23,25 @@ const Nav = () => {
 
   const { navPath, setNavPath } = useContext(MenuContext);
   const [searchIcon, setSearchIcon] = useState('faded');
-  const { displaySearch, setDisplaySearch } = useContext(SearchContext);
+  const {
+    displaySearch,
+    setDisplaySearch,
+    toggleSearchAnimation,
+    setToggleSearchAnimation,
+  } = useContext(SearchContext);
   const toggleSearchIcon = () => {
     searchIcon === 'faded' ? setSearchIcon('filled') : setSearchIcon('faded');
   };
+  const toggleSearch = () => {
+    console.log(toggleSearchAnimation);
+    setToggleSearchAnimation(!toggleSearchAnimation);
+    setTimeout(() => {
+      setDisplaySearch(!displaySearch);
+    }, 300);
+  };
+
   const checkIfDisplaySearch = () => {
     if (displaySearch === true) {
-      setDisplaySearch(!displaySearch);
       toggleSearchIcon();
     }
   };
@@ -49,7 +61,9 @@ const Nav = () => {
       <Link to="/">
         <Icon
           imgsrc={
-            navPath === '/' ? '/assets/icons/navbar/home-filled.svg' : '/assets/icons/navbar/home-faded.svg'
+            navPath === '/'
+              ? '/assets/icons/navbar/home-filled.svg'
+              : '/assets/icons/navbar/home-faded.svg'
           }
           onClick={() => {
             checkIfDisplaySearch();
@@ -71,9 +85,9 @@ const Nav = () => {
       <Icon
         imgsrc={`/assets/icons/navbar/search-${searchIcon}.svg`}
         onClick={() => {
-          setDisplaySearch(!displaySearch);
           checkIfDisplaySearch();
           toggleSearchIcon();
+          toggleSearch();
         }}
       />
     </StyledNav>
