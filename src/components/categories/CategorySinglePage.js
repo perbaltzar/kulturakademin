@@ -31,7 +31,7 @@ const StyledCategorySinglePage = styled.div`
 const CategorySinglePage = ({ match }) => {
   const [category, setCategory] = useState('');
   const [media, setMedia] = useState(data);
-  const [chosen, setChosen] = useState('a-ö');
+  const [chosen, setChosen] = useState('senaste');
   const { smallPlayer, setPlayerVisible } = useContext(PlayerContext);
 
   useEffect(() => {
