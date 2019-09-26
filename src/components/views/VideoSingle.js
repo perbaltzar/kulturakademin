@@ -83,7 +83,7 @@ const VideoSingle = props => {
   const [loaded, setLoaded] = useState(false);
   const [related, setRelated] = useState(data);
   const [showText, setShowText] = useState(false);
-  const [chosenFilter, setChosenFilter] = useState('a-ö');
+  const [chosenFilter, setChosenFilter] = useState('senaste');
   const { favourites, setFavourites } = useContext(PlayerContext);
 
   useEffect(() => {
