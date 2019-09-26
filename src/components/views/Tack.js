@@ -10,6 +10,15 @@ const StyledTack = styled.div`
   height: 100vh;
   overflow: scroll;
   color: white;
+  h3 {
+    color: ${props => props.theme.orange};
+    /* color: lime; */
+    font-size: 24px;
+  }
+  h5 {
+    margin-top: 100px;
+    margin-bottom: 10px;
+  }
   h2 {
     margin-top: 20px;
     margin-bottom: 10px;
@@ -40,6 +49,8 @@ const Tack = props => {
       <h2>Digital Designer</h2>
       <h4>Tara Salim Ali Bagar</h4>
       <h4>Arvid Lindstedt</h4>
+      <h5>Titta in på sidan själva:</h5>
+      <h3>http://kulturplay.netlify.com</h3>
     </StyledTack>
   );
 };

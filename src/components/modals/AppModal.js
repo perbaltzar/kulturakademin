@@ -14,7 +14,7 @@ const StyledAppModal = styled.div`
   padding: 43px;
   background-color: #282828;
   border-radius: 2px;
-  z-index: 1;
+  z-index: 900;
   color: ${props => props.theme.colorLight};
   .first-paragraph {
     margin-bottom: 20px;

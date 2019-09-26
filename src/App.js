@@ -95,7 +95,7 @@ const App = props => {
                     numberOfVisits,
                   }}
                 >
-                  {numberOfVisits === 3 && <AppModal />}
+                  {numberOfVisits >= 3 && <AppModal />}
 
                   {!cookie && <Cookies onClick={() => setCookie(true)} />}
                   {displaySearch && <Search />}
