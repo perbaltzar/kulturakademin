@@ -45,9 +45,8 @@ const Search = props => {
   const [topResults, setTopResults] = useState([]);
   const [results, setResults] = useState([]);
 
-  const [chosen, setChosen] = useState('a-ö');
+  const [chosen, setChosen] = useState('senaste');
   const [showView, setShowView] = useState('suggestions');
-
   const { displaySearch } = useContext(SearchContext);
 
   const [searchQuery, setSearchQuery] = useState('');
