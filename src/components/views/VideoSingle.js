@@ -48,6 +48,12 @@ const StyledDescription = styled.div`
   margin: ${props => props.margin};
 `;
 
+const StyledFilterCointainer = styled.div`
+  h3 {
+    margin-top: 50px;
+  }
+`;
+
 const VideoSingle = props => {
   const { setPlayerVisible, setSmallPlayer, mediaId, setMediaId } = useContext(PlayerContext);
   const [video, setVideo] = useState({});
@@ -100,15 +106,14 @@ const VideoSingle = props => {
                 onClick={() => setShowText(!showText)}
               />
             </StyledFlexBox>
-            <Line margins />
 
-            <div>
+            <StyledFilterCointainer>
+              <h3>Förslag</h3>
+              <Line orange />
               <FilterBar
                 chosen={chosenFilter}
                 onClick={chosenFilter => setChosenFilter(chosenFilter)}
               />
-              <h3>Förslag</h3>
-              <Line orange />
               <p>Video</p>
               <Line />
               <Video
@@ -134,7 +139,7 @@ const VideoSingle = props => {
                 saved={false}
                 id={tracks[1].id}
               />
-            </div>
+            </StyledFilterCointainer>
           </StyledContainer>
         )}
       </>

@@ -24,6 +24,9 @@ const StyledPodSingle = styled.div`
 
 const StyledFilterSection = styled.div`
   padding: 30px 20px;
+  h3 {
+    margin-top: 50px;
+  }
 `;
 
 const PodSingle = ({ match }) => {
@@ -62,12 +65,12 @@ const PodSingle = ({ match }) => {
           />
           {playlistTracks.length > 0 && <Playlist playlistTracks={playlistTracks} />}
           <StyledFilterSection>
+            <h3>Förslag</h3>
+            <Line orange />
             <FilterBar
               chosen={chosenFilter}
               onClick={chosenFilter => setChosenFilter(chosenFilter)}
             />
-            <h3>Förslag</h3>
-            <Line orange />
             <p>Video</p>
             <Line />
             <Video
