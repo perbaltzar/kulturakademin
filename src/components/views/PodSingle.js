@@ -16,7 +16,8 @@ import Pod from '../miniature/Pod';
 
 const StyledPodSingle = styled.div`
   height: 100vh;
-  padding-bottom: 80px;
+  padding-bottom: 60px;
+  ${props => (props.podPlayer ? 'padding-bottom: 100px' : '')}
   overflow: scroll;
   background: ${props => props.theme.colorDark};
   color: white;
@@ -38,7 +39,7 @@ const PodSingle = ({ match }) => {
   const [loaded, setLoaded] = useState(false);
   const [chosenFilter, setChosenFilter] = useState('senaste');
 
-  if (!smallPlayer) setPlayerVisible('none');
+  if (!smallPlayer && playerVisible !== 'pod') setPlayerVisible('none');
 
   useEffect(() => {
     // Fetching playlist from DB
@@ -54,7 +55,7 @@ const PodSingle = ({ match }) => {
   }, [match.params.id, mediaId, playerVisible, playlist]);
 
   return (
-    <StyledPodSingle>
+    <StyledPodSingle podPlayer={playerVisible === 'pod'}>
       {loaded && (
         <>
           <PageBanner />

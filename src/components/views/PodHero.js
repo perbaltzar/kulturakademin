@@ -19,6 +19,7 @@ const StyledPodHero = styled.div`
     align-items: flex-start;
     p {
       width: 80%;
+      line-height: 20px;
     }
   }
   img {
@@ -26,8 +27,9 @@ const StyledPodHero = styled.div`
     width: 100%;
     margin-bottom: 30px;
   }
-  h2 {
+  h3 {
     margin: 10px 0;
+    line-height: 27px;
   }
 `;
 
