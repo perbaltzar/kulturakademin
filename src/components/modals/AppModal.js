@@ -58,7 +58,7 @@ const AppModal = props => {
         <h4>Du verkar gilla kulturplay, kul!</h4>
       </div>
       <p>Ladda ner Kulturplay som app för smidig och enkel användning på mobilen.</p>
-      <Link to="/om">
+      <Link to="/app">
         <button onClick={() => toggleDisplay(false)}>
           <p>Ladda ner</p>
         </button>

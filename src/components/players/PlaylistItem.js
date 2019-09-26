@@ -47,9 +47,10 @@ const StyledPlaylistItem = styled.div`
 
 const PlaylistItem = ({ number, img, title, plays, duration, playing, description, id }) => {
   const [open, setOpen] = useState(false);
-  const { setMediaId, setPlayerVisible } = useContext(PlayerContext);
+  const { setMediaId, setPlayerVisible, setSmallPlayer } = useContext(PlayerContext);
   const startPlayer = () => {
     setPlayerVisible('none');
+    setSmallPlayer(true);
     setTimeout(() => {
       setMediaId(id);
       setPlayerVisible('pod');

@@ -35,23 +35,25 @@ const StyledTack = styled.div`
 
 const Tack = props => {
   return (
-    <StyledTack>
+    <>
       <PageBanner />
-      <h1>Tack för oss, Frågor?</h1>
-      <Line orange />
-      <h2>Webbutvecklare</h2>
-      <h4>Per Baltzar</h4>
-      <h4>Adrian Jungnelius</h4>
-      <h2>UX-Designer</h2>
-      <h4>Philip Gates</h4>
-      <h4>Faj Mac</h4>
-      <h4>Saxer Karlsson</h4>
-      <h2>Digital Designer</h2>
-      <h4>Tara Salim Ali Bagar</h4>
-      <h4>Arvid Lindstedt</h4>
-      <h5>Titta in på sidan själva:</h5>
-      <h3>http://kulturplay.netlify.com</h3>
-    </StyledTack>
+      <StyledTack>
+        <h1>Tack för oss, Frågor?</h1>
+        <Line orange />
+        <h2>Webbutvecklare</h2>
+        <h4>Per Baltzar</h4>
+        <h4>Adrian Jungnelius</h4>
+        <h2>UX-Designer</h2>
+        <h4>Philip Gates</h4>
+        <h4>Faj Mac</h4>
+        <h4>Saxer Karlsson</h4>
+        <h2>Digital Designer</h2>
+        <h4>Tara Salim Ali Bagar</h4>
+        <h4>Arvid Lindstedt</h4>
+        <h5>Titta in på sidan själva:</h5>
+        <h3>http://kulturplay.netlify.com</h3>
+      </StyledTack>
+    </>
   );
 };
 

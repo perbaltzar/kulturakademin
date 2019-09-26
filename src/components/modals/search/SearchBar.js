@@ -45,7 +45,7 @@ const SearchBar = ({ handleChange, onFocus, toggleSearch }) => {
       <form onSubmit={e => e.preventDefault()}>
         <input
           type="text"
-          placeholder="Sök..."
+          placeholder="Vad letar du efter?"
           onChange={({ target }) => {
             setQuery(target.value);
             if (target.value.length < 1) setMagnifying(true);

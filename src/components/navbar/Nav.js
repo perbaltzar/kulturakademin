@@ -56,7 +56,7 @@ const Nav = () => {
       <Link to="/">
         <Icon
           imgsrc={
-            navPath === '/'
+            navPath === '/' && !displaySearch
               ? '/assets/icons/navbar/home-filled.svg'
               : '/assets/icons/navbar/home-faded.svg'
           }
@@ -68,7 +68,7 @@ const Nav = () => {
       <Link to="/favoriter">
         <Icon
           imgsrc={
-            navPath === '/favoriter'
+            navPath === '/favoriter' && !displaySearch
               ? '/assets/icons/navbar/favourites-filled.svg'
               : '/assets/icons/navbar/favourites-faded.svg'
           }
