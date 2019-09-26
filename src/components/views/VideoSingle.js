@@ -17,7 +17,7 @@ import youtube from '../../data/youtube.json';
 import isFavourite from '../../lib/search/isFavourite';
 import addToFavourites from '../../lib/addToFavourites';
 import ShareIcon from '../ShareIcon';
-
+import DescriptionArrow from '../players/DescriptionArrow';
 let data = [videos, tracks, playlists].flat();
 
 const StyledVideoSingle = styled.div`
@@ -134,12 +134,13 @@ const VideoSingle = props => {
                 <StyledDescription toggleText={showText}>
                   <p>{video.description}</p>
                 </StyledDescription>
-                <StyledImg
+                <DescriptionArrow toggleText={showText} onClick={() => setShowText(!showText)} />
+                {/* <StyledImg
                   toggleText={showText}
                   src="/assets/icons/rectangle.svg"
                   alt=""
                   onClick={() => setShowText(!showText)}
-                />
+                /> */}
               </section>
             </StyledVideoHero>
 
