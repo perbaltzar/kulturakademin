@@ -48,7 +48,6 @@ const PodSingle = ({ match }) => {
       setPlayingTrack(selectMediaById(mediaId.toString(), tracks));
     }
     // SETTING LOADED TIME DONE
-    console.log(playlist);
     setLoaded(true);
   }, [match.params.id, mediaId, playerVisible, playlist]);
 
