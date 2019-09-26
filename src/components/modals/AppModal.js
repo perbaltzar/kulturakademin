@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Icon from '../navbar/Icon';
 import { PlayerContext } from '../Context';
@@ -56,9 +57,11 @@ const AppModal = props => {
         <p>Du verkar gilla kulturplay, kul!</p>
       </div>
       <p>Ladda ner Kulturplay som app för smidig och enkel användning på mobilen.</p>
-      <button onClick={() => toggleDisplay(false)}>
-        <p>Okej</p>
-      </button>
+      <Link to="/om">
+        <button onClick={() => toggleDisplay(false)}>
+          <p>Ladda ner</p>
+        </button>
+      </Link>
     </StyledAppModal>
   );
 };
