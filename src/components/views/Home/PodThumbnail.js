@@ -3,11 +3,13 @@ import styled from 'styled-components';
 import HeadphonesLarge from '../../miniature/HeadphonesLarge';
 
 const StyledPodThumbnail = styled.div`
-  margin-right: 10px;
   color: black;
   display: flex;
   flex-direction: column;
   color: ${props => props.theme.colorLight};
+  :first-child {
+    margin-right: 20px;
+  }
   p {
     margin-top: 5px;
     font: ${props => props.theme.fontMobilePsmall};
@@ -21,11 +23,12 @@ const StyledPodThumbnail = styled.div`
 `;
 
 const PodThumbnail = props => {
+  let newTitle = props.title.length > 50 ? `${props.title.substring(0, 50)}...` : props.title;
   return (
     <StyledPodThumbnail>
       <HeadphonesLarge />
       <img src={props.thumbnail} alt="video" />
-      <p>{props.title}</p>
+      <p>{newTitle}</p>
     </StyledPodThumbnail>
   );
 };

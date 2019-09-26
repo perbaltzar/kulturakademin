@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 import { SearchContext } from '../../Context';
 
@@ -15,6 +15,24 @@ import SearchCategories from './SearchCategories';
 import search from '../../../lib/search/search';
 import CategoryGrid from '../../categories/CategoryGrid';
 
+const fadeIn = keyframes`
+  from {
+    transform: translateY(100vh)
+  }
+
+  to {
+    transform: translateY(0vh)
+  }
+`;
+const fadeOut = keyframes`
+  from {
+    transform: translateY(0vh)
+  }
+
+  to {
+    transform: translateY(100vh)
+  }
+`;
 const StyledSearch = styled.div`
   position: sticky;
   ${props => (props.displaySearch ? 'display: block' : 'display: none')};
@@ -25,6 +43,14 @@ const StyledSearch = styled.div`
   background-color: ${props => props.theme.colorDark};
   width: 100%;
   padding-bottom: 80px;
+  animation: ${props =>
+    props.animation
+      ? css`
+          ${fadeOut} 0.25s ease-in-out forwards
+        `
+      : css`
+          ${fadeIn} 0.25s ease-in-out forwards
+        `};
   article {
     padding: 66px 20px 0 20px;
   }
@@ -44,10 +70,9 @@ const Search = props => {
   const [videoResults, setVideoResults] = useState([]);
   const [topResults, setTopResults] = useState([]);
   const [results, setResults] = useState([]);
-
   const [chosen, setChosen] = useState('senaste');
   const [showView, setShowView] = useState('suggestions');
-  const { displaySearch } = useContext(SearchContext);
+  const { displaySearch, toggleSearchAnimation } = useContext(SearchContext);
 
   const [searchQuery, setSearchQuery] = useState('');
   const handleChange = query => {
@@ -73,7 +98,7 @@ const Search = props => {
 
   return (
     <>
-      <StyledSearch displaySearch={displaySearch}>
+      <StyledSearch displaySearch={displaySearch} animation={toggleSearchAnimation}>
         <SearchBar
           handleChange={query => handleChange(query)}
           onFocus={() => {
@@ -81,7 +106,7 @@ const Search = props => {
           }}
         />
         <article>
-          {showView === 'suggestions' && <Suggestions />}
+          {showView === 'suggestions' && <Suggestions animation={toggleSearchAnimation} />}
           {showView === 'history' && <History />}
           {showView === 'results' && (
             <>

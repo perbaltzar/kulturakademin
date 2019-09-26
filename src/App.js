@@ -18,7 +18,9 @@ import Search from './components/modals/search/Search';
 import About from './components/views/About';
 import { MenuContext, PlayerContext, SearchContext } from './components/Context';
 import Cookies from './components/modals/Cookies';
+import AppModal from './components/modals/AppModal';
 import Tack from './components/views/Tack';
+
 
 const StyledApp = styled.div`
   height: 100vh;
@@ -29,11 +31,23 @@ const StyledApp = styled.div`
 const App = props => {
   const [displayMenu, setDisplayMenu] = useState('none');
   const [toggleMenuAnimation, setToggleMenuAnimation] = useState(true);
+  const [toggleSearchAnimation, setToggleSearchAnimation] = useState(true);
   const [playerVisible, setPlayerVisible] = useState('none');
   const [smallPlayer, setSmallPlayer] = useState(false);
   const [cookie, setCookie] = useState(localStorage.getItem('seenCookies'));
   const [mediaId, setMediaId] = useState('');
   const [navPath, setNavPath] = useState('');
+
+  const getLocalStorageVisits = () => {
+    let localStorageCounter = localStorage.getItem('numberOfVisits');
+    if (localStorageCounter !== null) {
+      localStorage.setItem('numberOfVisits', ++localStorageCounter);
+      return localStorageCounter;
+    }
+    localStorage.setItem('numberOfVisits', 1);
+    return 1;
+  };
+  const [numberOfVisits, setNumberOfVisits] = useState(getLocalStorageVisits);
 
   const getLocalstorageFavourites = () => {
     return JSON.parse(localStorage.getItem('favourites')) || [];
@@ -48,7 +62,14 @@ const App = props => {
         <>
           <GlobalStyles />
           <Router>
-            <SearchContext.Provider value={{ displaySearch, setDisplaySearch }}>
+            <SearchContext.Provider
+              value={{
+                displaySearch,
+                setDisplaySearch,
+                toggleSearchAnimation,
+                setToggleSearchAnimation,
+              }}
+            >
               <PlayerContext.Provider
                 value={{
                   playerVisible,
@@ -61,10 +82,12 @@ const App = props => {
                   setFavourites,
                   navPath,
                   setNavPath,
+                  numberOfVisits,
                 }}
               >
-                {!cookie && <Cookies onClick={() => setCookie(true)} />}
+                {numberOfVisits === 3 && <AppModal />}
 
+                {!cookie && <Cookies onClick={() => setCookie(true)} />}
                 {displaySearch && <Search />}
                 {playerVisible === 'video' && <VideoPlayer />}
                 {playerVisible === 'pod' && <PodPlayer id={mediaId} />}

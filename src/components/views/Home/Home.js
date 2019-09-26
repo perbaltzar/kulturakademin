@@ -6,6 +6,7 @@ import News from './News';
 import RecommendationsPods from './RecommendationsPods';
 import Line from '../../players/Line';
 import CategoryGrid from '../../categories/CategoryGrid';
+import RecommendedForYou from './RecommendedForYou';
 
 const StyledHome = styled.div`
   padding-bottom: 100px;
@@ -24,7 +25,7 @@ const StyledHome = styled.div`
 `;
 
 const Home = props => {
-  const { setNavPath, smallPlayer, setPlayerVisible } = useContext(PlayerContext);
+  const { setNavPath, smallPlayer, setPlayerVisible, numberOfVisits } = useContext(PlayerContext);
   if (!smallPlayer) setPlayerVisible('none');
   setNavPath(props.match.path);
   return (
@@ -40,6 +41,7 @@ const Home = props => {
       <Line margins />
       <RecommendationsPods />
       <Line margins />
+      {numberOfVisits > 1 && <RecommendedForYou />}
       <div className="header-box">
         <h5>Kategorier</h5>
       </div>
