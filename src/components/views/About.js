@@ -1,10 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 import AboutPageBanner from './AboutPageBanner';
 import Line from '../players/Line';
+import { PlayerContext } from '../Context';
 
 const StyledAbout = styled.div`
   background-color: ${props => props.theme.colorDark};
@@ -33,6 +32,8 @@ const StyledAbout = styled.div`
 `;
 
 const About = props => {
+  const { smallPlayer, setPlayerVisible } = useContext(PlayerContext);
+  if (!smallPlayer) setPlayerVisible('none');
   return (
     <>
       <AboutPageBanner />

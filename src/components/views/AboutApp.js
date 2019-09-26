@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 import PageBanner from './Home/PageBanner';
 import Line from '../players/Line';
+import { PlayerContext } from '../Context';
 
 const StyledAboutApp = styled.div`
   background-color: ${props => props.theme.colorDark};
@@ -19,6 +20,8 @@ const StyledAboutApp = styled.div`
 `;
 
 const AboutApp = props => {
+  const { smallPlayer, setPlayerVisible } = useContext(PlayerContext);
+  if (!smallPlayer) setPlayerVisible('none');
   return (
     <>
       <PageBanner />
