@@ -122,6 +122,7 @@ const Search = props => {
           onFocus={() => {
             setShowView('history');
           }}
+          toggleSearch={toggleSearch}
         />
         <article>
           {showView === 'suggestions' && (

@@ -45,6 +45,7 @@ const Suggestions = props => {
         thumbnail={youtube[3].thumbnail}
         saved={false}
         id={youtube[3].id}
+        toggleSearch={props.toggleSearch}
       />
       <Pod
         title={playlists[7].title}
@@ -52,6 +53,7 @@ const Suggestions = props => {
         thumbnail={playlists[7].thumbnail}
         saved={false}
         id={playlists[7].id}
+        toggleSearch={props.toggleSearch}
       />
     </StyledSuggestions>
   );

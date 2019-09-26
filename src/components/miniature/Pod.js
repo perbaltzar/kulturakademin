@@ -38,10 +38,10 @@ const StyledPod = styled.div`
   }
 `;
 
-const Pod = ({ title, thumbnail, saved, id }) => {
+const Pod = ({ title, thumbnail, saved, id, toggleSearch }) => {
   const { favourites, setFavourites } = useContext(PlayerContext);
   return (
-    <StyledPod>
+    <StyledPod onClick={toggleSearch}>
       <Link
         to={`/podd/${id}`}
         onClick={() => {

@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Watch from './Watch';
 import Save from './Save';
 import addToFavourites from '../../lib/addToFavourites';
 import { PlayerContext } from '../Context';
@@ -42,10 +41,10 @@ const StyledVideo = styled.div`
   }
 `;
 
-const Video = ({ title, description, thumbnail, saved, id }) => {
+const Video = ({ title, description, thumbnail, saved, id, toggleSearch }) => {
   const { favourites, setFavourites } = useContext(PlayerContext);
   return (
-    <StyledVideo>
+    <StyledVideo onClick={toggleSearch}>
       <Link to={`/video/${id}`}>
         <section>
           <img src={thumbnail} alt="video thumbnail" />
