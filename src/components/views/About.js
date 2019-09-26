@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import styled from 'styled-components';
 
 import PageBanner from './Home/PageBanner';
@@ -63,6 +65,11 @@ const About = props => {
           <img src="/assets/icons/Link-to.svg" alt="" />
         </span>
       </a>
+      <Link to="/tack">
+        <span>
+          <h3>Tack</h3>
+        </span>
+      </Link>
     </StyledAbout>
   );
 };

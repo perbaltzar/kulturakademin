@@ -26,6 +26,9 @@ const StyledReactPlayer = styled.div`
   justify-content: space-around;
   /* CONTROLLER CONTAINER */
   div:first-of-type {
+    span {
+      width: 20px;
+    }
     height: 52px;
     width: 100%;
     display: flex;
@@ -73,6 +76,7 @@ const Player = withSoundCloudAudio(props => {
   return (
     <StyledReactPlayer currentTime={currentTime} duration={duration}>
       <div>
+        <span></span>
         <StyledMoveButton>
           <img src="/assets/icons/15back.svg" alt="-15" />
         </StyledMoveButton>
