@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import SearchOrClose from './SearchOrClose';
-// import { SearchContext } from '../../Context';
+import { SearchContext } from '../../Context';
 
 const StyledSearchBar = styled.div`
   background-color: ${props => props.theme.orange};
@@ -35,14 +35,13 @@ const StyledSearchBar = styled.div`
   }
 `;
 
-const SearchBar = ({ handleChange, onFocus }) => {
+const SearchBar = ({ handleChange, onFocus, toggleSearch }) => {
   const [query, setQuery] = useState('');
   const [magnifying, setMagnifying] = useState(true);
-  // const { setDisplaySearch } = useContext(SearchContext);
 
   return (
     <StyledSearchBar>
-      <img src="/assets/icons/go-back.svg" alt="back" />
+      <img src="/assets/icons/go-back.svg" alt="back" onClick={() => toggleSearch()} />
       <form onSubmit={e => e.preventDefault()}>
         <input
           type="text"

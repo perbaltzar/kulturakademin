@@ -128,7 +128,7 @@ const Menu = props => {
       ></CategoryGrid>
       <a href="https://www.kulturakademin.com/" target="_blank" rel="noopener noreferrer">
         <StyledFlex>
-          <h5>kulturakademin.se</h5>
+          <h5>kulturakademin.com</h5>
           <img src="/assets/icons/Link-to.svg" alt=""></img>
         </StyledFlex>
       </a>

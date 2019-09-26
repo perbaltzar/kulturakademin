@@ -32,8 +32,16 @@ const RecommendationsPods = props => {
       </div>
       <section>
         <div>
-          <PodThumbnail thumbnail={playlists[1].thumbnail} title={playlists[1].title} />
-          <PodThumbnail thumbnail={playlists[2].thumbnail} title={playlists[2].title} />
+          <PodThumbnail
+            thumbnail={playlists[1].thumbnail}
+            title={playlists[1].title}
+            numberOfVisits={numberOfVisits}
+          />
+          <PodThumbnail
+            thumbnail={playlists[2].thumbnail}
+            title={playlists[2].title}
+            numberOfVisits={numberOfVisits}
+          />
         </div>
       </section>
     </StyledRecommendationsPods>

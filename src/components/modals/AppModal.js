@@ -20,7 +20,8 @@ const StyledAppModal = styled.div`
     margin-bottom: 20px;
   }
   p {
-    font: ${props => props.theme.fontMobilePsmall};
+    /* font: ${props => props.theme.fontMobilePsmall}; */
+    line-height: 20px;
   }
 
   h1 {
@@ -51,10 +52,10 @@ const AppModal = props => {
   const [display, toggleDisplay] = useState(true);
   return (
     <StyledAppModal {...props} display={display}>
-      <Icon imgsrc="/assets/icons/cross.svg" />
+      <Icon imgsrc="/assets/icons/cross.svg" onClick={() => toggleDisplay(false)} />
       <h1>Hej!</h1>
       <div className="first-paragraph">
-        <p>Du verkar gilla kulturplay, kul!</p>
+        <h4>Du verkar gilla kulturplay, kul!</h4>
       </div>
       <p>Ladda ner Kulturplay som app för smidig och enkel användning på mobilen.</p>
       <Link to="/om">

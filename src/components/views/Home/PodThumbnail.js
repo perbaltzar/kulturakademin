@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import HeadphonesLarge from '../../miniature/HeadphonesLarge';
-
+import Progressbar from '../../players/ProgressBar';
 const StyledPodThumbnail = styled.div`
   color: black;
   display: flex;
@@ -29,6 +29,7 @@ const PodThumbnail = props => {
       <HeadphonesLarge />
       <img src={props.thumbnail} alt="video" />
       <p>{newTitle}</p>
+      {props.numberOfVisits > 1 && <Progressbar progress={75} />}
     </StyledPodThumbnail>
   );
 };

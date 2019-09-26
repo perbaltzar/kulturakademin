@@ -6,7 +6,7 @@ import Video from '../../miniature/Video';
 
 const StyledVideoResults = styled.div``;
 
-const VideoResults = ({ videos }) => {
+const VideoResults = ({ videos, toggleSearch }) => {
   return (
     <StyledVideoResults>
       <p>Video</p>
@@ -19,6 +19,7 @@ const VideoResults = ({ videos }) => {
             thumbnail={video.thumbnail}
             description={video.description}
             title={video.title}
+            toggleSearch={toggleSearch}
           />
         );
       })}
