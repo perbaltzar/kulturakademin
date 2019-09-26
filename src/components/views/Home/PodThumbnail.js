@@ -21,11 +21,12 @@ const StyledPodThumbnail = styled.div`
 `;
 
 const PodThumbnail = props => {
+  let newTitle = props.title.length > 50 ? `${props.title.substring(0, 50)}...` : props.title;
   return (
     <StyledPodThumbnail>
       <HeadphonesLarge />
       <img src={props.thumbnail} alt="video" />
-      <p>{props.title}</p>
+      <p>{newTitle}</p>
     </StyledPodThumbnail>
   );
 };
