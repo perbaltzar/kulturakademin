@@ -22,10 +22,10 @@ const Nav = () => {
   const { setDisplayMenu, toggleMenuAnimation, setToggleMenuAnimation } = useContext(MenuContext);
 
   const { navPath, setNavPath } = useContext(MenuContext);
-  const [searchIcon, setSearchIcon] = useState('Faded');
+  const [searchIcon, setSearchIcon] = useState('faded');
   const { displaySearch, setDisplaySearch } = useContext(SearchContext);
   const toggleSearchIcon = () => {
-    searchIcon === 'Faded' ? setSearchIcon('Filled') : setSearchIcon('Faded');
+    searchIcon === 'faded' ? setSearchIcon('filled') : setSearchIcon('faded');
   };
   const checkIfDisplaySearch = () => {
     if (displaySearch === true) {
@@ -38,7 +38,7 @@ const Nav = () => {
   return (
     <StyledNav>
       <Icon
-        imgsrc="/assets/icons/Menu-Faded.svg"
+        imgsrc="/assets/icons/navbar/hamburger-faded.svg"
         onClick={() => {
           setDisplayMenu('block');
           setToggleMenuAnimation(!toggleMenuAnimation);
@@ -49,7 +49,7 @@ const Nav = () => {
       <Link to="/">
         <Icon
           imgsrc={
-            navPath === '/' ? '/assets/icons/Home-Filled.svg' : '/assets/icons/Home-Faded.svg'
+            navPath === '/' ? '/assets/icons/navbar/home-filled.svg' : '/assets/icons/navbar/home-faded.svg'
           }
           onClick={() => {
             checkIfDisplaySearch();
@@ -60,8 +60,8 @@ const Nav = () => {
         <Icon
           imgsrc={
             navPath === '/favoriter'
-              ? '/assets/icons/Favourites-Filled.svg'
-              : '/assets/icons/Favourites-Faded.svg'
+              ? '/assets/icons/navbar/favourites-filled.svg'
+              : '/assets/icons/navbar/favourites-faded.svg'
           }
           onClick={() => {
             checkIfDisplaySearch();
@@ -69,7 +69,7 @@ const Nav = () => {
         />
       </Link>
       <Icon
-        imgsrc={`/assets/icons/Search-${searchIcon}.svg`}
+        imgsrc={`/assets/icons/navbar/search-${searchIcon}.svg`}
         onClick={() => {
           setDisplaySearch(!displaySearch);
           checkIfDisplaySearch();
