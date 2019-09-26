@@ -30,13 +30,15 @@ const StyledFilterSection = styled.div`
 `;
 
 const PodSingle = ({ match }) => {
-  const { mediaId, playerVisible, setPlayerVisible } = useContext(PlayerContext);
+  const { mediaId, playerVisible, setPlayerVisible, smallPlayer } = useContext(PlayerContext);
   const [playlist, setPlaylist] = useState({});
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [playingTrack, setPlayingTrack] = useState({ title: '' });
   const [isPlaying] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [chosenFilter, setChosenFilter] = useState('a-ö');
+
+  if (!smallPlayer) setPlayerVisible('none');
 
   useEffect(() => {
     // Fetching playlist from DB
