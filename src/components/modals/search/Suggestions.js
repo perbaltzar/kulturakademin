@@ -27,10 +27,10 @@ const StyledSuggestions = styled.div`
   animation: ${props =>
     props.animation
       ? css`
-          ${fadeOut} 1s ease-in-out forwards
+          ${fadeIn} 1s ease-in-out forwards
         `
       : css`
-          ${fadeIn} 1s ease-in-out forwards
+          ${fadeOut} 1s ease-in-out forwards
         `};
 `;
 
