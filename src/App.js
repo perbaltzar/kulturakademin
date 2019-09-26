@@ -20,6 +20,8 @@ import { MenuContext, PlayerContext, SearchContext } from './components/Context'
 import Cookies from './components/modals/Cookies';
 import AppModal from './components/modals/AppModal';
 import Tack from './components/views/Tack';
+import AboutApp from './components/views/AboutApp';
+
 
 const StyledApp = styled.div`
   height: 100vh;
@@ -99,6 +101,7 @@ const App = props => {
                   <Route path="/podd/:id" component={PodSingle} />
                   <Route path="/kategori/:id" component={CategorySinglePage} />
                   <Route path="/tack" component={Tack} />
+                  <Route path="/app" component={AboutApp} />
                   <Route path="/" component={NotFound} />
                 </Switch>
               </PlayerContext.Provider>

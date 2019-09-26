@@ -12,9 +12,13 @@ const StyledAbout = styled.div`
   height: 100vh;
   overflow: scroll;
   color: white;
-  p {
-    line-height: 24px;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  h5 {
+    margin: 20px 0;
+    line-height: 22px;
+    font-weight: normal;
   }
   h2 {
     padding-top: 10px;
@@ -31,45 +35,33 @@ const StyledAbout = styled.div`
 const About = props => {
   return (
     <StyledAbout>
-      <PageBanner />
-      <h2>Om Kulturplay</h2>
-      <Line orange />
-      <p>
-        På Kulturplay kommer du hitta bakom kulisserna-material med skådespelare, intervjuer med
-        regissörer, föreläsningar med roliga gäster och intressanta debatter och tutorials. Här kan
-        du fördjupa dig inom dina kulturella intressen men också hitta nya områden som intresserar
-        dig.
-      </p>
-      <h2>Kulturplay som app</h2>
-      <Line orange />
-      <p>
-        Kulturplay finns som en PWA-app. PWA app är en webbsida som beter sig som en app. Den
-        startas från en ikon på hemskärmen som en vanlig app. Det innebär att du enkelt når appen,
-        du behöver inte söka på AppStore. Bara klicka på en länk och PWA-appen laddas ner i din
-        mobil eller platta.
-      </p>
-      <p>Gör såhär för att ladda ner kulturplay som en PWA-app till din mobil.</p>
-      <p>1. Klicka på “mer” i din webbläsares meny</p>
-      <p> 2. Välj lägg till på startskärmen</p>
-      <Line margins />
-      <a href="https://www.kulturakademin.com/" target="_blank" rel="noopener noreferrer">
-        <span>
-          <h3>Kulturakademin.com</h3>
-          <img src="/assets/icons/Link-to.svg" alt="" />
-        </span>
-      </a>
+      <div>
+        <PageBanner />
+        <h2>Om Kulturplay</h2>
+        <Line orange />
+        <h5>
+          På Kulturplay kommer du hitta bakom kulisserna-material med skådespelare, intervjuer med
+          regissörer, föreläsningar med roliga gäster och intressanta debatter och tutorials. Här
+          kan du fördjupa dig inom dina kulturella intressen men också hitta nya områden som
+          intresserar dig.
+        </h5>
+      </div>
 
-      <a href="https://www.kulturakademin.com/kontakt" target="_blank" rel="noopener noreferrer">
-        <span>
-          <h3>Kontakta Oss</h3>
-          <img src="/assets/icons/Link-to.svg" alt="" />
-        </span>
-      </a>
-      <Link to="/tack">
-        <span>
-          <h3>Tack</h3>
-        </span>
-      </Link>
+      <div>
+        <a href="https://www.kulturakademin.com/" target="_blank" rel="noopener noreferrer">
+          <span>
+            <h3>Kulturakademin.com</h3>
+            <img src="/assets/icons/Link-to.svg" alt="" />
+          </span>
+        </a>
+
+        <a href="https://www.kulturakademin.com/kontakt" target="_blank" rel="noopener noreferrer">
+          <span>
+            <h3>Kontakta Oss</h3>
+            <img src="/assets/icons/Link-to.svg" alt="" />
+          </span>
+        </a>
+      </div>
     </StyledAbout>
   );
 };
