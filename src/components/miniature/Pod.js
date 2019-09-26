@@ -46,7 +46,7 @@ const Pod = ({ title, thumbnail, saved, id }) => {
   const { favourites, setFavourites } = useContext(PlayerContext);
   return (
     <StyledPod>
-      <Link to={`/podd/${id}`}>
+      <Link to={`/podd/${id}`} onClick={() => window.location.reload()}>
         <section>
           <div>
             <Headphones />
@@ -56,7 +56,7 @@ const Pod = ({ title, thumbnail, saved, id }) => {
       </Link>
       <section>
         <div>
-          <Link to={`/podd/${id}`}>
+          <Link to={`/podd/${id}`} onClick={() => window.location.reload()}>
             <p>{title}</p>
           </Link>
         </div>

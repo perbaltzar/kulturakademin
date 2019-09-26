@@ -48,6 +48,7 @@ const PodSingle = ({ match }) => {
       setPlayingTrack(selectMediaById(mediaId.toString(), tracks));
     }
     // SETTING LOADED TIME DONE
+    console.log(playlist);
     setLoaded(true);
   }, [match.params.id, mediaId, playerVisible, playlist]);
 
@@ -83,18 +84,18 @@ const PodSingle = ({ match }) => {
             <p>Podd</p>
             <Line />
             <Pod
-              title={tracks[0].title}
+              title={playlists[0].title}
               // description={media.description && `${media.description.substr(0, 70)}...`}
-              thumbnail={tracks[0].thumbnail}
+              thumbnail={playlists[0].thumbnail}
               saved={false}
-              id={tracks[0].id}
+              id={playlists[0].id}
             />
             <Pod
-              title={tracks[1].title}
+              title={playlists[1].title}
               // description={media.description && `${media.description.substr(0, 70)}...`}
-              thumbnail={tracks[1].thumbnail}
+              thumbnail={playlists[1].thumbnail}
               saved={false}
-              id={tracks[1].id}
+              id={playlists[1].id}
             />
           </StyledFilterSection>
         </>
