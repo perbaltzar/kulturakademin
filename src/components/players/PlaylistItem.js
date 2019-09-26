@@ -62,8 +62,8 @@ const PlaylistItem = ({ number, img, title, plays, duration, playing, descriptio
           <h2>{number}</h2>
         </div>
         <div onClick={startPlayer}>
-          <p>{title.substr(4, title.length - 22)}</p>
-          <ProgressBar progress={100 - 50 * (number - 1)} />
+          <p>{title.substr(4, title.length - 16)}</p>
+          {/* <ProgressBar progress={100 - 50 * (number - 1)} /> */}
         </div>
         <div
           onClick={() => {
