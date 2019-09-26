@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
-
+import { PlayerContext } from '../../Context';
 import PodThumbnail from './PodThumbnail';
-import Headphones from '../../miniature/Headphones';
 import playlists from '../../../data/playlists.json';
 
 const StyledRecommendationsPods = styled.div`
@@ -15,9 +14,9 @@ const StyledRecommendationsPods = styled.div`
   section {
     overflow-x: scroll;
     width: 90vw;
-  }
-  div {
-    display: flex;
+    div {
+      display: flex;
+    }
   }
   .header-box {
     margin: 20px 0;
@@ -25,10 +24,12 @@ const StyledRecommendationsPods = styled.div`
 `;
 
 const RecommendationsPods = props => {
+  const { numberOfVisits } = useContext(PlayerContext);
+  console.log(numberOfVisits);
   return (
     <StyledRecommendationsPods>
       <div className="header-box">
-        <h5>Poddar som inspirerar</h5>
+        {numberOfVisits > 1 ? <h5>Fortsätt Lyssna</h5> : <h5>Poddar som inspirerar</h5>}
       </div>
       <section>
         <div>

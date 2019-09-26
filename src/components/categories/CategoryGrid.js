@@ -27,7 +27,7 @@ const categories = [
 ];
 
 const CategoryGrid = props => {
-  const colors = ['#66B759', '#5F8EC6', '#5AB69A', '#4EA8A8', '#5CA1BE'];
+  const colors = ['#66B759', '#5D6ECC', '#5AB69A', '#4EA8A8', '#5CA1BE'];
   return (
     <StyledCategoryGrid {...props}>
       {categories.map((category, i) => {
