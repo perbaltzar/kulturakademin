@@ -9,6 +9,8 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     position: relative;
     font-family: Roboto;
+    outline: none;
+    letter-spacing: 0.4px;
 }
 a{
     text-decoration: none;

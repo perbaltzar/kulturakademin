@@ -10,10 +10,13 @@ import Video from '../miniature/Video';
 import Pod from '../miniature/Pod';
 import findMediaByCategory from '../../lib/search/findMediaByCategory';
 import Line from '../players/Line';
-
+import PageBanner from '../views/Home/PageBanner';
 import tracks from '../../data/tracks.json';
 import videos from '../../data/youtube.json';
 import youtube from '../../data/youtube.json';
+import isFavourite from '../../lib/search/isFavourite';
+import addToFavourites from '../../lib/addToFavourites';
+import ShareIcon from '../ShareIcon';
 
 let data = [videos, tracks, playlists].flat();
 
@@ -31,21 +34,49 @@ const StyledFlexBox = styled.div`
   margin: 0px 0 20px 0;
   justify-content: ${props => props.justifyContent};
 `;
+
+const StyledVideoHero = styled.div`
+  section:first-of-type {
+    display: flex;
+    margin: 0px 0 20px 0;
+    justify-content: space-between;
+    margin-top: 210px;
+    h3 {
+      line-height: 27px;
+      width: 75vw;
+    }
+  }
+
+  section:nth-child(2) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    p {
+      margin: 0;
+      width: 75vw;
+    }
+  }
+`;
+
 const StyledImg = styled.img`
-  justify-self: flex-start;
-  align-self: flex-start;
-  margin-top: 5px;
   transform: ${props => (props.toggleText ? 'rotate(0deg)' : 'rotate(-90deg)')};
   transition: 0.2s;
 `;
-const StyledText = styled.p`
-  margin: ${props => props.margin};
-`;
+
 const StyledDescription = styled.div`
-  max-height: ${props => (props.toggleText ? 'auto' : '28px')};
+  max-height: ${props => (props.toggleText ? 'auto' : '40px')};
   transition: 0.5s;
   overflow: hidden;
-  margin: ${props => props.margin};
+  p {
+    letter-spacing: 0.5px;
+    line-height: 20px;
+  }
+`;
+
+const StyledFilterCointainer = styled.div`
+  h3 {
+    margin-top: 50px;
+  }
 `;
 
 const VideoSingle = props => {
@@ -53,10 +84,9 @@ const VideoSingle = props => {
   const [video, setVideo] = useState({});
   const [loaded, setLoaded] = useState(false);
   const [related, setRelated] = useState(data);
-  const [showFilterVideo, setShowFilterVideo] = useState(true);
-  const [showFilterPod, setShowFilterPod] = useState(true);
   const [showText, setShowText] = useState(false);
-  const [chosenFilter, setChosenFilter] = useState('a-ö');
+  const [chosenFilter, setChosenFilter] = useState('senaste');
+  const { favourites, setFavourites } = useContext(PlayerContext);
 
   useEffect(() => {
     if (mediaId !== props.match.params.id) {
@@ -85,30 +115,41 @@ const VideoSingle = props => {
       <>
         {loaded && (
           <StyledContainer>
-            <StyledFlexBox justifyContent="space-between">
-              <h3>{video.title}</h3>
-              <Save saved={false} />
-            </StyledFlexBox>
-            <StyledFlexBox>
-              <StyledDescription toggleText={showText}>
-                <p>{video.description}</p>
-              </StyledDescription>
-              <StyledImg
-                toggleText={showText}
-                src="/assets/icons/rectangle.svg"
-                alt=""
-                onClick={() => setShowText(!showText)}
-              />
-            </StyledFlexBox>
-            <Line margins />
+            <PageBanner />
+            <StyledVideoHero>
+              <section>
+                <h3>{video.title}</h3>
+                <div>
+                  <Save
+                    onClick={() => {
+                      addToFavourites(video.id, favourites);
+                      setFavourites(JSON.parse(localStorage.getItem('favourites')));
+                    }}
+                    saved={isFavourite(video.id, favourites)}
+                  />
+                  <ShareIcon marginTop />
+                </div>
+              </section>
+              <section>
+                <StyledDescription toggleText={showText}>
+                  <p>{video.description}</p>
+                </StyledDescription>
+                <StyledImg
+                  toggleText={showText}
+                  src="/assets/icons/rectangle.svg"
+                  alt=""
+                  onClick={() => setShowText(!showText)}
+                />
+              </section>
+            </StyledVideoHero>
 
-            <div>
+            <StyledFilterCointainer>
+              <h3>Förslag</h3>
+              <Line orange />
               <FilterBar
                 chosen={chosenFilter}
                 onClick={chosenFilter => setChosenFilter(chosenFilter)}
               />
-              <h3>Förslag</h3>
-              <Line orange />
               <p>Video</p>
               <Line />
               <Video
@@ -121,20 +162,20 @@ const VideoSingle = props => {
               <p>Podd</p>
               <Line />
               <Pod
-                title={tracks[0].title}
+                title={playlists[0].title}
                 // description={media.description && `${media.description.substr(0, 70)}...`}
-                thumbnail={tracks[0].thumbnail}
+                thumbnail={playlists[0].thumbnail}
                 saved={false}
-                id={tracks[0].id}
+                id={playlists[0].id}
               />
               <Pod
-                title={tracks[1].title}
+                title={playlists[1].title}
                 // description={media.description && `${media.description.substr(0, 70)}...`}
-                thumbnail={tracks[1].thumbnail}
+                thumbnail={playlists[1].thumbnail}
                 saved={false}
-                id={tracks[1].id}
+                id={playlists[1].id}
               />
-            </div>
+            </StyledFilterCointainer>
           </StyledContainer>
         )}
       </>

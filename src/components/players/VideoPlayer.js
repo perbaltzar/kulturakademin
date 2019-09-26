@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import YouTube from '@u-wave/react-youtube';
 import videos from '../../data/youtube.json';
-import PageBanner from '../views/Home/PageBanner';
 import { PlayerContext } from '../Context';
 import selectMediaById from '../../lib/search/selectMediaById.js';
 import Icon from '../navbar/Icon.js';
@@ -10,6 +9,9 @@ import Icon from '../navbar/Icon.js';
 const StyledVideoPlayer = styled.div`
   width: 100vw;
   margin: 0 auto;
+  padding-top: 110px;
+  position: absolute;
+  z-index: 200;
   color: ${props => props.theme.colorLight};
   .small-player-container {
     display: grid;
@@ -49,7 +51,6 @@ const VideoPlayer = () => {
 
   return (
     <StyledVideoPlayer smallPlayer={smallPlayer}>
-      <PageBanner />
       {/* <button
         onClick={() => {
           setSmallPlayer(!smallPlayer);

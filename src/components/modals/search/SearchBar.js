@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
+import SearchOrClose from './SearchOrClose';
 const StyledSearchBar = styled.div`
   background-color: ${props => props.theme.orange};
   width: 100%;
@@ -21,6 +21,9 @@ const StyledSearchBar = styled.div`
       color: white;
     }
   }
+  form {
+    display: flex;
+  }
 `;
 
 const SearchBar = ({ handleChange }) => {
@@ -38,6 +41,7 @@ const SearchBar = ({ handleChange }) => {
           onKeyUp={() => handleChange(query)}
           value={query}
         />
+        <SearchOrClose magnifying={true} />
       </form>
     </StyledSearchBar>
   );

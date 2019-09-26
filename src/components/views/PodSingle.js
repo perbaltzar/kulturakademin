@@ -16,7 +16,8 @@ import Pod from '../miniature/Pod';
 
 const StyledPodSingle = styled.div`
   height: 100vh;
-  padding-bottom: 80px;
+  padding-bottom: 60px;
+  ${props => (props.podPlayer ? 'padding-bottom: 100px' : '')}
   overflow: scroll;
   background: ${props => props.theme.colorDark};
   color: white;
@@ -24,16 +25,21 @@ const StyledPodSingle = styled.div`
 
 const StyledFilterSection = styled.div`
   padding: 30px 20px;
+  h3 {
+    margin-top: 50px;
+  }
 `;
 
 const PodSingle = ({ match }) => {
-  const { mediaId, playerVisible, setPlayerVisible } = useContext(PlayerContext);
+  const { mediaId, playerVisible, setPlayerVisible, smallPlayer } = useContext(PlayerContext);
   const [playlist, setPlaylist] = useState({});
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [playingTrack, setPlayingTrack] = useState({ title: '' });
   const [isPlaying] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const [chosenFilter, setChosenFilter] = useState('a-ö');
+  const [chosenFilter, setChosenFilter] = useState('senaste');
+
+  if (!smallPlayer && playerVisible !== 'pod') setPlayerVisible('none');
 
   useEffect(() => {
     // Fetching playlist from DB
@@ -49,7 +55,7 @@ const PodSingle = ({ match }) => {
   }, [match.params.id, mediaId, playerVisible, playlist]);
 
   return (
-    <StyledPodSingle>
+    <StyledPodSingle podPlayer={playerVisible === 'pod'}>
       {loaded && (
         <>
           <PageBanner />
@@ -63,12 +69,12 @@ const PodSingle = ({ match }) => {
           />
           {playlistTracks.length > 0 && <Playlist playlistTracks={playlistTracks} />}
           <StyledFilterSection>
+            <h3>Förslag</h3>
+            <Line orange />
             <FilterBar
               chosen={chosenFilter}
               onClick={chosenFilter => setChosenFilter(chosenFilter)}
             />
-            <h3>Förslag</h3>
-            <Line orange />
             <p>Video</p>
             <Line />
             <Video
@@ -80,16 +86,18 @@ const PodSingle = ({ match }) => {
             <p>Podd</p>
             <Line />
             <Pod
-              title={tracks[0].title}
+              title={playlists[0].title}
               // description={media.description && `${media.description.substr(0, 70)}...`}
-              thumbnail={tracks[0].thumbnail}
-              id={tracks[0].id}
+              thumbnail={playlists[0].thumbnail}
+              saved={false}
+              id={playlists[0].id}
             />
             <Pod
-              title={tracks[1].title}
+              title={playlists[1].title}
               // description={media.description && `${media.description.substr(0, 70)}...`}
-              thumbnail={tracks[1].thumbnail}
-              id={tracks[1].id}
+              thumbnail={playlists[1].thumbnail}
+              saved={false}
+              id={playlists[1].id}
             />
           </StyledFilterSection>
         </>

@@ -11,12 +11,8 @@ import isFavourite from '../../lib/search/isFavourite';
 const StyledPod = styled.div`
   margin: 20px 0px;
   display: flex;
-  h4 {
-    color: white;
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
   p {
+    line-height: 18px;
     font-size: 12px;
     color: white;
   }
@@ -46,7 +42,12 @@ const Pod = ({ title, thumbnail, saved, id }) => {
   const { favourites, setFavourites } = useContext(PlayerContext);
   return (
     <StyledPod>
-      <Link to={`/podd/${id}`}>
+      <Link
+        to={`/podd/${id}`}
+        onClick={() => {
+          window.scrollTo(0, 0);
+        }}
+      >
         <section>
           <div>
             <Headphones />
@@ -56,7 +57,7 @@ const Pod = ({ title, thumbnail, saved, id }) => {
       </Link>
       <section>
         <div>
-          <Link to={`/podd/${id}`}>
+          <Link to={`/podd/${id}`} onClick={() => window.scrollTo(0, 0)}>
             <p>{title}</p>
           </Link>
         </div>

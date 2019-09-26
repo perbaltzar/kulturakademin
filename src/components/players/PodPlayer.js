@@ -15,8 +15,9 @@ const StyledMoveButton = styled.button``;
 const StyledCloseButton = styled.button``;
 
 const StyledReactPlayer = styled.div`
+  border-top: 2px solid ${props => props.theme.colorLine};
   position: fixed;
-  height: 80px;
+  height: 70px;
   width: 100%;
   background-color: #1c1c1c;
   bottom: 60px;
@@ -26,11 +27,15 @@ const StyledReactPlayer = styled.div`
   justify-content: space-around;
   /* CONTROLLER CONTAINER */
   div:first-of-type {
+    padding-bottom: 5px;
+    span {
+      width: 20px;
+    }
     height: 52px;
     width: 100%;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-end;
   }
   div button {
     /* PLAYBUTTON */
@@ -73,6 +78,7 @@ const Player = withSoundCloudAudio(props => {
   return (
     <StyledReactPlayer currentTime={currentTime} duration={duration}>
       <div>
+        <span></span>
         <StyledMoveButton>
           <img src="/assets/icons/15back.svg" alt="-15" />
         </StyledMoveButton>

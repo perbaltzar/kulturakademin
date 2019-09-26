@@ -12,6 +12,8 @@ const StyledPodThumbnail = styled.div`
   }
   p {
     margin-top: 5px;
+    font: ${props => props.theme.fontMobilePsmall};
+    line-height: 15px;
   }
   img {
     height: auto;
