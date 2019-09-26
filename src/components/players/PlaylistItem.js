@@ -21,8 +21,7 @@ const StyledPlaylistItem = styled.div`
   }
   section:nth-child(2) {
     height: auto;
-    grid-template-columns: 1fr 5fr 1fr;
-    padding-right: 20px;
+    grid-template-columns: 1fr 4fr 1fr;
     p {
       color: white;
       line-height: 20px;
