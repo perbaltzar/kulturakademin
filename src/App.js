@@ -22,7 +22,6 @@ import AppModal from './components/modals/AppModal';
 import Tack from './components/views/Tack';
 import AboutApp from './components/views/AboutApp';
 
-
 const StyledApp = styled.div`
   height: 100vh;
   overflow: ${props => (props.menuOpen === 'block' ? 'hidden' : 'auto')};
