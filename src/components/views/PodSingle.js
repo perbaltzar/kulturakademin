@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { PlayerContext } from '../Context';
 import Line from '../players/Line';
@@ -69,7 +70,9 @@ const PodSingle = ({ match }) => {
           />
           {playlistTracks.length > 0 && <Playlist playlistTracks={playlistTracks} />}
           <StyledFilterSection>
-            <h3>Förslag</h3>
+            <Link to="/tack">
+              <h3>Förslag</h3>
+            </Link>
             <Line orange />
             <FilterBar
               chosen={chosenFilter}

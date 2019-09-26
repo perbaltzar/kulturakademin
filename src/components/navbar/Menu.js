@@ -103,6 +103,9 @@ const Menu = props => {
           <Link to="/om">
             <h2>Om Kulturplay</h2>
           </Link>
+          <Link to="/app">
+            <h2>Kulturplay App</h2>
+          </Link>
           <a
             href="http://www.kulturakademin.com/kurskatalog"
             target="_blank"
