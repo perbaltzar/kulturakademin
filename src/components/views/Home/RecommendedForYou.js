@@ -15,7 +15,6 @@ const StyledRecommendedForYou = styled.div`
     font: ${props => props.theme.fontMobilePsmall};
   }
 `;
-console.log(youtube[0]);
 const RecommendedForYou = props => {
   return (
     <StyledRecommendedForYou>
