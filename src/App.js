@@ -29,6 +29,7 @@ const StyledApp = styled.div`
 const App = props => {
   const [displayMenu, setDisplayMenu] = useState('none');
   const [toggleMenuAnimation, setToggleMenuAnimation] = useState(true);
+  const [toggleSearchAnimation, setToggleSearchAnimation] = useState(true);
   const [playerVisible, setPlayerVisible] = useState('none');
   const [smallPlayer, setSmallPlayer] = useState(false);
   const [cookie, setCookie] = useState(localStorage.getItem('seenCookies'));
@@ -38,7 +39,6 @@ const App = props => {
   const getLocalStorageVisits = () => {
     let localStorageCounter = localStorage.getItem('numberOfVisits');
     if (localStorageCounter !== null) {
-      console.log(localStorageCounter);
       localStorage.setItem('numberOfVisits', ++localStorageCounter);
       return localStorageCounter;
     }
@@ -60,7 +60,14 @@ const App = props => {
         <>
           <GlobalStyles />
           <Router>
-            <SearchContext.Provider value={{ displaySearch, setDisplaySearch }}>
+            <SearchContext.Provider
+              value={{
+                displaySearch,
+                setDisplaySearch,
+                toggleSearchAnimation,
+                setToggleSearchAnimation,
+              }}
+            >
               <PlayerContext.Provider
                 value={{
                   playerVisible,
