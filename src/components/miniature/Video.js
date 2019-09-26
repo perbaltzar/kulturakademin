@@ -10,12 +10,9 @@ import isFavourite from '../../lib/search/isFavourite';
 const StyledVideo = styled.div`
   margin: 20px 0;
   display: flex;
-  h4 {
-    color: white;
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
+
   p {
+    line-height: 18px;
     font-size: 12px;
     color: white;
   }

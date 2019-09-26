@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const StyledProgressBar = styled.div`
   height: 4px;
   width: ${props => props.progress}%;
+  margin-top: 5px;
   background-color: ${props => props.theme.orange};
 `;
 

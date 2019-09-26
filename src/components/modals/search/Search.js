@@ -70,7 +70,7 @@ const Search = props => {
   const [videoResults, setVideoResults] = useState([]);
   const [topResults, setTopResults] = useState([]);
   const [results, setResults] = useState([]);
-  const [chosen, setChosen] = useState('a-ö');
+  const [chosen, setChosen] = useState('senaste');
   const [showView, setShowView] = useState('suggestions');
   const { displaySearch, toggleSearchAnimation } = useContext(SearchContext);
 

@@ -37,11 +37,11 @@ const FilterBar = ({ chosen, onClick }) => {
   return (
     <StyledFilterBar>
       <div>
-        <StyledFilterButton chosen={chosen === 'a-ö'} onClick={() => onClick('a-ö')}>
-          <p>A-Ö</p>
-        </StyledFilterButton>
         <StyledFilterButton chosen={chosen === 'senaste'} onClick={() => onClick('senaste')}>
           <p>Senaste</p>
+        </StyledFilterButton>
+        <StyledFilterButton chosen={chosen === 'a-ö'} onClick={() => onClick('a-ö')}>
+          <p>A-Ö</p>
         </StyledFilterButton>
         <StyledFilterButton chosen={chosen === 'podd'} onClick={() => onClick('podd')}>
           <p>Podd</p>

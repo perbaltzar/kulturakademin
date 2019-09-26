@@ -42,6 +42,7 @@ const StyledVideoHero = styled.div`
     justify-content: space-between;
     margin-top: 210px;
     h3 {
+      line-height: 27px;
       width: 75vw;
     }
   }
@@ -63,12 +64,13 @@ const StyledImg = styled.img`
 `;
 
 const StyledDescription = styled.div`
-  max-height: ${props => (props.toggleText ? 'auto' : '28px')};
+  max-height: ${props => (props.toggleText ? 'auto' : '40px')};
   transition: 0.5s;
   overflow: hidden;
-  /* p {
-    width: 80%;
-  } */
+  p {
+    letter-spacing: 0.5px;
+    line-height: 20px;
+  }
 `;
 
 const StyledFilterCointainer = styled.div`
@@ -83,7 +85,7 @@ const VideoSingle = props => {
   const [loaded, setLoaded] = useState(false);
   const [related, setRelated] = useState(data);
   const [showText, setShowText] = useState(false);
-  const [chosenFilter, setChosenFilter] = useState('a-ö');
+  const [chosenFilter, setChosenFilter] = useState('senaste');
   const { favourites, setFavourites } = useContext(PlayerContext);
 
   useEffect(() => {

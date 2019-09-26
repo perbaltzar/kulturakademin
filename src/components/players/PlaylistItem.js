@@ -9,18 +9,23 @@ import displayProperTime from '../../lib/displayProperTimer';
 
 const StyledPlaylistItem = styled.div`
   color: ${props => (props.playing ? `${props.theme.orange}` : 'white')};
+  margin-top: 8px;
   section {
     height: 50px;
     margin: 30px 0;
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
+    p {
+      line-height: 20px;
+    }
   }
   section:nth-child(2) {
     height: auto;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1fr 5fr 1fr;
     padding-right: 20px;
     p {
       color: white;
+      line-height: 20px;
     }
   }
   div {
@@ -54,11 +59,11 @@ const PlaylistItem = ({ number, img, title, plays, duration, playing, descriptio
     <StyledPlaylistItem playing={playing}>
       <section>
         <div onClick={startPlayer}>
-          <h4>{number}</h4>
+          <h2>{number}</h2>
         </div>
         <div onClick={startPlayer}>
-          <p>{title}</p>
-          <ProgressBar progress={50} />
+          <p>{title.substr(4, title.length - 22)}</p>
+          <ProgressBar progress={100 - 50 * (number - 1)} />
         </div>
         <div
           onClick={() => {

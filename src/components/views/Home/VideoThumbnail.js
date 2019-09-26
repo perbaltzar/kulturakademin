@@ -8,6 +8,7 @@ const StyledVideoThumbnail = styled.div`
   p {
     margin-top: 5px;
     font-size: 12px;
+    line-height: 18px;
     color: ${props => props.theme.colorLight};
     margin-bottom: 10px;
   }
