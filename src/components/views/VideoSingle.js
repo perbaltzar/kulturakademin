@@ -16,6 +16,7 @@ import videos from '../../data/youtube.json';
 import youtube from '../../data/youtube.json';
 import isFavourite from '../../lib/search/isFavourite';
 import addToFavourites from '../../lib/addToFavourites';
+import ShareIcon from '../ShareIcon';
 
 let data = [videos, tracks, playlists].flat();
 
@@ -35,16 +36,28 @@ const StyledFlexBox = styled.div`
 `;
 
 const StyledVideoHero = styled.div`
-  display: flex;
-  margin: 0px 0 20px 0;
-  justify-content: space-between;
-  margin-top: 210px;
+  section:first-of-type {
+    display: flex;
+    margin: 0px 0 20px 0;
+    justify-content: space-between;
+    margin-top: 210px;
+    h3 {
+      width: 75vw;
+    }
+  }
+
+  section:nth-child(2) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    p {
+      margin: 0;
+      width: 75vw;
+    }
+  }
 `;
 
 const StyledImg = styled.img`
-  justify-self: flex-start;
-  align-self: flex-start;
-  margin-top: 5px;
   transform: ${props => (props.toggleText ? 'rotate(0deg)' : 'rotate(-90deg)')};
   transition: 0.2s;
 `;
@@ -53,7 +66,9 @@ const StyledDescription = styled.div`
   max-height: ${props => (props.toggleText ? 'auto' : '28px')};
   transition: 0.5s;
   overflow: hidden;
-  margin: ${props => props.margin};
+  /* p {
+    width: 80%;
+  } */
 `;
 
 const StyledFilterCointainer = styled.div`
@@ -100,26 +115,31 @@ const VideoSingle = props => {
           <StyledContainer>
             <PageBanner />
             <StyledVideoHero>
-              <h3>{video.title}</h3>
-              <Save
-                onClick={() => {
-                  addToFavourites(video.id, favourites);
-                  setFavourites(JSON.parse(localStorage.getItem('favourites')));
-                }}
-                saved={isFavourite(video.id, favourites)}
-              />
+              <section>
+                <h3>{video.title}</h3>
+                <div>
+                  <Save
+                    onClick={() => {
+                      addToFavourites(video.id, favourites);
+                      setFavourites(JSON.parse(localStorage.getItem('favourites')));
+                    }}
+                    saved={isFavourite(video.id, favourites)}
+                  />
+                  <ShareIcon marginTop />
+                </div>
+              </section>
+              <section>
+                <StyledDescription toggleText={showText}>
+                  <p>{video.description}</p>
+                </StyledDescription>
+                <StyledImg
+                  toggleText={showText}
+                  src="/assets/icons/rectangle.svg"
+                  alt=""
+                  onClick={() => setShowText(!showText)}
+                />
+              </section>
             </StyledVideoHero>
-            <StyledFlexBox>
-              <StyledDescription toggleText={showText}>
-                <p>{video.description}</p>
-              </StyledDescription>
-              <StyledImg
-                toggleText={showText}
-                src="/assets/icons/rectangle.svg"
-                alt=""
-                onClick={() => setShowText(!showText)}
-              />
-            </StyledFlexBox>
 
             <StyledFilterCointainer>
               <h3>Förslag</h3>
