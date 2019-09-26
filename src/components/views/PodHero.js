@@ -45,7 +45,6 @@ const PodHero = ({ onClick, playlistThumbnail, playlistTitle, trackTitle, trackP
       <section>
         <p>{trackTitle}</p>
         <div>
-          <ShareIcon marginBottom />
           <Save
             onClick={() => {
               addToFavourites(id, favourites);
@@ -53,6 +52,7 @@ const PodHero = ({ onClick, playlistThumbnail, playlistTitle, trackTitle, trackP
             }}
             saved={isFavourite(id, favourites)}
           />
+          <ShareIcon marginTop />
         </div>
       </section>
     </StyledPodHero>
