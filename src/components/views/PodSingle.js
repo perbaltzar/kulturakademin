@@ -77,24 +77,17 @@ const PodSingle = ({ match }) => {
             />
             <p>Video</p>
             <Line />
-            <Video
-              title={youtube[0].title}
-              // description={media.description && `${media.description.substr(0, 70)}...`}
-              thumbnail={youtube[0].thumbnail}
-              id={youtube[0].id}
-            />
+            <Video title={youtube[0].title} thumbnail={youtube[0].thumbnail} id={youtube[0].id} />
             <p>Podd</p>
             <Line />
             <Pod
               title={playlists[0].title}
-              // description={media.description && `${media.description.substr(0, 70)}...`}
               thumbnail={playlists[0].thumbnail}
               saved={false}
               id={playlists[0].id}
             />
             <Pod
               title={playlists[1].title}
-              // description={media.description && `${media.description.substr(0, 70)}...`}
               thumbnail={playlists[1].thumbnail}
               saved={false}
               id={playlists[1].id}
