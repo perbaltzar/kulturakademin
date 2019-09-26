@@ -30,7 +30,11 @@ const StyledMenu = styled.div`
   width: 100%;
   position: fixed;
   top: 0;
-
+  display: ${props => props.display};
+  overflow: auto;
+  padding: 8vh 70px;
+  background-color: ${props => props.theme.colorDark};
+  color: ${props => props.theme.colorLight};
   animation: ${props =>
     props.animation
       ? css`
@@ -39,11 +43,6 @@ const StyledMenu = styled.div`
       : css`
           ${fadeIn} 0.3s ease-in-out forwards
         `};
-  display: ${props => props.display};
-  overflow: auto;
-  padding: 8vh 70px;
-  background-color: ${props => props.theme.colorDark};
-  color: ${props => props.theme.colorLight};
 
   .menu-items {
     display: grid;

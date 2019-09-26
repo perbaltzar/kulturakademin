@@ -22,6 +22,7 @@ import AppModal from './components/modals/AppModal';
 import Tack from './components/views/Tack';
 import AboutApp from './components/views/AboutApp';
 
+
 const StyledApp = styled.div`
   height: 100vh;
   overflow: ${props => (props.menuOpen === 'block' ? 'hidden' : 'auto')};
@@ -29,9 +30,10 @@ const StyledApp = styled.div`
 `;
 
 const App = props => {
+  const [displaySearch, setDisplaySearch] = useState(false);
+  const [toggleSearchAnimation, setToggleSearchAnimation] = useState(false);
   const [displayMenu, setDisplayMenu] = useState('none');
   const [toggleMenuAnimation, setToggleMenuAnimation] = useState(true);
-  const [toggleSearchAnimation, setToggleSearchAnimation] = useState(true);
   const [playerVisible, setPlayerVisible] = useState('none');
   const [smallPlayer, setSmallPlayer] = useState(false);
   const [cookie, setCookie] = useState(localStorage.getItem('seenCookies'));
@@ -47,14 +49,13 @@ const App = props => {
     localStorage.setItem('numberOfVisits', 1);
     return 1;
   };
-  const [numberOfVisits, setNumberOfVisits] = useState(getLocalStorageVisits);
+  const [numberOfVisits] = useState(getLocalStorageVisits);
 
   const getLocalstorageFavourites = () => {
     return JSON.parse(localStorage.getItem('favourites')) || [];
   };
   const [favourites, setFavourites] = useState(getLocalstorageFavourites);
   // Search modal open och close
-  const [displaySearch, setDisplaySearch] = useState(false);
 
   return (
     <StyledApp className="App" {...props} menuOpen={displayMenu}>

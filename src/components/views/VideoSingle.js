@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import { PlayerContext } from '../Context';
 
 import FilterBar from '../modals/search/FilterBar';
@@ -24,15 +24,29 @@ const StyledVideoSingle = styled.div`
   color: ${props => props.theme.colorLight};
   background-color: ${props => props.theme.colorDark};
 `;
+
 const StyledContainer = styled.div`
   background-color: ${props => props.theme.colorDark};
   padding: 20px 20px 60px 20px;
 `;
+const toggleTextIn = keyframes`
+  from {
+    max-height: 40px;
+  }
 
-const StyledFlexBox = styled.div`
-  display: flex;
-  margin: 0px 0 20px 0;
-  justify-content: ${props => props.justifyContent};
+  to {
+    max-height: 300px;
+  }
+`;
+
+const toggleTextOut = keyframes`
+  from {
+    max-height: 300px;
+  }
+
+  to {
+    max-height: 40px;
+  }
 `;
 
 const StyledVideoHero = styled.div`
@@ -58,15 +72,18 @@ const StyledVideoHero = styled.div`
   }
 `;
 
-const StyledImg = styled.img`
-  transform: ${props => (props.toggleText ? 'rotate(0deg)' : 'rotate(-90deg)')};
-  transition: 0.2s;
-`;
-
 const StyledDescription = styled.div`
-  max-height: ${props => (props.toggleText ? 'auto' : '40px')};
+  max-height: 40px;
   transition: 0.5s;
   overflow: hidden;
+  animation: ${props =>
+    props.toggleText
+      ? css`
+          ${toggleTextIn} 0.35s ease-in-out forwards
+        `
+      : css`
+          ${toggleTextOut} 0.35s ease-in-out forwards
+        `};
   p {
     letter-spacing: 0.5px;
     line-height: 20px;
@@ -113,9 +130,9 @@ const VideoSingle = props => {
   return (
     <StyledVideoSingle {...props}>
       <>
+        <PageBanner />
         {loaded && (
           <StyledContainer>
-            <PageBanner />
             <StyledVideoHero>
               <section>
                 <h3>{video.title}</h3>
@@ -135,12 +152,6 @@ const VideoSingle = props => {
                   <p>{video.description}</p>
                 </StyledDescription>
                 <DescriptionArrow toggleText={showText} onClick={() => setShowText(!showText)} />
-                {/* <StyledImg
-                  toggleText={showText}
-                  src="/assets/icons/rectangle.svg"
-                  alt=""
-                  onClick={() => setShowText(!showText)}
-                /> */}
               </section>
             </StyledVideoHero>
 
@@ -155,7 +166,6 @@ const VideoSingle = props => {
               <Line />
               <Video
                 title={youtube[0].title}
-                // description={media.description && `${media.description.substr(0, 70)}...`}
                 thumbnail={youtube[0].thumbnail}
                 saved={false}
                 id={youtube[0].id}
@@ -164,14 +174,12 @@ const VideoSingle = props => {
               <Line />
               <Pod
                 title={playlists[0].title}
-                // description={media.description && `${media.description.substr(0, 70)}...`}
                 thumbnail={playlists[0].thumbnail}
                 saved={false}
                 id={playlists[0].id}
               />
               <Pod
                 title={playlists[1].title}
-                // description={media.description && `${media.description.substr(0, 70)}...`}
                 thumbnail={playlists[1].thumbnail}
                 saved={false}
                 id={playlists[1].id}

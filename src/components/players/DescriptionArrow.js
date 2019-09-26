@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const StyledDescriptionArrow = styled.img`
   margin-top: 5px;
   transform: ${props => (props.toggleText ? 'rotate(0deg)' : 'rotate(-180deg)')};
-  transition: 0.2s;
+  transition: 0.35s;
 `;
 
 const DescriptionArrow = ({ toggleText, onClick }) => {
