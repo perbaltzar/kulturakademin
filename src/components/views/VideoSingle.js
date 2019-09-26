@@ -14,6 +14,8 @@ import PageBanner from '../views/Home/PageBanner';
 import tracks from '../../data/tracks.json';
 import videos from '../../data/youtube.json';
 import youtube from '../../data/youtube.json';
+import isFavourite from '../../lib/search/isFavourite';
+import addToFavourites from '../../lib/addToFavourites';
 
 let data = [videos, tracks, playlists].flat();
 
@@ -46,9 +48,7 @@ const StyledImg = styled.img`
   transform: ${props => (props.toggleText ? 'rotate(0deg)' : 'rotate(-90deg)')};
   transition: 0.2s;
 `;
-const StyledText = styled.p`
-  margin: ${props => props.margin};
-`;
+
 const StyledDescription = styled.div`
   max-height: ${props => (props.toggleText ? 'auto' : '28px')};
   transition: 0.5s;
@@ -67,10 +67,9 @@ const VideoSingle = props => {
   const [video, setVideo] = useState({});
   const [loaded, setLoaded] = useState(false);
   const [related, setRelated] = useState(data);
-  const [showFilterVideo, setShowFilterVideo] = useState(true);
-  const [showFilterPod, setShowFilterPod] = useState(true);
   const [showText, setShowText] = useState(false);
   const [chosenFilter, setChosenFilter] = useState('a-ö');
+  const { favourites, setFavourites } = useContext(PlayerContext);
 
   useEffect(() => {
     if (mediaId !== props.match.params.id) {
@@ -102,7 +101,13 @@ const VideoSingle = props => {
             <PageBanner />
             <StyledVideoHero>
               <h3>{video.title}</h3>
-              <Save saved={false} />
+              <Save
+                onClick={() => {
+                  addToFavourites(video.id, favourites);
+                  setFavourites(JSON.parse(localStorage.getItem('favourites')));
+                }}
+                saved={isFavourite(video.id, favourites)}
+              />
             </StyledVideoHero>
             <StyledFlexBox>
               <StyledDescription toggleText={showText}>
