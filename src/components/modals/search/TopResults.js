@@ -7,7 +7,7 @@ import Line from '../../players/Line';
 
 const StyledTopResults = styled.div``;
 
-const TopResults = ({ topResults }) => {
+const TopResults = ({ topResults, toggleSearch }) => {
   return (
     <StyledTopResults>
       <h3>Toppresultat</h3>
@@ -21,6 +21,7 @@ const TopResults = ({ topResults }) => {
               title={top.title}
               description={top.description}
               thumbnail={top.thumbnail}
+              toggleSearch={toggleSearch}
             />
           );
         }
@@ -32,6 +33,7 @@ const TopResults = ({ topResults }) => {
               title={top.title}
               description={top.description}
               thumbnail={top.thumbnail}
+              toggleSearch={toggleSearch}
             />
           );
         }
