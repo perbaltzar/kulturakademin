@@ -19,7 +19,6 @@ import About from './components/views/About';
 import { MenuContext, PlayerContext, SearchContext } from './components/Context';
 import Cookies from './components/modals/Cookies';
 import AppModal from './components/modals/AppModal';
-import Tack from './components/views/Tack';
 import AboutApp from './components/views/AboutApp';
 
 const StyledApp = styled.div`
@@ -29,16 +28,28 @@ const StyledApp = styled.div`
 `;
 
 const App = props => {
-  const [displaySearch, setDisplaySearch] = useState(false);
-  const [toggleSearchAnimation, setToggleSearchAnimation] = useState(false);
-  const [displayMenu, setDisplayMenu] = useState('none');
-  const [toggleMenuAnimation, setToggleMenuAnimation] = useState(true);
-  const [playerVisible, setPlayerVisible] = useState('none');
-  const [smallPlayer, setSmallPlayer] = useState(false);
-  const [cookie, setCookie] = useState(localStorage.getItem('seenCookies'));
+  // Id of the active media in the player
   const [mediaId, setMediaId] = useState('');
+
+  // Keeping track of current navigation path
   const [navPath, setNavPath] = useState('');
 
+  // Showing search modal
+  const [displaySearch, setDisplaySearch] = useState(false);
+  const [toggleSearchAnimation, setToggleSearchAnimation] = useState(false);
+
+  // Displaying Menu
+  const [displayMenu, setDisplayMenu] = useState('none');
+  const [toggleMenuAnimation, setToggleMenuAnimation] = useState(true);
+
+  // Checking if player is visible, none, video or pod
+  const [playerVisible, setPlayerVisible] = useState('none');
+  const [smallPlayer, setSmallPlayer] = useState(false);
+
+  // Checking if user has accepted cookies
+  const [cookie, setCookie] = useState(localStorage.getItem('seenCookies'));
+
+  // Function to get number of visits from local storage
   const getLocalStorageVisits = () => {
     let localStorageCounter = localStorage.getItem('numberOfVisits');
     if (localStorageCounter !== null) {
@@ -50,11 +61,11 @@ const App = props => {
   };
   const [numberOfVisits] = useState(getLocalStorageVisits);
 
+  // Function to get favourites from local storage and saving to state
   const getLocalstorageFavourites = () => {
     return JSON.parse(localStorage.getItem('favourites')) || [];
   };
   const [favourites, setFavourites] = useState(getLocalstorageFavourites);
-  // Search modal open och close
 
   return (
     <StyledApp className="App" {...props} menuOpen={displayMenu}>
@@ -95,7 +106,7 @@ const App = props => {
                     numberOfVisits,
                   }}
                 >
-                  {numberOfVisits >= 3 && <AppModal />}
+                  {numberOfVisits === 3 && <AppModal />}
 
                   {!cookie && <Cookies onClick={() => setCookie(true)} />}
                   {displaySearch && <Search />}
@@ -109,7 +120,6 @@ const App = props => {
                     <Route path="/video/:id" component={VideoSingle} />
                     <Route path="/podd/:id" component={PodSingle} />
                     <Route path="/kategori/:id" component={CategorySinglePage} />
-                    <Route path="/tack" component={Tack} />
                     <Route path="/app" component={AboutApp} />
                     <Route path="/" component={NotFound} />
                   </Switch>
