@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import YouTube from '@u-wave/react-youtube';
 import videos from '../../data/youtube.json';
@@ -51,13 +51,6 @@ const VideoPlayer = () => {
 
   return (
     <StyledVideoPlayer smallPlayer={smallPlayer}>
-      {/* <button
-        onClick={() => {
-          setSmallPlayer(!smallPlayer);
-        }}
-      >
-        TOGGLE
-      </button> */}
       {smallPlayer ? (
         <div className="small-player-container">
           <div className="small-player">

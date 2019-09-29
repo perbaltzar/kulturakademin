@@ -11,7 +11,6 @@ import NoResults from './NoResults';
 import TopResults from './TopResults';
 import History from './History';
 import Suggestions from './Suggestions';
-import SearchCategories from './SearchCategories';
 import search from '../../../lib/search/search';
 import CategoryGrid from '../../categories/CategoryGrid';
 

@@ -1,7 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import SearchOrClose from './SearchOrClose';
-import { SearchContext } from '../../Context';
 
 const StyledSearchBar = styled.div`
   background-color: ${props => props.theme.orange};
