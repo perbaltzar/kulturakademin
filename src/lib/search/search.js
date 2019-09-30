@@ -1,9 +1,12 @@
 import youtube from '../../data/youtube.json';
 import playlists from '../../data/playlists.json';
 import tracks from '../../data/tracks.json';
-
 const data = [youtube, playlists, tracks].flat();
 
+/**
+ * Searching through description, title and tags of known media
+ * @param query the search query
+ */
 const search = query => {
   query = query.toLowerCase();
   // Splitting up query by space

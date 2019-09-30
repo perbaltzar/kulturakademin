@@ -1,11 +1,15 @@
+/**
+* Return true if media id exist in favourites
+* @param id media id 
+* @param id array of favourites objects
+ */
 const isFavourite = (id, favourites) => {
-  let isTrue = false;
   if (favourites) {
     favourites.forEach(favourite => {
-      if (favourite.id === id) isTrue = true;
+      if (favourite.id === id) return true;
     });
-    return isTrue;
   }
   return false;
 };
+
 export default isFavourite;
