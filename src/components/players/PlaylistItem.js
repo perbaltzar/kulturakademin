@@ -1,10 +1,7 @@
 import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
-
 import { PlayerContext } from '../Context';
-import ProgressBar from './ProgressBar';
 import DescriptionArrow from './DescriptionArrow';
-
 import displayProperTime from '../../lib/displayProperTimer';
 
 const StyledPlaylistItem = styled.div`
@@ -63,7 +60,6 @@ const PlaylistItem = ({ number, img, title, plays, duration, playing, descriptio
         </div>
         <div onClick={startPlayer}>
           <p>{title.substr(4, title.length - 16)}</p>
-          {/* <ProgressBar progress={100 - 50 * (number - 1)} /> */}
         </div>
         <div
           onClick={() => {

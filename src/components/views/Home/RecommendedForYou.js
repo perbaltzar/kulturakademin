@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import youtube from '../../../data/youtube.json';
+
 const StyledRecommendedForYou = styled.div`
   h5 {
     margin-bottom: 10px;

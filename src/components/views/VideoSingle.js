@@ -1,7 +1,6 @@
 import React, { useEffect, useContext, useState } from 'react';
 import styled, { keyframes, css } from 'styled-components';
 import { PlayerContext } from '../Context';
-
 import FilterBar from '../modals/search/FilterBar';
 import Save from '../miniature/Save';
 import playlists from '../../data/playlists.json';
@@ -18,6 +17,7 @@ import isFavourite from '../../lib/search/isFavourite';
 import addToFavourites from '../../lib/addToFavourites';
 import ShareIcon from '../ShareIcon';
 import DescriptionArrow from '../players/DescriptionArrow';
+
 let data = [videos, tracks, playlists].flat();
 
 const StyledVideoSingle = styled.div`
@@ -125,7 +125,7 @@ const VideoSingle = props => {
       relatedMedia = [...new Set(relatedMedia.flat())].slice(0, 10);
       setRelated(relatedMedia);
     }
-  }, [loaded, video.tags]);
+  }, [loaded, video.tags, setRelated]);
 
   return (
     <StyledVideoSingle {...props}>

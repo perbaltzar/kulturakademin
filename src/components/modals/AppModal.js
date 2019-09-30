@@ -1,8 +1,7 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Icon from '../navbar/Icon';
-import { PlayerContext } from '../Context';
 
 const StyledAppModal = styled.div`
   display: ${props => (props.display ? 'block' : 'none')};
@@ -20,7 +19,6 @@ const StyledAppModal = styled.div`
     margin-bottom: 20px;
   }
   p {
-    /* font: ${props => props.theme.fontMobilePsmall}; */
     line-height: 20px;
   }
 

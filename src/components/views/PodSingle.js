@@ -70,9 +70,7 @@ const PodSingle = ({ match }) => {
           />
           {playlistTracks.length > 0 && <Playlist playlistTracks={playlistTracks} />}
           <StyledFilterSection>
-            <Link to="/tack">
-              <h3>Förslag</h3>
-            </Link>
+            <h3>Förslag</h3>
             <Line orange />
             <FilterBar
               chosen={chosenFilter}
