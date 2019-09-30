@@ -10,7 +10,6 @@ import VideoPlayer from './components/players/VideoPlayer';
 import PodPlayer from './components/players/PodPlayer';
 import PodSingle from './components/views/PodSingle';
 import CategorySinglePage from './components/categories/CategorySinglePage';
-import Settings from './components/views/Settings';
 import Favourites from './components/views/Favourites';
 import NotFound from './components/views/NotFound';
 import Menu from './components/navbar/Menu';
@@ -114,7 +113,6 @@ const App = props => {
                   {playerVisible === 'pod' && <PodPlayer id={mediaId} />}
                   <Switch>
                     <Route path="/" exact component={Home} />
-                    <Route path="/installningar" exact component={Settings} />
                     <Route path="/favoriter" exact component={Favourites} />
                     <Route path="/om" exact component={About} />
                     <Route path="/video/:id" component={VideoSingle} />
