@@ -1,6 +1,10 @@
 import isFavourite from './search/isFavourite';
-
-export default function addToFavourites(id, favourites) {
+/**
+ * adding the id to favourites array in LocalStorage
+ * @param  {string} id
+ * @param  {object} favourites
+ */
+const addToFavourites = (id, favourites) => {
   if (isFavourite(id, favourites)) {
     favourites = favourites.filter(favourite => favourite.id !== id);
   } else {
@@ -10,4 +14,6 @@ export default function addToFavourites(id, favourites) {
     favourites.push(singleFavourite);
   }
   localStorage.setItem('favourites', JSON.stringify(favourites));
-}
+};
+
+export default addToFavourites;

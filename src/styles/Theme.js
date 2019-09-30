@@ -3,8 +3,6 @@ const Theme = {
   colorDark: '#141414',
   colorDarkGrey: '#1C1C1C',
   colorLight: '#FFF',
-  colorPrimary: 'tomato',
-  colorSecondary: 'papyawhip',
   orange: '#E29829',
   colorLine: ' #555555',
 

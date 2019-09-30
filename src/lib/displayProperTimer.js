@@ -1,3 +1,7 @@
+/**
+ * Return a string duration written in mm:ss
+ * @param  {int} duration
+ */
 const displayProperTime = duration => {
   let seconds = Math.floor(duration / 1000);
   let minutes = Math.floor(seconds / 60);
