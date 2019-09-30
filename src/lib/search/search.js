@@ -15,6 +15,7 @@ const search = query => {
     if (media.description !== null) {
       return media.description.toLowerCase().includes(query);
     }
+    return false;
   });
 
   const titleResults = data.filter(media => {
