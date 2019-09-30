@@ -34,7 +34,7 @@ const Home = props => {
       <div className="header-box">
         <h5>Kultur ur ett nytt perspektiv</h5>
       </div>
-      <img src="/assets/images/home-image.png" alt="" className="header-image" />
+      <img src="/assets/images/home-image.jpg" alt="" className="header-image" />
       <p>Using an agile workstructure with the help of...</p>
       <Line margins />
       <News />

@@ -6,7 +6,7 @@ const StyledRecommendedForYou = styled.div`
     margin-bottom: 10px;
   }
   img {
-    height: 280px;
+    height: auto;
     width: 100%;
   }
   div {
@@ -19,7 +19,7 @@ const RecommendedForYou = props => {
   return (
     <StyledRecommendedForYou>
       <h5>Rekommenderat för dig</h5>
-      <img src="./assets/images/home-image.png" alt="" />
+      <img src="./assets/images/home-image.jpg" alt="" />
       <div>
         <p>Using an agile workstructure with the help of...</p>
       </div>
