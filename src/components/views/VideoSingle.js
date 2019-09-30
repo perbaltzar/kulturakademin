@@ -100,7 +100,7 @@ const VideoSingle = props => {
   const { setPlayerVisible, setSmallPlayer, mediaId, setMediaId } = useContext(PlayerContext);
   const [video, setVideo] = useState({});
   const [loaded, setLoaded] = useState(false);
-  const [setRelated] = useState(data);
+  const [related, setRelated] = useState(data);
   const [showText, setShowText] = useState(false);
   const [chosenFilter, setChosenFilter] = useState('senaste');
   const { favourites, setFavourites } = useContext(PlayerContext);
